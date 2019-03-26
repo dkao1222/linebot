@@ -23,11 +23,11 @@ bot.on('message', function(event) {
                 console.log(msg)
                 break;
             case 'shipping':
-                event.reply(_buttonReply2actonViewDetail('HELP', 'No answer','No',''))
+                event.reply(_buttonReply2actonViewHelp('HELP', 'Shipping : 功能選擇','no function1','no function2'))
                 console.log(msg)
                 break;
             case 'receiving':
-                event.reply(_buttonReply2actonViewHelp('HELP', 'Function','記錄進倉','Other'))
+                event.reply(_buttonReply2actonViewHelp('HELP', 'Receiving : 功能選擇','記錄進倉','Other'))
                 console.log(msg)
                 break;
             case '記錄進倉': 
