@@ -3,8 +3,7 @@ var express = require('express');
 
 var bot = linebot({
   channelId: '1557825870',
-  channelSecret: '8e9c4b83759ee2cdadb89c8e986f6ef7
-  Issue',
+  channelSecret: '8e9c4b83759ee2cdadb89c8e986f6ef7',
   channelAccessToken: 'V1a8PUXW1SskDXF+YnUm5ybLN8GTH0rK84XttZK6bcQw1czB6Ej+8K/vUN8ESCIS6IeApUAzX+rHrt+vBW6zJX5s0nymrCv4QnO9QTSJhsGmzsHKgVF2JMSZ1WUzMC16RL3Vd1OFII1C/+JKxvC0bQdB04t89/1O/w1cDnyilFU='
 });
 
