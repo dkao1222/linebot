@@ -26,7 +26,11 @@ bot.on('message', function(event) {
                 event.reply(_buttonReply2actonViewDetail('HELP', 'No answer','No',''))
                 console.log(msg)
                 break;
-            case 'receiving': 
+            case 'receiving':
+                event.reply(_buttonReply2actonViewHelp('HELP', 'Function','記錄進倉','Other'))
+                console.log(msg)
+                break;
+            case '記錄進倉': 
                 event.reply(_buttonReply2actonViewDetail('HELP', '開始記錄進倉？','No','https://forms.gle/MKgLoazaQySyBwAR9'))
                 console.log(msg)
                 break;
