@@ -14,9 +14,9 @@ var bot = linebot({
 //這一段的程式是專門處理當有人傳送文字訊息給LineBot時，我們的處理回應
 bot.on('message', function(event) {
 
-    var msg = event.message.text.toLowerCase()
-    var myId=event.source.userId;
+    // var myId=event.source.userId;
     if (event.message.type = 'text') {
+        var msg = event.message.text.toLowerCase()
         switch (msg){
             case 'help': 
                 event.reply(msg);
