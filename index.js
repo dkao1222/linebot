@@ -19,7 +19,7 @@ bot.on('message', function(event) {
         var msg = event.message.text.toLowerCase()
         switch (msg){
             case 'help': 
-                event.reply(_buttonReply2actonViewDetail('HELP', '開始記錄進倉？','yes','https://forms.gle/MKgLoazaQySyBwAR9'))
+                event.reply(_buttonReply2actonViewDetail('HELP', '開始記錄進倉？','No','https://forms.gle/MKgLoazaQySyBwAR9'))
                 console.log(msg)
                 break;
         }
@@ -56,7 +56,7 @@ function _buttonReply2actonViewDetail(buttonTitle, buttonText, answerA, uri){
               },
               {
                 type: 'uri',
-                label: 'View Detail',
+                label: 'Start',
                 uri: uri
               }
           ]
