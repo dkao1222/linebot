@@ -20,7 +20,7 @@ bot.on('message', function(event) {
         switch (msg){
             case 'help': 
                 event.reply(msg);
-                console.log('Q:' + msg +'A:'+ msg)
+                console.log(msg)
                 break;
         }
     }
