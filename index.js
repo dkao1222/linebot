@@ -1,6 +1,10 @@
 var linebot = require('linebot');
 var express = require('express');
 
+// UPS LOGO : https://lh3.googleusercontent.com/Ild2nbhqVTXlkO1X2-ZlDUTAyBD4l36vBQg7vlAStsJEjReyE08oaaqxDSvtzGeU9TZ10yQlp9GXx8WhdRwIGUdTbnqRpF6auRaUsmmGKzJAmgj7nck2Z3ottVaDl3htX1-DNWTTNPLT1tLfI3qVrwd3xylee3JA5e_Ejg-mDSoN6thDaoMWzecdweYcf-S5nNIWOLVwZ0084VZhy4dkajnwzZtyVX05JCqjRFmhfwqRQQRizVRBHGLLvhKCETgohXnO2Jb-EeAKUvY6QfwWJjfPvZwsEn1NONvlJjQBj5RmLywhm6SWRxS2DnygOEGunGojrLv_DGORDTkIBzkhk3tysGFiPjDNc0aS5CBb2uBRLSr746dYd52_V6lSSZYAjFzsdzB0xXSEoRaciEdKnZ_eD92kW2C8YAOo6Kj7o_heXZl9kt3xTX3zSFxxOZrwbchzTM-aD-76PaO6yxZMoL5TzLo5wnTbfKC1eJYI7F091BevLRLO1Lx6v6aUtauSq8IbAVEwILkOmRCkG9HnMdztS0ks8EYxLTHnUeO7j1XooLnDre-G2Kxur5FI3gt1fylO0sTZJjtfEvEmLYs1sE2qLqD_QTLxiGy6wX6cVhQXZQsu8S4DzfcDwrm3YZKlK3gIGWxhG-KGh9dHIKC9QXXch1WwlT3uSVAInfJJm96S7w=w720-h869-no
+
+
+
 var bot = linebot({
   channelId: '1557825870',
   channelSecret: '8e9c4b83759ee2cdadb89c8e986f6ef7',
@@ -9,17 +13,29 @@ var bot = linebot({
 
 //這一段的程式是專門處理當有人傳送文字訊息給LineBot時，我們的處理回應
 bot.on('message', function(event) {
-  if (event.message.type = 'text') {
-    var msg = event.message.text;
-  //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(msg).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(msg);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }
+
+    var msg = event.message.text.toLowerCase()
+    var myId=event.source.userId;
+    if (event.message.type = 'text') {
+        switch (msg){
+            case 'help': 
+                event.reply(msg);
+                console.log('Q:' + msg +'A:'+ msg)
+                break;
+        }
+    }
+
+    // if (event.message.type = 'text') {
+    //     var msg = event.message.text;
+    //收到文字訊息時，直接把收到的訊息傳回去
+    //     event.reply(msg).then(function(data) {
+    //     // 傳送訊息成功時，可在此寫程式碼 
+    //     console.log(msg);
+    //     }).catch(function(error) {
+    //     // 傳送訊息失敗時，可在此寫程式碼 
+    //     console.log('錯誤產生，錯誤碼：'+error);
+    //     });
+    // }
 });
 
 const app = express();
