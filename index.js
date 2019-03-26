@@ -19,7 +19,7 @@ bot.on('message', function(event) {
         var msg = event.message.text.toLowerCase()
         switch (msg){
             case 'help': 
-                event.reply(msg);
+                event.reply(_buttonReply2actonViewDetail('HELP', '開始記錄進倉？','yes','https://forms.gle/MKgLoazaQySyBwAR9'))
                 console.log(msg)
                 break;
         }
@@ -37,6 +37,35 @@ bot.on('message', function(event) {
     //     });
     // }
 });
+
+
+function _buttonReply2actonViewDetail(buttonTitle, buttonText, answerA, uri){
+    data = {
+      type: 'template',
+      altText: 'this is a buttons template',
+      template: {
+          type: 'buttons',
+          thumbnailImageUrl: 'https://4.bp.blogspot.com/-b1T3D00w6KY/WahOihTytWI/AAAAAAAABP8/nqdx7uJxs1YaNqS0BK4m4ZeoK8wjjkA0ACLcBGAs/s320/LOGO_L.jpg',
+          title: buttonTitle,
+          text: buttonText,
+          actions: [
+              {
+                type: 'message',
+                label: answerA,
+                text: answerA
+              },
+              {
+                type: 'uri',
+                label: 'View Detail',
+                uri: uri
+              }
+          ]
+  
+      }
+    }
+  
+    return data
+  }
 
 const app = express();
 const linebotParser = bot.parser();
