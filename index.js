@@ -98,7 +98,7 @@ bot.on('message', function(event) {
         myHAWB.forEach(function(element) {
           console.log(element);
         });
-
+        
         
       }
     }
