@@ -22,42 +22,42 @@ var users=[];
 var totalSteps=0;
 var myReplies=[];
 
-getHAWB();
+// getHAWB();
 
 
 //這是讀取問題的函式
-function getHAWB() {
-  const sheets = google.sheets({version: 'v4', auth});
-  sheets.spreadsheets.values.get({
-     auth: oauth2Client,
-     spreadsheetId: mySheetId,
-     range:encodeURI('HAWB'),
-  }, function(err, response) {
-     if (err) {
-        console.log('讀取問題檔的API產生問題：' + err);
-        return;
-     }
-     var rows = response.values;
-     if (rows.length == 0) {
-        console.log('No data found.');
-     } else {
-      //  myQuestions=rows;
-      //  totalSteps=myQuestions[0].length;
-      //  console.log('HAWB已下載完畢！');
-      if (rows.length) {
-        console.log('HAWB::');
-        // Print columns A and E, which correspond to indices 0 and 4.
-        rows.map((row) => {
-          // console.log(`${row[0]}, ${row[1]}`);
-          console.log(`${row[0]}`);
-          myHAWB = row[0].length
-        });
-      } else {
-        console.log('No data found.');
-      }
-     }
-  });
-}
+// function getHAWB() {
+//   const sheets = google.sheets({version: 'v4', auth});
+//   sheets.spreadsheets.values.get({
+//      auth: oauth2Client,
+//      spreadsheetId: mySheetId,
+//      range:encodeURI('HAWB'),
+//   }, function(err, response) {
+//      if (err) {
+//         console.log('讀取問題檔的API產生問題：' + err);
+//         return;
+//      }
+//      var rows = response.values;
+//      if (rows.length == 0) {
+//         console.log('No data found.');
+//      } else {
+//       //  myQuestions=rows;
+//       //  totalSteps=myQuestions[0].length;
+//       //  console.log('HAWB已下載完畢！');
+//       if (rows.length) {
+//         console.log('HAWB::');
+//         // Print columns A and E, which correspond to indices 0 and 4.
+//         rows.map((row) => {
+//           // console.log(`${row[0]}, ${row[1]}`);
+//           console.log(`${row[0]}`);
+//           myHAWB = row[0].length
+//         });
+//       } else {
+//         console.log('No data found.');
+//       }
+//      }
+//   });
+// }
 
 var bot = linebot({
   channelId: '1557825870',
@@ -91,17 +91,17 @@ bot.on('message', function(event) {
         }
     }
 
-    if (event.message.type = 'text') {
-      var msg = event.message.text.toLowerCase()
-      if (msg = 'hawb'){
-        // console.log(myQuestions['123-1234567'])
-        myHAWB.forEach(function(element) {
-          console.log(element);
-        });
+    // if (event.message.type = 'text') {
+    //   var msg = event.message.text.toLowerCase()
+    //   if (msg = 'hawb'){
+    //     // console.log(myQuestions['123-1234567'])
+    //     myHAWB.forEach(function(element) {
+    //       console.log(element);
+    //     });
         
         
-      }
-    }
+    //   }
+    // }
 
     // if (event.message.type = 'text') {
     //     var msg = event.message.text;
