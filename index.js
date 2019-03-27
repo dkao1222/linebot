@@ -50,7 +50,7 @@ function getHAWB() {
         rows.map((row) => {
           // console.log(`${row[0]}, ${row[1]}`);
           console.log(`${row[0]}`);
-          var myHAWB = row[0]
+          myHAWB = row[0].length
         });
       } else {
         console.log('No data found.');
