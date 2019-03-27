@@ -3,7 +3,48 @@ var express = require('express');
 
 // UPS LOGO : https://lh3.googleusercontent.com/Ild2nbhqVTXlkO1X2-ZlDUTAyBD4l36vBQg7vlAStsJEjReyE08oaaqxDSvtzGeU9TZ10yQlp9GXx8WhdRwIGUdTbnqRpF6auRaUsmmGKzJAmgj7nck2Z3ottVaDl3htX1-DNWTTNPLT1tLfI3qVrwd3xylee3JA5e_Ejg-mDSoN6thDaoMWzecdweYcf-S5nNIWOLVwZ0084VZhy4dkajnwzZtyVX05JCqjRFmhfwqRQQRizVRBHGLLvhKCETgohXnO2Jb-EeAKUvY6QfwWJjfPvZwsEn1NONvlJjQBj5RmLywhm6SWRxS2DnygOEGunGojrLv_DGORDTkIBzkhk3tysGFiPjDNc0aS5CBb2uBRLSr746dYd52_V6lSSZYAjFzsdzB0xXSEoRaciEdKnZ_eD92kW2C8YAOo6Kj7o_heXZl9kt3xTX3zSFxxOZrwbchzTM-aD-76PaO6yxZMoL5TzLo5wnTbfKC1eJYI7F091BevLRLO1Lx6v6aUtauSq8IbAVEwILkOmRCkG9HnMdztS0ks8EYxLTHnUeO7j1XooLnDre-G2Kxur5FI3gt1fylO0sTZJjtfEvEmLYs1sE2qLqD_QTLxiGy6wX6cVhQXZQsu8S4DzfcDwrm3YZKlK3gIGWxhG-KGh9dHIKC9QXXch1WwlT3uSVAInfJJm96S7w=w720-h869-no
 
+//底下輸入client_secret.json檔案的內容
+var myClientSecret={"installed":{"client_id":"1082675181890-cs3japs3c18ql77pkl1ova44mto4u039.apps.googleusercontent.com","project_id":"websheets","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"Ryd0QOggncfAxWBxaoDoSWnx","redirect_uris":["urn:ietf:wg:oauth:2.0:oob","http://localhost"]}}
 
+var auth = new googleAuth();
+var oauth2Client = new auth.OAuth2(myClientSecret.installed.client_id,myClientSecret.installed.client_secret, myClientSecret.installed.redirect_uris[0]);
+
+//底下輸入sheetsapi.json檔案的內容
+oauth2Client.credentials ={"access_token":"ya29.GlvZBi3YEIEoBK8sN1CbiuHm2jPF2tOzlxY106mO4i-ZBAAAElka0V8EuZCGRxX-6jH7EjmGkYb8nXXBMeuzL8J7cWhzJodL2og4Zg-n-lVWmZchqwWLsY1RahEz","refresh_token":"1/KmMexNircCX8G48XNkaUU45iLZwHRuLP9xORzf3OKG4","scope":"https://www.googleapis.com/auth/spreadsheets","token_type":"Bearer","expiry_date":1553698567792}
+
+//試算表的ID，引號不能刪掉
+var mySheetId='1IIy631u1x2Nt_lk0m-I0-DgunKBwWlYWtmxnmibTtX0';
+
+var myQuestions=[];
+var users=[];
+var totalSteps=0;
+var myReplies=[];
+
+getQuestions();
+
+
+//這是讀取問題的函式
+function getQuestions() {
+  var sheets = google.sheets('v4');
+  sheets.spreadsheets.values.get({
+     auth: oauth2Client,
+     spreadsheetId: mySheetId,
+     range:encodeURI('HAWB'),
+  }, function(err, response) {
+     if (err) {
+        console.log('讀取問題檔的API產生問題：' + err);
+        return;
+     }
+     var rows = response.values;
+     if (rows.length == 0) {
+        console.log('No data found.');
+     } else {
+       myQuestions=rows;
+       totalSteps=myQuestions[0].length;
+       console.log('要問的問題已下載完畢！');
+     }
+  });
+}
 
 var bot = linebot({
   channelId: '1557825870',
