@@ -83,7 +83,8 @@ function listMajors(auth) {
       console.log('HAWB, Type:');
       // Print columns A and E, which correspond to indices 0 and 4.
       rows.map((row) => {
-        console.log(`${row[0]}, ${row[1]}`);
+        // console.log(`${row[0]}, ${row[1]}`);
+        console.log(`${row[0]}`);
       });
     } else {
       console.log('No data found.');

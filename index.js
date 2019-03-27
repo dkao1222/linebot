@@ -17,7 +17,7 @@ oauth2Client.credentials ={"access_token":"ya29.GlvZBi3YEIEoBK8sN1CbiuHm2jPF2tOz
 //試算表的ID，引號不能刪掉
 var mySheetId='1IIy631u1x2Nt_lk0m-I0-DgunKBwWlYWtmxnmibTtX0';
 
-var myQuestions=[];
+var myHAWB=[];
 var users=[];
 var totalSteps=0;
 var myReplies=[];
@@ -26,7 +26,7 @@ getQuestions();
 
 
 //這是讀取問題的函式
-function getQuestions() {
+function getHAWB() {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
      auth: oauth2Client,
@@ -41,9 +41,20 @@ function getQuestions() {
      if (rows.length == 0) {
         console.log('No data found.');
      } else {
-       myQuestions=rows;
-       totalSteps=myQuestions[0].length;
-       console.log('HAWB已下載完畢！');
+      //  myQuestions=rows;
+      //  totalSteps=myQuestions[0].length;
+      //  console.log('HAWB已下載完畢！');
+      if (rows.length) {
+        console.log('HAWB::');
+        // Print columns A and E, which correspond to indices 0 and 4.
+        rows.map((row) => {
+          // console.log(`${row[0]}, ${row[1]}`);
+          console.log(`${row[0]}`);
+          var myHAWB = row[0]
+        });
+      } else {
+        console.log('No data found.');
+      }
      }
   });
 }
@@ -85,12 +96,10 @@ bot.on('message', function(event) {
       if (msg = 'hawb'){
         // console.log(myQuestions['123-1234567'])
         myQuestions.forEach(function(element) {
-          console.log(element);
+          console.log(myHAWB);
         });
 
-        console.log(myQuestions[0][0])
-        console.log(myQuestions[1][0])
-        console.log(myQuestions[1][1])
+        
       }
     }
 
