@@ -87,6 +87,10 @@ bot.on('message', function(event) {
         myQuestions.forEach(function(element) {
           console.log(element);
         });
+
+        console.log(myQuestions[0][0])
+        console.log(myQuestions[1][0])
+        console.log(myQuestions[1][1])
       }
     }
 
