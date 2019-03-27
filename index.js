@@ -83,7 +83,8 @@ bot.on('message', function(event) {
     if (event.message.type = 'text') {
       var msg = event.message.text.toLowerCase()
       if (msg = 'hawb'){
-        sendMessage(event, myQuestions[0])
+        console.log(myQuestions)
+        
       }
     }
 
