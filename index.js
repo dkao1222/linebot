@@ -83,8 +83,10 @@ bot.on('message', function(event) {
     if (event.message.type = 'text') {
       var msg = event.message.text.toLowerCase()
       if (msg = 'hawb'){
-        console.log(myQuestions['123-1234567'])
-        
+        // console.log(myQuestions['123-1234567'])
+        myQuestions.forEach(function(element) {
+          console.log(element);
+        });
       }
     }
 
