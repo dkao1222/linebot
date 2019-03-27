@@ -22,7 +22,7 @@ var users=[];
 var totalSteps=0;
 var myReplies=[];
 
-getQuestions();
+getHAWB();
 
 
 //這是讀取問題的函式
