@@ -43,7 +43,7 @@ function getQuestions() {
      } else {
        myQuestions=rows;
        totalSteps=myQuestions[0].length;
-       console.log('要問的問題已下載完畢！');
+       console.log('HAWB已下載完畢！');
      }
   });
 }
@@ -78,6 +78,13 @@ bot.on('message', function(event) {
                 console.log(msg)
                 break;
         }
+    }
+
+    if (event.message.type = 'text') {
+      var msg = event.message.text.toLowerCase()
+      if (msg = 'hawb'){
+        sendMessage(event, myQuestions[0])
+      }
     }
 
     // if (event.message.type = 'text') {
@@ -147,6 +154,16 @@ function _buttonReply2actonViewDetail(buttonTitle, buttonText, answerA, uri){
   
     return data
   }
+
+  function sendMessage(eve,msg){
+    eve.reply(msg).then(function(data) {
+       // success 
+       return true;
+    }).catch(function(error) {
+       // error 
+       return false;
+    });
+ }
 
 const app = express();
 const linebotParser = bot.parser();
