@@ -65,13 +65,13 @@ bot.on('message', function(event) {
         }
     }
 
-    (event.message.type = 'text') {
-      var msg = event.message.text.toLowerCase()
+    /*(event.message.type = 'text'){
+      var msg = event.message.text.toLowerCase();
       if (msg = 'hawb') {
-        event.reply()
+        event.reply();
       }
       
-    }
+    }*/
 });
 
 function _buttonReply2actonViewHelp(buttonTitle, buttonText, answerA, answerB){
