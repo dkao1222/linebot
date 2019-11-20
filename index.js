@@ -21,43 +21,8 @@ var myHAWB=[];
 var users=[];
 var totalSteps=0;
 var myReplies=[];
+var myQuestions = [];
 
-// getHAWB();
-
-
-//這是讀取問題的函式
-// function getHAWB() {
-//   const sheets = google.sheets({version: 'v4', auth});
-//   sheets.spreadsheets.values.get({
-//      auth: oauth2Client,
-//      spreadsheetId: mySheetId,
-//      range:encodeURI('HAWB'),
-//   }, function(err, response) {
-//      if (err) {
-//         console.log('讀取問題檔的API產生問題：' + err);
-//         return;
-//      }
-//      var rows = response.values;
-//      if (rows.length == 0) {
-//         console.log('No data found.');
-//      } else {
-//       //  myQuestions=rows;
-//       //  totalSteps=myQuestions[0].length;
-//       //  console.log('HAWB已下載完畢！');
-//       if (rows.length) {
-//         console.log('HAWB::');
-//         // Print columns A and E, which correspond to indices 0 and 4.
-//         rows.map((row) => {
-//           // console.log(`${row[0]}, ${row[1]}`);
-//           console.log(`${row[0]}`);
-//           myHAWB = row[0].length
-//         });
-//       } else {
-//         console.log('No data found.');
-//       }
-//      }
-//   });
-// }
 
 var bot = linebot({
   channelId: '1557825870',
@@ -72,11 +37,15 @@ bot.on('message', function(event) {
     if (event.message.type = 'text') {
         var msg = event.message.text.toLowerCase()
         switch (msg){
-            case 'help':
-                event.reply(_buttonReply2actonViewHelp('HELP', 'Function','Shipping','Receiving'))
+          case 'help':
+                event.reply(_buttonReply2actonViewHelp('HELP', 'Function','SmartView'))
                 console.log(msg)
                 break;
-            case 'shipping':
+            /*case 'help':
+                event.reply(_buttonReply2actonViewHelp('HELP', 'Function','Shipping','Receiving','SmartView'))
+                console.log(msg)
+                break;*/
+            /*case 'shipping':
                 event.reply(_buttonReply2actonViewHelp('HELP', 'Shipping : 功能選擇','no function1','no function2'))
                 console.log(msg)
                 break;
@@ -87,33 +56,22 @@ bot.on('message', function(event) {
             case '記錄進倉': 
                 event.reply(_buttonReply2actonViewDetail('HELP', '開始記錄進倉？','No','https://forms.gle/MKgLoazaQySyBwAR9'))
                 console.log(msg)
+                break;*/
+              case 'SmartView':
+                event.reply(_buttonReply2actonViewDetail('HELP', 'Submit Request','No','https://forms.gle/rv57VkU6W71Jkyda6'))
+                console.log(msg)
                 break;
+            
         }
     }
 
-    // if (event.message.type = 'text') {
-    //   var msg = event.message.text.toLowerCase()
-    //   if (msg = 'hawb'){
-    //     // console.log(myQuestions['123-1234567'])
-    //     myHAWB.forEach(function(element) {
-    //       console.log(element);
-    //     });
-        
-        
-    //   }
-    // }
-
-    // if (event.message.type = 'text') {
-    //     var msg = event.message.text;
-    //收到文字訊息時，直接把收到的訊息傳回去
-    //     event.reply(msg).then(function(data) {
-    //     // 傳送訊息成功時，可在此寫程式碼 
-    //     console.log(msg);
-    //     }).catch(function(error) {
-    //     // 傳送訊息失敗時，可在此寫程式碼 
-    //     console.log('錯誤產生，錯誤碼：'+error);
-    //     });
-    // }
+    (event.message.type = 'text') {
+      var msg = event.message.text.toLowerCase()
+      if (msg = 'hawb') {
+        event.reply()
+      }
+      
+    }
 });
 
 function _buttonReply2actonViewHelp(buttonTitle, buttonText, answerA, answerB){
@@ -179,6 +137,53 @@ function _buttonReply2actonViewDetail(buttonTitle, buttonText, answerA, uri){
        // error 
        return false;
     });
+ }
+
+ function getHawb() {
+    var sheets = google.sheets('v4');
+      sheets.spreadsheets.values.get({
+      auth: oauth2Client,
+      spreadsheetId: mySheetId,
+      range:encodeURI('HAWB'),
+    }, function(err, response) {
+    if (err) {
+      console.log('讀取問題檔的API產生問題：' + err);
+      return;
+    }
+    var rows = response.values;
+    if (rows.length == 0) {
+      console.log('No data found.');
+    } else {
+      //console.log(rows)
+      myQuestions=rows;
+      //console.log(myQuestions)
+      totalSteps=myQuestions.length;
+      console.log('HAWB 已下載完畢！');
+      // checkAnswer();
+    }
+
+    timer = setInterval(getHawb, 1800000);
+  });
+
+  
+
+  function checkHawb(myFilter) {
+    var i;
+    for(var i =0; myQuestions.length; i++) {
+      var filterHAWB = myQuestions[i].indexOf(myFilter);
+      if(filterHAWB >= 0) {
+        var type = filterHAWB + 1
+        var remark = filterHAWB + 2
+        console.log(myQuestions[i][type]);
+        console.log(myQuestions[i][remark]);
+        break;
+      }else{
+        console.log('can not find HAWB');
+      }
+      
+    }
+  }
+  
  }
 
 const app = express();

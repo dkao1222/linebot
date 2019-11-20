@@ -85,6 +85,7 @@ function listMajors(auth) {
       rows.map((row) => {
         // console.log(`${row[0]}, ${row[1]}`);
         console.log(`${row[0]}`);
+        
       });
     } else {
       console.log('No data found.');
