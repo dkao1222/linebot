@@ -38,7 +38,7 @@ bot.on('message', function(event) {
         var msg = event.message.text.toLowerCase()
         switch (msg){
           case 'help':
-                event.reply(_buttonReply2actonViewHelp('HELP', 'Function','SmartView'))
+                event.reply(_buttonReply2actonViewHelp('HELP', 'Function','SmartView',''))
                 console.log(msg)
                 break;
             /*case 'help':
@@ -65,13 +65,13 @@ bot.on('message', function(event) {
         }
     }
 
-    /*(event.message.type = 'text'){
+    if(event.message.type = 'text'){
       var msg = event.message.text.toLowerCase();
       if (msg = 'hawb') {
         event.reply();
       }
       
-    }*/
+    }
 });
 
 function _buttonReply2actonViewHelp(buttonTitle, buttonText, answerA, answerB){
