@@ -57,7 +57,7 @@ bot.on('message', function (event) {
           event.reply(_buttonReply2actonViewDetail('HELP', '開始記錄進倉？','No','https://forms.gle/MKgLoazaQySyBwAR9'))
           console.log(msg)
           break;*/
-      case 'SmartView':
+      case 'smartview':
         event.reply(_buttonReply2actonViewDetail('HELP', 'Submit Request', 'No', 'https://forms.gle/rv57VkU6W71Jkyda6'))
         console.log(msg)
         break;
