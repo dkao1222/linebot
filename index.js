@@ -38,7 +38,10 @@ bot.on('message', function (event) {
     var msg = event.message.text.toLowerCase()
     switch (msg) {
       case 'help':
+        event.reply('如果有任何電腦硬體相關問題請洽 TSG')
+        event.reply('大南路，機場，南工蒼可分機直播 #595 洽 HelpDesk')
         event.reply(_buttonReply2actonViewHelp('HELP', 'Function', 'SmartView', 'no function2'))
+        
         console.log(msg)
         break;
       /*case 'help':
