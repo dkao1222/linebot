@@ -61,6 +61,8 @@ bot.on('message', function (event) {
         event.reply(_buttonReply2actonViewDetail('HELP', 'Submit Request', 'No', 'https://forms.gle/rv57VkU6W71Jkyda6'))
         console.log(msg)
         break;
+      
+        
 
     }
   }
@@ -72,6 +74,30 @@ bot.on('message', function (event) {
     }
 
   }
+});
+
+bot.on('follow', function (event) {
+  event.reply('follow: ' + event.source.userId);
+});
+
+bot.on('unfollow', function (event) {
+  event.reply('unfollow: ' + event.source.userId);
+});
+
+bot.on('join', function (event) {
+  event.reply('join: ' + event.source.groupId);
+});
+
+bot.on('leave', function (event) {
+  event.reply('leave: ' + event.source.groupId);
+});
+
+bot.on('postback', function (event) {
+  event.reply('postback: ' + event.postback.data);
+});
+
+bot.on('beacon', function (event) {
+  event.reply('beacon: ' + event.beacon.hwid);
 });
 
 function _buttonReply2actonViewHelp(buttonTitle, buttonText, answerA, answerB) {
