@@ -40,7 +40,7 @@ bot.on('message', function (event) {
       case 'help':
         //event.reply('如果有任何電腦硬體相關問題請洽 TSG')
         //event.reply('大南路，機場，南工蒼可分機直播 #595 洽 HelpDesk')
-        event.reply(_buttonReply2actonViewHelp('HELP for SmartView', '如果有任何電腦硬體相關問題請洽 TSG', 'SmartView', 'Dev. Request'))
+        event.reply(_buttonReply2actonViewHelp('HELP for SmartView', '如果有任何電腦硬體相關問題請洽 TSG', 'SmartView', 'Development Request'))
 
         console.log(msg)
         break;
@@ -64,7 +64,7 @@ bot.on('message', function (event) {
         event.reply(_buttonReply2actonViewDetail('HELP', 'Submit issue Request', 'No', 'https://forms.gle/rv57VkU6W71Jkyda6'))
         console.log(msg)
         break;
-      case 'dev. request':
+      case 'development request':
         event.reply(_buttonReply2actonViewDetail('HELP', 'Submit dev Request', 'No', 'https://forms.gle/5TzxoyfP5MstGdp37'))
         console.log(msg)
         break;
