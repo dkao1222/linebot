@@ -96,17 +96,6 @@ bot.on('message', function (event) {
           stickerId: '106'
         }
         ])
-      } else {
-        return event.reply([{
-          type: 'text',
-          text: '歡迎 ' + profile.displayName + ' 使用 ~~~~ :p , 請輸入 「Help」 獲得進一步資訊' //+ event.source.userId
-        },
-        {
-          type: 'sticker',
-          packageId: '1',
-          stickerId: '106'
-        }
-        ])
       }
 
     }).catch(function (error) {
