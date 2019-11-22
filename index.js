@@ -88,7 +88,7 @@ bot.on('message', function (event) {
             text:'my ID : @lvf7630u'
           },
           {
-            type:'url',
+            type:'text',
             text:'https://lin.ee/aZPMld'
           },
           {
@@ -107,7 +107,7 @@ bot.on('message', function (event) {
             text: '歡迎 ' + profile.displayName + ' 使用 ~~~~ :p , 請輸入 「Help」 獲得進一步資訊' //+ event.source.userId
           },
           {
-            type:'url',
+            type:'text',
             text:'https://lin.ee/aZPMld'
           },
           {
