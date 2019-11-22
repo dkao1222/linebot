@@ -68,8 +68,8 @@ bot.on('message', function (event) {
         event.reply(_buttonReply2actonViewDetail('HELP', 'Submit dev Request', 'No', 'https://forms.gle/5TzxoyfP5MstGdp37'))
         console.log(msg)
         break;
-
-
+      default:
+        event.reply()
 
     }
   }
@@ -77,7 +77,38 @@ bot.on('message', function (event) {
   if (event.message.type = 'text') {
     var msg = event.message.text.toLowerCase();
     if (msg = 'hawb') {
-      event.reply();
+      event.source.profile().then(function (profile){
+        if (profile.displayName == undefined){
+          return event.reply([{
+            type: 'text',
+            text: '請將我加入好友，我才會認識你喔 ' //+ event.source.userId
+          },
+          {
+            type: 'text',
+            text: '歡迎 使用 ~~~~ :p ' //+ event.source.userId
+          },
+          {
+            type: 'sticker',
+            packageId: '1',
+            stickerId: '106'
+          }
+        ])
+        }else{
+          return event.reply([{
+            type: 'text',
+            text: '歡迎 ' + profile.displayName + ' 使用 ~~~~ :p ' //+ event.source.userId
+          },
+          {
+            type: 'sticker',
+            packageId: '1',
+            stickerId: '106'
+          }
+        ])
+        }
+        
+      }).catch(function (error) {
+        console.log(error)// error
+      });
     }
 
   }
