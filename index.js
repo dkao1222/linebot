@@ -84,8 +84,16 @@ bot.on('message', function (event) {
             text: '請將我加入好友，我才會認識你喔 ' //+ event.source.userId
           },
           {
+            type:'text',
+            text:'my ID : @lvf7630u'
+          },
+          {
+            type:'url',
+            text:'https://lin.ee/aZPMld'
+          },
+          {
             type: 'text',
-            text: '歡迎 使用 ~~~~ :p ' //+ event.source.userId
+            text: '歡迎 使用 ~~~~ :p , 請輸入 「Help」 獲得進一步資訊' //+ event.source.userId
           },
           {
             type: 'sticker',
@@ -96,7 +104,11 @@ bot.on('message', function (event) {
         }else{
           return event.reply([{
             type: 'text',
-            text: '歡迎 ' + profile.displayName + ' 使用 ~~~~ :p ' //+ event.source.userId
+            text: '歡迎 ' + profile.displayName + ' 使用 ~~~~ :p , 請輸入 「Help」 獲得進一步資訊' //+ event.source.userId
+          },
+          {
+            type:'url',
+            text:'https://lin.ee/aZPMld'
           },
           {
             type: 'sticker',
