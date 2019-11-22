@@ -85,10 +85,6 @@ bot.on('message', function (event) {
           },
           {
             type:'text',
-            text:'my ID : @lvf7630u'
-          },
-          {
-            type:'text',
             text:'https://lin.ee/aZPMld'
           },
           {
@@ -105,10 +101,6 @@ bot.on('message', function (event) {
           return event.reply([{
             type: 'text',
             text: '歡迎 ' + profile.displayName + ' 使用 ~~~~ :p , 請輸入 「Help」 獲得進一步資訊' //+ event.source.userId
-          },
-          {
-            type:'text',
-            text:'https://lin.ee/aZPMld'
           },
           {
             type: 'sticker',
