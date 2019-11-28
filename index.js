@@ -221,6 +221,49 @@ function getHawb() {
     timer = setInterval(getHawb, 1800000);
   });
 
+  function getTrelloInformation(team) {
+    switch (team) {
+      case 'receiving':
+        var cardId = '5ddff5f73ac17534a4028e4b'
+        break;
+      case 'shipping':
+        var cardId = '5ddff5fb3fc4563ececc449f'
+        break;
+      case 'is':
+        var cardId = '5ddff6cbc61fb87db3959d62'
+        break;
+      case 'reportprocess':
+        var cardId = '5ddff6964193cc8d932555be'
+        break;
+      case 'arpc':
+        var cardId = '5ddff6ce30fe405387aa626f'
+        break;
+    }
+
+    switch (status) {
+      case 'completed':
+        var urlvalue= 'https://api.trello.com/1/lists/'+cardId
+        break
+      case 'noncompleted':
+        var urlvalue= 'https://api.trello.com/1/lists/'+cardId
+        break
+    }
+
+    var request = require("request");
+
+    var options = {
+      method: 'GET',
+      url: urlvalue,
+      qs: { fields: 'dueComplete', key: '243122f21c50d09e6a049ca9edc703a8', token: '8af243b65a6b663fcd0176623d66ef3f24fab19754bf52166a63767c86efde53' }
+    };
+
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+
+      console.log(body);
+    });
+  }
+
 
 
   function checkHawb(myFilter) {
