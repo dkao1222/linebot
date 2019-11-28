@@ -29,7 +29,7 @@ var bot = linebot({
   channelSecret: '8e9c4b83759ee2cdadb89c8e986f6ef7',
   channelAccessToken: 'V1a8PUXW1SskDXF+YnUm5ybLN8GTH0rK84XttZK6bcQw1czB6Ej+8K/vUN8ESCIS6IeApUAzX+rHrt+vBW6zJX5s0nymrCv4QnO9QTSJhsGmzsHKgVF2JMSZ1WUzMC16RL3Vd1OFII1C/+JKxvC0bQdB04t89/1O/w1cDnyilFU='
 });
-
+getTrelloInformation('receiving')
 //這一段的程式是專門處理當有人傳送文字訊息給LineBot時，我們的處理回應
 bot.on('message', function (event) {
 
@@ -70,7 +70,7 @@ bot.on('message', function (event) {
         break;
       case 'receiving':
           console.log('trello')
-          getTrelloInformation('receiving')
+          
           console.log('trello')
           break;
 
