@@ -70,7 +70,7 @@ bot.on('message', function (event) {
         break;
       case 'receiving':
           console.log('trello')
-          //event.reply(getTrelloInformation('receiving'))
+          getTrelloInformation('receiving')
           console.log('trello')
           break;
 
@@ -261,7 +261,7 @@ function getHawb() {
     var options = {
       method: 'GET',
       url: urlvalue,
-      qs: { fields: 'dueComplete', key: '243122f21c50d09e6a049ca9edc703a8', token: '8af243b65a6b663fcd0176623d66ef3f24fab19754bf52166a63767c86efde53' }
+      qs: { fields: 'name,closed,idBoard,pos', key: '243122f21c50d09e6a049ca9edc703a8', token: '8af243b65a6b663fcd0176623d66ef3f24fab19754bf52166a63767c86efde53' }
     };
 
     request(options, function (error, response, body) {
