@@ -68,6 +68,10 @@ bot.on('message', function (event) {
         event.reply(_buttonReply2actonViewDetail('HELP', 'Submit dev Request', 'No', 'https://forms.gle/5TzxoyfP5MstGdp37'))
         console.log(msg)
         break;
+      case 'receiving':
+          getTrelloInformation('receiving')
+          console.log('trello')
+          break;
 
 
     }
@@ -249,12 +253,14 @@ function getHawb() {
         break
     }
 
+    var urlvalue= 'https://api.trello.com/1/lists/'+cardId;
+
     var request = require("request");
 
     var options = {
       method: 'GET',
       url: urlvalue,
-      qs: { fields: 'name', key: '243122f21c50d09e6a049ca9edc703a8', token: '8af243b65a6b663fcd0176623d66ef3f24fab19754bf52166a63767c86efde53' }
+      qs: { fields: 'dueComplete', key: '243122f21c50d09e6a049ca9edc703a8', token: '8af243b65a6b663fcd0176623d66ef3f24fab19754bf52166a63767c86efde53' }
     };
 
     request(options, function (error, response, body) {
