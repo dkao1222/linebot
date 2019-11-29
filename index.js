@@ -268,6 +268,7 @@ function getTrelloInformation(team) {
     returnValue.push(value)
     
     });
+    console.log(returnValue)
     return returnValue;
   });
   //console.log(returnValue)
