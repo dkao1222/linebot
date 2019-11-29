@@ -266,10 +266,12 @@ function getTrelloInformation(team) {
     '[Task Desctrion]:'+e.desc+','+
     '[Task Status]:'+status
     returnValue.push(value)
+    
     });
+    return returnValue;
   });
   //console.log(returnValue)
-  return returnValue;
+  
 }
 
 function getHawb() {
