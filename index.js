@@ -70,9 +70,9 @@ bot.on('message', function (event) {
         break;
       case 'receiving':
         console.log('receiving')
-        //var body = getTrelloInformation('receiving');
+        var body = getTrelloInformation('receiving');
         //console.log(body)
-        var result = JSON.parse(getTrelloInformation('receiving'));
+        var result = JSON.parse(body);
         var returnValue = [];
         //console.log(result);
         result.forEach(e => {
