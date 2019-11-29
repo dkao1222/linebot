@@ -242,13 +242,13 @@ function getTrelloInformation(team) {
     url: urlvalue,
     qs: { key: '243122f21c50d09e6a049ca9edc703a8', token: '79708f45da90bf69714cf3df17225d25ab0add4c99e480e700d1027d9206fa54' }
   };
-
+  var returnValue = [];
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
     //return body
     //console.log(body);
     var result = JSON.parse(body);
-    var returnValue = [];
+    
     //console.log(result);
     result.forEach(e => {
       //console.log('Name:'+e.name);
