@@ -202,6 +202,51 @@ function sendMessage(eve, msg) {
   });
 }
 
+function getTrelloInformation(team) {
+  switch (team) {
+    case 'receiving':
+      var cardId = '5ddff5f73ac17534a4028e4b'
+      break;
+    case 'shipping':
+      var cardId = '5ddff5fb3fc4563ececc449f'
+      break;
+    case 'is':
+      var cardId = '5ddff6cbc61fb87db3959d62'
+      break;
+    case 'reportprocess':
+      var cardId = '5ddff6964193cc8d932555be'
+      break;
+    case 'arpc':
+      var cardId = '5ddff6ce30fe405387aa626f'
+      break;
+  }
+
+  switch (status) {
+    case 'completed':
+      var urlvalue= 'https://api.trello.com/1/lists/'+cardId
+      break
+    case 'noncompleted':
+      var urlvalue= 'https://api.trello.com/1/lists/'+cardId
+      break
+  }
+
+  var urlvalue= 'https://api.trello.com/1/lists/'+cardId;
+
+  var request = require("request");
+
+  var options = {
+    method: 'GET',
+    url: urlvalue,
+    qs: { fields: 'name,closed,idBoard,pos', key: '243122f21c50d09e6a049ca9edc703a8', token: '8af243b65a6b663fcd0176623d66ef3f24fab19754bf52166a63767c86efde53' }
+  };
+
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+
+    console.log(body);
+  });
+}
+
 function getHawb() {
   var sheets = google.sheets('v4');
   sheets.spreadsheets.values.get({
@@ -227,71 +272,23 @@ function getHawb() {
 
     timer = setInterval(getHawb, 1800000);
   });
+}
 
-  function getTrelloInformation(team) {
-    switch (team) {
-      case 'receiving':
-        var cardId = '5ddff5f73ac17534a4028e4b'
-        break;
-      case 'shipping':
-        var cardId = '5ddff5fb3fc4563ececc449f'
-        break;
-      case 'is':
-        var cardId = '5ddff6cbc61fb87db3959d62'
-        break;
-      case 'reportprocess':
-        var cardId = '5ddff6964193cc8d932555be'
-        break;
-      case 'arpc':
-        var cardId = '5ddff6ce30fe405387aa626f'
-        break;
+function checkHawb(myFilter) {
+  var i;
+  for (var i = 0; myQuestions.length; i++) {
+    var filterHAWB = myQuestions[i].indexOf(myFilter);
+    if (filterHAWB >= 0) {
+      var type = filterHAWB + 1
+      var remark = filterHAWB + 2
+      console.log(myQuestions[i][type]);
+      console.log(myQuestions[i][remark]);
+      break;
+    } else {
+      console.log('can not find HAWB');
     }
 
-    switch (status) {
-      case 'completed':
-        var urlvalue= 'https://api.trello.com/1/lists/'+cardId
-        break
-      case 'noncompleted':
-        var urlvalue= 'https://api.trello.com/1/lists/'+cardId
-        break
-    }
-
-    var urlvalue= 'https://api.trello.com/1/lists/'+cardId;
-
-    var request = require("request");
-
-    var options = {
-      method: 'GET',
-      url: urlvalue,
-      qs: { fields: 'name,closed,idBoard,pos', key: '243122f21c50d09e6a049ca9edc703a8', token: '8af243b65a6b663fcd0176623d66ef3f24fab19754bf52166a63767c86efde53' }
-    };
-
-    request(options, function (error, response, body) {
-      if (error) throw new Error(error);
-
-      console.log(body);
-    });
   }
-
-
-
-  function checkHawb(myFilter) {
-    var i;
-    for (var i = 0; myQuestions.length; i++) {
-      var filterHAWB = myQuestions[i].indexOf(myFilter);
-      if (filterHAWB >= 0) {
-        var type = filterHAWB + 1
-        var remark = filterHAWB + 2
-        console.log(myQuestions[i][type]);
-        console.log(myQuestions[i][remark]);
-        break;
-      } else {
-        console.log('can not find HAWB');
-      }
-
-    }
-  }
-
 }
 
 const app = express();
