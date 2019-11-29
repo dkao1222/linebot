@@ -253,9 +253,15 @@ function getTrelloInformation(team) {
       console.log('Name:'+e.name);
       console.log('desc:'+e.desc);
       console.log('status:'+e.dueComplete);
+
+      if(e.dueComplete = false){
+        var status = 'todo'
+      }else{
+        var status = 'done'
+      }
       var value = '[Task Name]:'+e.name+'\n'+
     '[Task Desctrion]:'+e.desc+'\n'+
-    '[Task Status]:'+e.dueComplete
+    '[Task Status]:'+status
     returnValue.push(value)
     });
   });
