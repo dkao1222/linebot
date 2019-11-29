@@ -70,11 +70,24 @@ bot.on('message', function (event) {
         break;
       case 'receiving':
         console.log('receiving')
-        getTrelloInformation('receiving',event);
-        //console.log(body)
-
+        getTrelloInformation('receiving', event);
         break;
-
+      case 'shipping':
+        console.log('shipping')
+        getTrelloInformation('shipping', event);
+        break;
+      case 'is':
+        console.log('is')
+        getTrelloInformation('is', event);
+        break;
+      case 'arpc':
+        console.log('arpc')
+        getTrelloInformation('arpc', event);
+        break;
+      case 'reportprocess':
+        console.log('reportprocess')
+        getTrelloInformation('reportprocess', event);
+        break;
 
     }
   }
@@ -203,7 +216,7 @@ function sendMessage(eve, msg) {
   });
 }
 
-function getTrelloInformation(team,event) {
+function getTrelloInformation(team, event) {
 
   switch (team) {
     case 'receiving':
@@ -269,8 +282,8 @@ function getTrelloInformation(team,event) {
       returnValue.push(value)
       console.log(value)
       //event.reply(value);
-      
-      
+
+
 
     });
     event.reply(returnValue)
@@ -288,7 +301,7 @@ function getTrelloInformation(team,event) {
     event.reply(JSON.stringify(replayValue))
     */
   });
-  
+
   /*var replyOption = [];
   for(var i = 0; i < returnValue.length ; i++) {
     replyOption.push({
