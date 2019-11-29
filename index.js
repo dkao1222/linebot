@@ -73,7 +73,7 @@ bot.on('message', function (event) {
           var result = getTrelloInformation('receiving')
           for(var i =0; i < result.length; i++ )
           {
-            event.reply(result[i]);
+            console.log(result[i]);
           }
 
           console.log('trello')
