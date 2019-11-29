@@ -71,10 +71,8 @@ bot.on('message', function (event) {
       case 'receiving':
           console.log('receiving')
           var result = getTrelloInformation('receiving')
-          for(var i =0; i < result.length; i++ )
-          {
-            console.log(result[i]);
-          }
+          console.log(result)
+          
 
           console.log('trello')
           break;
