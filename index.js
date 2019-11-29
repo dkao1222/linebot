@@ -71,7 +71,7 @@ bot.on('message', function (event) {
       case 'receiving':
           console.log('trello')
           var result = getTrelloInformation('receiving')
-          for(var i = 0; i < result.length ; i++) {
+          for(var i = 0; i < result.length() ; i++) {
             event.reply(result[i])
           }
 
@@ -254,8 +254,8 @@ function getTrelloInformation(team) {
     var result = JSON.parse(body);
     console.log(result);
     result.forEach(e => {
-      console.log('Name:'+e.name);
-      console.log('desc:'+e.desc);
+      //console.log('Name:'+e.name);
+      //console.log('desc:'+e.desc);
       
 
       if(e.dueComplete == false){
@@ -264,14 +264,14 @@ function getTrelloInformation(team) {
         var status = 'done'
       }
 
-      console.log('status:'+status);
+      //console.log('status:'+status);
       var value = '[Task Name]:'+e.name+'\n'+
     '[Task Desctrion]:'+e.desc+'\n'+
     '[Task Status]:'+status
     returnValue.push(value)
     });
   });
-
+  console.log(returnValue)
   return returnValue;
 }
 
