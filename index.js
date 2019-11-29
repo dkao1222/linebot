@@ -231,7 +231,7 @@ function getTrelloInformation(team) {
   }
 */
 
-  var urlvalue= 'https://api.trello.com/1/lists/'+cardId+'cards';
+  var urlvalue= 'https://api.trello.com/1/lists/'+cardId+'/cards';
 
   var request = require("request");
 
