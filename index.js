@@ -272,7 +272,7 @@ function getTrelloInformation(team) {
   var options = {
     method: 'GET',
     url: urlvalue,
-    qs: { key: '243122f21c50d09e6a049ca9edc703a8', token: '8af243b65a6b663fcd0176623d66ef3f24fab19754bf52166a63767c86efde53' }
+    qs: { key: '243122f21c50d09e6a049ca9edc703a8', token: '79708f45da90bf69714cf3df17225d25ab0add4c99e480e700d1027d9206fa54' }
   };
 
   return request(options, function (error, response, body) {
