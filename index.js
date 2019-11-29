@@ -71,39 +71,7 @@ bot.on('message', function (event) {
       case 'receiving':
         console.log('receiving')
         var body = getTrelloInformation('receiving');
-        //console.log(body)
-        var result = JSON.parse(body);
-        var returnValue = [];
-        //console.log(result);
-        result.forEach(e => {
-          //console.log('Name:'+e.name);
-          //console.log('desc:'+e.desc);
-
-
-          if (e.dueComplete == false) {
-            var status = 'todo'
-          } else {
-            var status = 'done'
-          }
-
-
-          //console.log('status:'+status);
-          var value = '[Task Name]:' + e.name + ',' +
-            '[Task Desctrion]:' + e.desc + ',' +
-            '[Task Status]:' + status
-          returnValue.push(value)
-
-        });
-        //console.log(returnValue)
-        //return returnValue;
-
-        //console.log(result)
-
-
-        console.log('trello')
-        for (var i = 0; i < returnValue.length; i++) {
-          event.reply(returnValue[i])
-        }
+        console.log(body)
 
         break;
 
@@ -277,9 +245,31 @@ function getTrelloInformation(team) {
 
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
-    return body
+    //return body
     //console.log(body);
+    var result = JSON.parse(body);
+    var returnValue = [];
+    //console.log(result);
+    result.forEach(e => {
+      //console.log('Name:'+e.name);
+      //console.log('desc:'+e.desc);
 
+
+      if (e.dueComplete == false) {
+        var status = 'todo'
+      } else {
+        var status = 'done'
+      }
+
+
+      //console.log('status:'+status);
+      var value = '[Task Name]:' + e.name + ',' +
+        '[Task Desctrion]:' + e.desc + ',' +
+        '[Task Status]:' + status
+      returnValue.push(value)
+
+    });
+    return returnValue
 
   });
   //console.log(returnValue)
