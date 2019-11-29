@@ -93,9 +93,9 @@ bot.on('message', function (event) {
           
           });
           //console.log(returnValue)
-          return returnValue;
+          //return returnValue;
 
-          console.log(result)
+          //console.log(result)
           
 
           console.log('trello')
