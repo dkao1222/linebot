@@ -269,16 +269,20 @@ function getTrelloInformation(team, event) {
 
 
       if (e.dueComplete == false) {
-        var status = 'todo'
+        var status = '❰ todo ❱'
       } else {
-        var status = 'done'
+        var status = '❰ done ❱㊕'
       }
 
 
       //console.log('status:'+status);
-      var value = '[Task Name]:' + e.name + '\n' +
-        '[Task Desctrion]:' + e.desc + '\n' +
-        '[Task Status]:' + status;
+      var value = '【Last Active Date】:'+e.dateLastActivity+'\n'+
+        '【Task Default End Date】:'+e.due+'\n'+
+        '【Task Status】:' + status+
+        '【Task Name】:' + e.name + '\n' +
+        '【Task Desctrion】:' + e.desc + '\n'
+
+        
       returnValue.push(value)
       console.log(value)
       //event.reply(value);
