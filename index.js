@@ -273,7 +273,7 @@ function getTrelloInformation(team,event) {
 
     });
   });
-  console.log(returnValue)
+  console.log('return value:'+returnValue)
   /*var replyOption = [];
   for(var i = 0; i < returnValue.length ; i++) {
     replyOption.push({
