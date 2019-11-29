@@ -246,7 +246,7 @@ function getTrelloInformation(team) {
 
     console.log(body);
 
-    var result = JSON.parse( result[0]);
+    var result = JSON.parse(body);
     console.log(result);
     
   });
