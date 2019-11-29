@@ -248,7 +248,7 @@ function getTrelloInformation(team,event) {
     //return body
     //console.log(body);
     var result = JSON.parse(body);
-    
+    var returnValue = []
     //console.log(result);
     result.forEach(e => {
       //console.log('Name:'+e.name);
@@ -263,10 +263,10 @@ function getTrelloInformation(team,event) {
 
 
       //console.log('status:'+status);
-      var value = '[Task Name]:' + e.name + ',' +
-        '[Task Desctrion]:' + e.desc + ',' +
+      var value = '[Task Name]:' + e.name + '\n' +
+        '[Task Desctrion]:' + e.desc + '\n' +
         '[Task Status]:' + status
-      
+      returnValue.push(value)
       console.log(value)
       event.reply(value);
       //returnValue.push(value)
