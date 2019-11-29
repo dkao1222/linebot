@@ -70,7 +70,11 @@ bot.on('message', function (event) {
         break;
       case 'receiving':
           console.log('trello')
-          
+          var result = getTrelloInformation('receiving')
+          for(var i = 0; i < result.length ; i++) {
+            event.reply(i)
+          }
+
           console.log('trello')
           break;
 
