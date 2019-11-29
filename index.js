@@ -277,8 +277,8 @@ function getTrelloInformation(team,event) {
   });
   //console.log(returnValue)
   //console.log(returnBody)
-  console.log(returnValue)
-  return returnValue
+  //console.log(returnValue)
+  //return returnValue
 }
 
 function getHawb() {
