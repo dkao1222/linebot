@@ -70,11 +70,7 @@ bot.on('message', function (event) {
         break;
       case 'receiving':
           console.log('receiving')
-          var result = getTrelloInformation('receiving')
-          for(var i = 0; i < result.length ; i++) {
-            event.reply(result[i])
-          }
-
+          getTrelloInformation('receiving')
           console.log('trello')
           break;
 
@@ -263,7 +259,19 @@ function getTrelloInformation(team) {
       }else{
         var status = 'done'
       }
-
+      event.reply([{
+        type: "text",
+        text: '[Task Name]:'+e.name
+      },
+      {
+        type:'text',
+        text:'[Task Desctrion]:'+e.desc
+      },{
+        type:'text',
+        text:'[Task Status]:'+status 
+      }])
+      event.reply('Name:'+e.name)
+      event.reply('Name:'+e.name)
       //console.log('status:'+status);
       var value = '[Task Name]:'+e.name+'\n'+
     '[Task Desctrion]:'+e.desc+'\n'+
@@ -271,8 +279,8 @@ function getTrelloInformation(team) {
     returnValue.push(value)
     });
   });
-  console.log(returnValue)
-  return returnValue;
+  //console.log(returnValue)
+  //return returnValue;
 }
 
 function getHawb() {
