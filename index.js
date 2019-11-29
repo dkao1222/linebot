@@ -71,6 +71,7 @@ bot.on('message', function (event) {
       case 'receiving':
           console.log('receiving')
           var body = getTrelloInformation('receiving');
+          console.log(body)
           var result = JSON.parse(body);
           var returnValue = [];
           //console.log(result);
