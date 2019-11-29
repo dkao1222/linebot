@@ -243,8 +243,15 @@ function getTrelloInformation(team) {
 
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
-
+    
+    
     console.log(body);
+    var result = JSON.parse(body)
+    console.log(result);
+  });
+
+  
+    
   });
 }
 
