@@ -139,7 +139,7 @@ bot.on('beacon', function (event) {
   event.reply('beacon: ' + event.beacon.hwid);
 });
 
-getTrelloInformation('receiving')
+
 
 function _buttonReply2actonViewHelp(buttonTitle, buttonText, answerA, answerB) {
   data = {
