@@ -70,7 +70,7 @@ bot.on('message', function (event) {
         break;
       case 'receiving':
         console.log('receiving')
-        getTrelloInformation('receiving',event);
+        getTrelloInformation('receiving', event);
         //console.log(body)
 
         break;
@@ -203,7 +203,7 @@ function sendMessage(eve, msg) {
   });
 }
 
-function getTrelloInformation(team,event) {
+function getTrelloInformation(team, event) {
 
   switch (team) {
     case 'receiving':
@@ -243,13 +243,17 @@ function getTrelloInformation(team,event) {
     qs: { key: '243122f21c50d09e6a049ca9edc703a8', token: '79708f45da90bf69714cf3df17225d25ab0add4c99e480e700d1027d9206fa54' }
   };
   var returnValue = [];
-  request(options, function (error, response, body) {
+  var body = request(options, function (error, response, body) {
     if (error) throw new Error(error);
     //return body
     //console.log(body);
-    var result = JSON.parse(body);
-    var returnValue = []
-    //console.log(result);
+    return body
+
+  });
+
+  var result = JSON.parse(body);
+  var returnValue = []
+  //console.log(result);
     result.forEach(e => {
       //console.log('Name:'+e.name);
       //console.log('desc:'+e.desc);
@@ -270,23 +274,22 @@ function getTrelloInformation(team,event) {
       console.log(value)
       //event.reply(value);
       returnValue.push(value)
-
     });
-  });
-  console.log('return value:'+returnValue)
-  /*var replyOption = [];
-  for(var i = 0; i < returnValue.length ; i++) {
-    replyOption.push({
-      type:'text',
-      text:returnValue[i]
-    })
-  }
-  console.log(JSON.stringify(replyOption))*/
-  //event.reply(JSON.stringify(replyOption))
-  //console.log(returnValue)
-  //console.log(returnBody)
-  //console.log(returnValue)
-  //return returnValue
+
+  console.log('return value:' + returnValue)
+    /*var replyOption = [];
+    for(var i = 0; i < returnValue.length ; i++) {
+      replyOption.push({
+        type:'text',
+        text:returnValue[i]
+      })
+    }
+    console.log(JSON.stringify(replyOption))*/
+    //event.reply(JSON.stringify(replyOption))
+    //console.log(returnValue)
+    //console.log(returnBody)
+    //console.log(returnValue)
+    //return returnValue
 }
 
 function getHawb() {
