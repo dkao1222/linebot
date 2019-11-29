@@ -71,12 +71,11 @@ bot.on('message', function (event) {
       case 'receiving':
           console.log('receiving')
           var result = getTrelloInformation('receiving')
-          result.forEach(e => {
-            event.reply([{
-              type: 'text',
-              text: e //+ event.source.userId
-            }])
-          });
+          for(var i =0; i < result.length; i++ )
+          {
+            event.reply(result[i]);
+          }
+
           console.log('trello')
           break;
 
