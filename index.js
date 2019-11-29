@@ -243,14 +243,11 @@ function getTrelloInformation(team) {
 
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
-    
-    
-    console.log(body);
-    var result = JSON.parse(body)
-    console.log(result);
-  });
 
-  
+    console.log(body);
+
+    var result = JSON.parse(fs.readFileSync( result));
+    console.log(result);
     
   });
 }
