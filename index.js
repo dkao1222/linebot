@@ -280,7 +280,8 @@ function getTrelloInformation(team,event) {
       text:returnValue[i]
     })
   }
-  event.reply(JSON.stringify(replyOption))
+  console.log(JSON.stringify(replyOption))
+  //event.reply(JSON.stringify(replyOption))
   //console.log(returnValue)
   //console.log(returnBody)
   //console.log(returnValue)
