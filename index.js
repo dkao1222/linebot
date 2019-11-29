@@ -69,43 +69,43 @@ bot.on('message', function (event) {
         console.log(msg)
         break;
       case 'receiving':
-          console.log('receiving')
-          var body = getTrelloInformation('receiving');
-          //console.log(body)
-          //var result = JSON.parse(body);
-          var returnValue = [];
-          //console.log(result);
-          body.forEach(e => {
-            //console.log('Name:'+e.name);
-            //console.log('desc:'+e.desc);
-            
+        console.log('receiving')
+        var body = getTrelloInformation('receiving');
+        //console.log(body)
+        var result = JSON.parse(body);
+        var returnValue = [];
+        //console.log(result);
+        result.forEach(e => {
+          //console.log('Name:'+e.name);
+          //console.log('desc:'+e.desc);
 
-            if(e.dueComplete == false){
-              var status = 'todo'
-            }else{
-              var status = 'done'
-            }
-            
-            
-            //console.log('status:'+status);
-            var value = '[Task Name]:'+e.name+','+
-          '[Task Desctrion]:'+e.desc+','+
-          '[Task Status]:'+status
-          returnValue.push(value)
-          
-          });
-          //console.log(returnValue)
-          //return returnValue;
 
-          //console.log(result)
-          
-
-          console.log('trello')
-          for(var i =0 ; i < returnValue.length; i++){
-            event.reply(returnValue[i])
+          if (e.dueComplete == false) {
+            var status = 'todo'
+          } else {
+            var status = 'done'
           }
-        
-          break;
+
+
+          //console.log('status:'+status);
+          var value = '[Task Name]:' + e.name + ',' +
+            '[Task Desctrion]:' + e.desc + ',' +
+            '[Task Status]:' + status
+          returnValue.push(value)
+
+        });
+        //console.log(returnValue)
+        //return returnValue;
+
+        //console.log(result)
+
+
+        console.log('trello')
+        for (var i = 0; i < returnValue.length; i++) {
+          event.reply(returnValue[i])
+        }
+
+        break;
 
 
     }
@@ -236,7 +236,7 @@ function sendMessage(eve, msg) {
 }
 
 function getTrelloInformation(team) {
-  
+
   switch (team) {
     case 'receiving':
       var cardId = '5ddff5f73ac17534a4028e4b'
@@ -254,37 +254,36 @@ function getTrelloInformation(team) {
       var cardId = '5ddff6ce30fe405387aa626f'
       break;
   }
-/*
-  switch (status) {
-    case 'completed':
-      var urlvalue= 'https://api.trello.com/1/lists/'+cardId
-      break
-    case 'noncompleted':
-      var urlvalue= 'https://api.trello.com/1/lists/'+cardId
-      break
-  }
-*/
+  /*
+    switch (status) {
+      case 'completed':
+        var urlvalue= 'https://api.trello.com/1/lists/'+cardId
+        break
+      case 'noncompleted':
+        var urlvalue= 'https://api.trello.com/1/lists/'+cardId
+        break
+    }
+  */
 
-  var urlvalue= 'https://api.trello.com/1/lists/'+cardId+'/cards';
+  var urlvalue = 'https://api.trello.com/1/lists/' + cardId + '/cards';
 
   var request = require("request");
 
   var options = {
     method: 'GET',
     url: urlvalue,
-    qs: {  key: '243122f21c50d09e6a049ca9edc703a8', token: '8af243b65a6b663fcd0176623d66ef3f24fab19754bf52166a63767c86efde53' }
+    qs: { key: '243122f21c50d09e6a049ca9edc703a8', token: '8af243b65a6b663fcd0176623d66ef3f24fab19754bf52166a63767c86efde53' }
   };
 
-  var returnbody = request(options, function (error, response, body) {
+  return request(options, function (error, response, body) {
     if (error) throw new Error(error);
 
     //console.log(body);
-    
-    
+
+
   });
   //console.log(returnValue)
   //console.log(returnBody)
-  return returnbody
 }
 
 function getHawb() {
