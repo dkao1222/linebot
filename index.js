@@ -273,7 +273,7 @@ function getTrelloInformation(team,event) {
       
 
     });
-    event.reply(JSON.stringify(returnValue))
+    event.reply(returnValue)
     /*
     var replayValue =[];
     for(var i = 0 ; i < returnValue.length ; i++) {
