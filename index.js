@@ -70,7 +70,7 @@ bot.on('message', function (event) {
         break;
       case 'receiving':
         console.log('receiving')
-        getTrelloInformation('receiving');
+        getTrelloInformation('receiving',event);
         //console.log(body)
 
         break;
@@ -203,7 +203,7 @@ function sendMessage(eve, msg) {
   });
 }
 
-function getTrelloInformation(team) {
+function getTrelloInformation(team,event) {
 
   switch (team) {
     case 'receiving':
@@ -266,8 +266,9 @@ function getTrelloInformation(team) {
       var value = '[Task Name]:' + e.name + ',' +
         '[Task Desctrion]:' + e.desc + ',' +
         '[Task Status]:' + status
-      event.reply(value)
+      
       console.log(value)
+      event.reply(value);
       //returnValue.push(value)
 
     });
