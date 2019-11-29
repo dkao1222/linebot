@@ -254,7 +254,7 @@ function getTrelloInformation(team) {
       console.log('desc:'+e.desc);
       
 
-      if(e.dueComplete == 'false'){
+      if(e.dueComplete == false){
         var status = 'todo'
       }else{
         var status = 'done'
