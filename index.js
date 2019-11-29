@@ -249,7 +249,11 @@ function getTrelloInformation(team) {
     var result = JSON.parse(body);
     console.log(result);
     result.forEach(e => {
-      console.log(e.desc);
+      console.log('desc'+e.name);
+      console.log('desc'+e.desc);
+      e.forEach(f => {
+        console.log('dueCompleted'+f.dueComplete)
+      });
     });
     
   });
