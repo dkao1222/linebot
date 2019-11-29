@@ -269,11 +269,13 @@ function getTrelloInformation(team) {
       returnValue.push(value)
 
     });
-    return returnValue
+    
 
   });
   //console.log(returnValue)
   //console.log(returnBody)
+  console.log(returnValue)
+  return returnValue
 }
 
 function getHawb() {
