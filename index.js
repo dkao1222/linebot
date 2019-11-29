@@ -242,7 +242,7 @@ function getTrelloInformation(team) {
     qs: {  key: '243122f21c50d09e6a049ca9edc703a8', token: '8af243b65a6b663fcd0176623d66ef3f24fab19754bf52166a63767c86efde53' }
   };
 
-  request(options, function (error, response, body) {
+  var returnBody = request(options, function (error, response, body) {
     if (error) throw new Error(error);
 
     //console.log(body);
@@ -269,10 +269,11 @@ function getTrelloInformation(team) {
     
     });
     console.log(returnValue)
-    return [returnValue];
+    return returnValue;
   });
   //console.log(returnValue)
-  
+  console.log(returnBody)
+  return returnBody
 }
 
 function getHawb() {
