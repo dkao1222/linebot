@@ -269,7 +269,7 @@ function getTrelloInformation(team) {
     
     });
     console.log(returnValue)
-    return returnValue;
+    return [returnValue];
   });
   //console.log(returnValue)
   
