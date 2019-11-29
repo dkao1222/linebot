@@ -220,7 +220,7 @@ function getTrelloInformation(team) {
       var cardId = '5ddff6ce30fe405387aa626f'
       break;
   }
-
+/*
   switch (status) {
     case 'completed':
       var urlvalue= 'https://api.trello.com/1/lists/'+cardId
@@ -229,6 +229,7 @@ function getTrelloInformation(team) {
       var urlvalue= 'https://api.trello.com/1/lists/'+cardId
       break
   }
+*/
 
   var urlvalue= 'https://api.trello.com/1/lists/'+cardId;
 
