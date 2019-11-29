@@ -265,7 +265,7 @@ function getTrelloInformation(team,event) {
       //console.log('status:'+status);
       var value = '[Task Name]:' + e.name + '\n' +
         '[Task Desctrion]:' + e.desc + '\n' +
-        '[Task Status]:' + status
+        '[Task Status]:' + status;
       returnValue.push(value)
       console.log(value)
       //event.reply(value);
@@ -273,14 +273,15 @@ function getTrelloInformation(team,event) {
 
     });
   });
-  var replyOption = [];
+  console.log(returnValue)
+  /*var replyOption = [];
   for(var i = 0; i < returnValue.length ; i++) {
     replyOption.push({
       type:'text',
       text:returnValue[i]
     })
   }
-  console.log(JSON.stringify(replyOption))
+  console.log(JSON.stringify(replyOption))*/
   //event.reply(JSON.stringify(replyOption))
   //console.log(returnValue)
   //console.log(returnBody)
