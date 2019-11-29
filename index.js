@@ -262,8 +262,8 @@ function getTrelloInformation(team) {
       
       
       //console.log('status:'+status);
-      var value = '[Task Name]:'+e.name+'\n'+
-    '[Task Desctrion]:'+e.desc+'\n'+
+      var value = '[Task Name]:'+e.name+','+
+    '[Task Desctrion]:'+e.desc+','+
     '[Task Status]:'+status
     returnValue.push(value)
     });
