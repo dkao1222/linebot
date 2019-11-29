@@ -252,13 +252,15 @@ function getTrelloInformation(team) {
     result.forEach(e => {
       console.log('Name:'+e.name);
       console.log('desc:'+e.desc);
-      console.log('status:'+e.dueComplete);
+      
 
       if(e.dueComplete = false){
         var status = 'todo'
       }else{
         var status = 'done'
       }
+
+      console.log('status:'+status);
       var value = '[Task Name]:'+e.name+'\n'+
     '[Task Desctrion]:'+e.desc+'\n'+
     '[Task Status]:'+status
