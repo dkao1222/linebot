@@ -247,7 +247,7 @@ function getTrelloInformation(team, event) {
     if (error) throw new Error(error);
     //return body
     //console.log(body);
-    return body
+    
 
   });
 
