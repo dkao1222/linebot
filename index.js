@@ -248,6 +248,7 @@ function getTrelloInformation(team) {
 
     var result = JSON.parse(body);
     console.log(result);
+    console.log(result.desc);
     
   });
 }
