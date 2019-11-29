@@ -69,9 +69,9 @@ bot.on('message', function (event) {
         console.log(msg)
         break;
       case 'receiving':
-          console.log('trello')
+          console.log('receiving')
           var result = getTrelloInformation('receiving')
-          for(var i = 0; i < result.length() ; i++) {
+          for(var i = 0; i < result.length ; i++) {
             event.reply(result[i])
           }
 
@@ -207,7 +207,7 @@ function sendMessage(eve, msg) {
 }
 
 function getTrelloInformation(team) {
-  var returnValue =[];
+  var returnValue = [];
   switch (team) {
     case 'receiving':
       var cardId = '5ddff5f73ac17534a4028e4b'
@@ -249,10 +249,10 @@ function getTrelloInformation(team) {
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
 
-    console.log(body);
+    //console.log(body);
     
     var result = JSON.parse(body);
-    console.log(result);
+    //console.log(result);
     result.forEach(e => {
       //console.log('Name:'+e.name);
       //console.log('desc:'+e.desc);
