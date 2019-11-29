@@ -203,7 +203,7 @@ function sendMessage(eve, msg) {
 }
 
 function getTrelloInformation(team) {
-  var returnValue = [];
+  
   switch (team) {
     case 'receiving':
       var cardId = '5ddff5f73ac17534a4028e4b'
@@ -248,6 +248,7 @@ function getTrelloInformation(team) {
     //console.log(body);
     
     var result = JSON.parse(body);
+    var returnValue = [];
     //console.log(result);
     result.forEach(e => {
       //console.log('Name:'+e.name);
@@ -268,11 +269,11 @@ function getTrelloInformation(team) {
     returnValue.push(value)
     
     });
-    console.log(returnValue)
+    //console.log(returnValue)
     return returnValue;
   });
   //console.log(returnValue)
-  console.log(returnBody)
+  //console.log(returnBody)
   return returnBody
 }
 
