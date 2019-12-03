@@ -55,32 +55,8 @@ bot.on('message', function (event) {
       case 'help':
         //event.reply('如果有任何電腦硬體相關問題請洽 TSG')
         //event.reply('大南路，機場，南工蒼可分機直播 #595 洽 HelpDesk')
-        //event.reply(_buttonReply2actonViewHelp('HELP for SmartView', '如果有任何電腦硬體相關問題請洽 TSG', 'SmartView', 'Development Request'))
-        var myId = event.source.userId;
-        if (users[myId] == undefined) {
-          users[myId] = [];
-          users[myId].userId = myId;
-          users[myId].step = -1;
-          users[myId].replies = [];
-        }
-        var myStep = users[myId].step;
-        if (myStep === -1)
-          sendMessage(event, myQuestions[0][0]);
-        else {
-          if (myStep == (totalSteps - 1))
-            sendMessage(event, myQuestions[1][myStep]);
-          else
-            sendMessage(event, myQuestions[1][myStep] + '\n' + myQuestions[0][myStep + 1]);
-          users[myId].replies[myStep + 1] = event.message.text;
-        }
-        myStep++;
-        users[myId].step = myStep;
-        if (myStep >= totalSteps) {
-          myStep = -1;
-          users[myId].step = myStep;
-          users[myId].replies[0] = new Date();
-          appendMyRow(myId);
-        }
+        event.reply(_buttonReply2actonViewHelp('HELP for SmartView', '如果有任何電腦硬體相關問題請洽 TSG', 'SmartView', 'Development Request'))
+        
         console.log(msg)
         break;
       /*case 'help':
@@ -161,6 +137,36 @@ bot.on('message', function (event) {
     });
 
 
+  }
+});
+
+bot.on('message', function(event) {
+  if (event.message.type === 'text') {
+     var myId=event.source.userId;
+     if (users[myId]==undefined){
+        users[myId]=[];
+        users[myId].userId=myId;
+        users[myId].step=-1;
+        users[myId].replies=[];
+     }
+     var myStep=users[myId].step;
+     if (myStep===-1)
+        sendMessage(event,myQuestions[0][0]);
+     else{
+        if (myStep==(totalSteps-1))
+           sendMessage(event,myQuestions[1][myStep]);
+        else
+           sendMessage(event,myQuestions[1][myStep]+'\n'+myQuestions[0][myStep+1]);
+        users[myId].replies[myStep+1]=event.message.text;
+     }
+     myStep++;
+     users[myId].step=myStep;
+     if (myStep>=totalSteps){
+        myStep=-1;
+        users[myId].step=myStep;
+        users[myId].replies[0]=new Date();
+        appendMyRow(myId);
+     }
   }
 });
 
