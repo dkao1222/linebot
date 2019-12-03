@@ -295,7 +295,7 @@ function getTrelloInformation(team, event) {
     var returnValue = []
     var result = JSON.parse(body);
     console.log('body:'+result)
-    if(result.length >= 0) {
+    if(result.length > 0) {
       //console.log(result);
       result.forEach(e => {
         //console.log('Name:'+e.name);
