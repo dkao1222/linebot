@@ -1,18 +1,20 @@
 var linebot = require('linebot');
 var express = require('express');
 const {google}  = require('googleapis');
-var googleAuth  = require('google-auth-library');
+var OAuth2 = google.auth.OAuth2;
 
 // UPS LOGO : https://lh3.googleusercontent.com/Ild2nbhqVTXlkO1X2-ZlDUTAyBD4l36vBQg7vlAStsJEjReyE08oaaqxDSvtzGeU9TZ10yQlp9GXx8WhdRwIGUdTbnqRpF6auRaUsmmGKzJAmgj7nck2Z3ottVaDl3htX1-DNWTTNPLT1tLfI3qVrwd3xylee3JA5e_Ejg-mDSoN6thDaoMWzecdweYcf-S5nNIWOLVwZ0084VZhy4dkajnwzZtyVX05JCqjRFmhfwqRQQRizVRBHGLLvhKCETgohXnO2Jb-EeAKUvY6QfwWJjfPvZwsEn1NONvlJjQBj5RmLywhm6SWRxS2DnygOEGunGojrLv_DGORDTkIBzkhk3tysGFiPjDNc0aS5CBb2uBRLSr746dYd52_V6lSSZYAjFzsdzB0xXSEoRaciEdKnZ_eD92kW2C8YAOo6Kj7o_heXZl9kt3xTX3zSFxxOZrwbchzTM-aD-76PaO6yxZMoL5TzLo5wnTbfKC1eJYI7F091BevLRLO1Lx6v6aUtauSq8IbAVEwILkOmRCkG9HnMdztS0ks8EYxLTHnUeO7j1XooLnDre-G2Kxur5FI3gt1fylO0sTZJjtfEvEmLYs1sE2qLqD_QTLxiGy6wX6cVhQXZQsu8S4DzfcDwrm3YZKlK3gIGWxhG-KGh9dHIKC9QXXch1WwlT3uSVAInfJJm96S7w=w720-h869-no
 
 //底下輸入client_secret.json檔案的內容
 var myClientSecret = {"installed":{"client_id":"1051796365777-fskrjtdchqet6kdhqaceibmg3gk2qlbk.apps.googleusercontent.com","project_id":"quickstart-1553970594242","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"-TSECTqGxl47cPyf1s9330Ti","redirect_uris":["urn:ietf:wg:oauth:2.0:oob","http://localhost"]}}
 
-var auth = new googleAuth();
-var oauth2Client = new auth.OAuth2(myClientSecret.installed.client_id,myClientSecret.installed.client_secret, myClientSecret.installed.redirect_uris[0]);
+//const auth = new googleAuth();
+//var oauth2Client = new auth.OAuth2(myClientSecret.installed.client_id,myClientSecret.installed.client_secret, myClientSecret.installed.redirect_uris[0]);
 
 //底下輸入sheetsapi.json檔案的內容
-oauth2Client.credentials = {"access_token":"ya29.Il-zB2sIUc3v0mtzxlnsvdKES2nZLmysd5vgNEq1bp72WKhf-q2G05iAcHR3FoVhOdE-P-tLQOypzC__aahvZqcKkpnVp7yMUMNOQAmRjtOSsyM4DYzJ5eD69blGktnR1g","refresh_token":"1//0eZpLLHu1jChRCgYIARAAGA4SNwF-L9IrXL4ZhE7OuPyT5zIpkgx21_-xvs9Bi9AO0UfDgFEvY4tuFiUprNMdXLbTZpFx439YN3c","scope":"https://www.googleapis.com/auth/spreadsheets.readonly","token_type":"Bearer","expiry_date":1575378159564}
+//oauth2Client.credentials = {"access_token":"ya29.Il-zB2sIUc3v0mtzxlnsvdKES2nZLmysd5vgNEq1bp72WKhf-q2G05iAcHR3FoVhOdE-P-tLQOypzC__aahvZqcKkpnVp7yMUMNOQAmRjtOSsyM4DYzJ5eD69blGktnR1g","refresh_token":"1//0eZpLLHu1jChRCgYIARAAGA4SNwF-L9IrXL4ZhE7OuPyT5zIpkgx21_-xvs9Bi9AO0UfDgFEvY4tuFiUprNMdXLbTZpFx439YN3c","scope":"https://www.googleapis.com/auth/spreadsheets.readonly","token_type":"Bearer","expiry_date":1575378159564}
+
+//var oauth2Client = new OAuth2(clientId, clientSecret, redirectUrl);
 
 //試算表的ID，引號不能刪掉
 var mySheetId = '1f4BtCOli7vyxHdeAQtDn6Zx6KqFYkVA1G9ghf-s0Lcs';
@@ -30,7 +32,7 @@ var bot = linebot({
 });
 
 //程式啟動後會去讀取試算表內的問題
-getQuestions();
+//getQuestions();
 
 //getTrelloInformation('receiving')
 //這一段的程式是專門處理當有人傳送文字訊息給LineBot時，我們的處理回應
