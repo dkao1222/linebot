@@ -292,8 +292,9 @@ function getTrelloInformation(team, event) {
     if (error) throw new Error(error);
     //return body
     //console.log(body);
-    var result = JSON.parse(body);
     var returnValue = []
+    var result = JSON.parse(body);
+    console.log('body:'+result)
     //console.log(result);
     result.forEach(e => {
       //console.log('Name:'+e.name);
