@@ -21,7 +21,7 @@ var CLIENT_ID = '1051796365777-fskrjtdchqet6kdhqaceibmg3gk2qlbk.apps.googleuserc
 //var oauth2Client = new auth.OAuth2(myClientSecret.installed.client_id,myClientSecret.installed.client_secret, myClientSecret.installed.redirect_uris[0]);
 var oauth2Client = new OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 //底下輸入sheetsapi.json檔案的內容
-oauth2Client.credentials = { "access_token": "ya29.Il-zB2sIUc3v0mtzxlnsvdKES2nZLmysd5vgNEq1bp72WKhf-q2G05iAcHR3FoVhOdE-P-tLQOypzC__aahvZqcKkpnVp7yMUMNOQAmRjtOSsyM4DYzJ5eD69blGktnR1g", "refresh_token": "1//0eZpLLHu1jChRCgYIARAAGA4SNwF-L9IrXL4ZhE7OuPyT5zIpkgx21_-xvs9Bi9AO0UfDgFEvY4tuFiUprNMdXLbTZpFx439YN3c", "scope": "https://www.googleapis.com/auth/spreadsheets.readonly", "token_type": "Bearer", "expiry_date": 1575378159564 }
+oauth2Client.credentials = { "access_token": "ya29.Il-zB2sIUc3v0mtzxlnsvdKES2nZLmysd5vgNEq1bp72WKhf-q2G05iAcHR3FoVhOdE-P-tLQOypzC__aahvZqcKkpnVp7yMUMNOQAmRjtOSsyM4DYzJ5eD69blGktnR1g", "refresh_token": "1//0eZpLLHu1jChRCgYIARAAGA4SNwF-L9IrXL4ZhE7OuPyT5zIpkgx21_-xvs9Bi9AO0UfDgFEvY4tuFiUprNMdXLbTZpFx439YN3c", "scope": "https://www.googleapis.com/auth/spreadsheets", "token_type": "Bearer", "expiry_date": 1575378159564 }
 
 
 
