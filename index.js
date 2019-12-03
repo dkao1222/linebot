@@ -295,35 +295,42 @@ function getTrelloInformation(team, event) {
     var returnValue = []
     var result = JSON.parse(body);
     console.log('body:'+result)
-    //console.log(result);
-    result.forEach(e => {
-      //console.log('Name:'+e.name);
-      //console.log('desc:'+e.desc);
+    if(result.length > 0) {
+      //console.log(result);
+      result.forEach(e => {
+        //console.log('Name:'+e.name);
+        //console.log('desc:'+e.desc);
 
 
-      if (e.dueComplete == false) {
-        var status = '❰ todo ❱'
-      } else {
-        var status = '❰ done ❱㊕'
-      }
+        if (e.dueComplete == false) {
+          var status = '❰ todo ❱'
+        } else {
+          var status = '❰ done ❱㊕'
+        }
 
 
-      //console.log('status:'+status);
-      var value = '【Last Active Date】:' + e.dateLastActivity + '\n' +
-        '【Task Default End Date】:' + e.due + '\n' +
-        '【Task Status】:' + status +
-        '【Task Name】:' + e.name + '\n' +
-        '【Task Desctrion】:' + e.desc + '\n'
+        //console.log('status:'+status);
+        var value = '【Last Active Date】:' + e.dateLastActivity + '\n' +
+          '【Task Default End Date】:' + e.due + '\n' +
+          '【Task Status】:' + status +
+          '【Task Name】:' + e.name + '\n' +
+          '【Task Desctrion】:' + e.desc + '\n'
 
 
+        returnValue.push(value)
+        console.log(value)
+        //event.reply(value);
+
+
+
+      });
+      event.reply(returnValue)
+    }
+    else{
+      var value = 'All Task has done or archive to completed.'
       returnValue.push(value)
-      console.log(value)
-      //event.reply(value);
-
-
-
-    });
-    event.reply(returnValue)
+      event.reply(returnValue)
+    }
     /*
     var replayValue =[];
     for(var i = 0 ; i < returnValue.length ; i++) {
