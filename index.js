@@ -59,27 +59,6 @@ bot.on('message', function (event) {
         //QuestionForGoogle(event)
         console.log(msg)
         break;
-      /*case 'help':
-          event.reply(_buttonReply2actonViewHelp('HELP', 'Function','Shipping','Receiving','SmartView'))
-          console.log(msg)
-          break;*/
-      case 'hello':
-          QuestionForGoogle(event)
-          break;
-      case 'shipping':
-          //event.reply(_buttonReply2actonViewHelp('HELP', 'Shipping : 功能選擇','no function1','no function2'))
-          QuestionForGoogle(event)
-          console.log(msg)
-          break;
-      case 'receiving':
-          //event.reply(_buttonReply2actonViewHelp('HELP', 'Receiving : 功能選擇','記錄進倉','Other'))
-          QuestionForGoogle(event)
-          console.log(msg)
-          break;
-      /*case '記錄進倉': 
-          event.reply(_buttonReply2actonViewDetail('HELP', '開始記錄進倉？','No','https://forms.gle/MKgLoazaQySyBwAR9'))
-          console.log(msg)
-          break;*/
       case 'smartview':
         event.reply(_buttonReply2actonViewDetail('HELP', 'Submit issue Request', 'No', 'https://forms.gle/rv57VkU6W71Jkyda6'))
         console.log(msg)
@@ -88,28 +67,29 @@ bot.on('message', function (event) {
         event.reply(_buttonReply2actonViewDetail('HELP', 'Submit dev Request', 'No', 'https://forms.gle/5TzxoyfP5MstGdp37'))
         console.log(msg)
         break;
-      case 'receiving':
+      case 'receiving_process':
         console.log('receiving')
         getTrelloInformation('receiving', event);
         break;
-      case 'shipping':
-        console.log('shipping')
+      case 'shipping_process':
+        console.log('shipping_process')
         getTrelloInformation('shipping', event);
         break;
-      case 'is':
+      case 'is_porcess':
         console.log('is')
         getTrelloInformation('is', event);
         break;
-      case 'arpc':
+      case 'arpc_process':
         console.log('arpc')
         getTrelloInformation('arpc', event);
         break;
-      case 'reportprocess':
+      case 'report_process':
         console.log('reportprocess')
         getTrelloInformation('reportprocess', event);
         break;
 
     }
+
   }
 
   if (event.message.type = 'text') {
@@ -143,6 +123,8 @@ bot.on('message', function (event) {
 
 
   }
+
+
 });
 
 function QuestionForGoogle(event) {
