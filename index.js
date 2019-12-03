@@ -139,7 +139,7 @@ bot.on('message', function (event) {
 
   }
 });
-
+/*
 bot.on('message', function(event) {
   if (event.message.type === 'text') {
      var myId=event.source.userId;
@@ -168,7 +168,7 @@ bot.on('message', function(event) {
         appendMyRow(myId);
      }
   }
-});
+});*/
 
 bot.on('follow', function (event) {
   event.reply('follow: ' + event.source.userId);
