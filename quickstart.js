@@ -66,6 +66,7 @@ function getNewToken(oAuth2Client, callback) {
   });
 }
 
+//https://docs.google.com/spreadsheets/d/1f4BtCOli7vyxHdeAQtDn6Zx6KqFYkVA1G9ghf-s0Lcs/edit?usp=sharing
 /**
  * Prints the names and majors of students in a sample spreadsheet:
  * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
@@ -75,7 +76,7 @@ function listMajors(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     spreadsheetId: '1f4BtCOli7vyxHdeAQtDn6Zx6KqFYkVA1G9ghf-s0Lcs',
-    range: 'Question!A2:E',
+    range: '問題!A2:E',
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;

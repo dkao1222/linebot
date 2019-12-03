@@ -1,37 +1,37 @@
 var linebot = require('linebot');
 var express = require('express');
-const {google}  = require('googleapis');
+const { google } = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 
 // UPS LOGO : https://lh3.googleusercontent.com/Ild2nbhqVTXlkO1X2-ZlDUTAyBD4l36vBQg7vlAStsJEjReyE08oaaqxDSvtzGeU9TZ10yQlp9GXx8WhdRwIGUdTbnqRpF6auRaUsmmGKzJAmgj7nck2Z3ottVaDl3htX1-DNWTTNPLT1tLfI3qVrwd3xylee3JA5e_Ejg-mDSoN6thDaoMWzecdweYcf-S5nNIWOLVwZ0084VZhy4dkajnwzZtyVX05JCqjRFmhfwqRQQRizVRBHGLLvhKCETgohXnO2Jb-EeAKUvY6QfwWJjfPvZwsEn1NONvlJjQBj5RmLywhm6SWRxS2DnygOEGunGojrLv_DGORDTkIBzkhk3tysGFiPjDNc0aS5CBb2uBRLSr746dYd52_V6lSSZYAjFzsdzB0xXSEoRaciEdKnZ_eD92kW2C8YAOo6Kj7o_heXZl9kt3xTX3zSFxxOZrwbchzTM-aD-76PaO6yxZMoL5TzLo5wnTbfKC1eJYI7F091BevLRLO1Lx6v6aUtauSq8IbAVEwILkOmRCkG9HnMdztS0ks8EYxLTHnUeO7j1XooLnDre-G2Kxur5FI3gt1fylO0sTZJjtfEvEmLYs1sE2qLqD_QTLxiGy6wX6cVhQXZQsu8S4DzfcDwrm3YZKlK3gIGWxhG-KGh9dHIKC9QXXch1WwlT3uSVAInfJJm96S7w=w720-h869-no
 
 //底下輸入client_secret.json檔案的內容
-var myClientSecret = {"installed":{"client_id":"1051796365777-fskrjtdchqet6kdhqaceibmg3gk2qlbk.apps.googleusercontent.com","project_id":"quickstart-1553970594242","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"-TSECTqGxl47cPyf1s9330Ti","redirect_uris":["urn:ietf:wg:oauth:2.0:oob","http://localhost"]}}
+var myClientSecret = { "installed": { "client_id": "1051796365777-fskrjtdchqet6kdhqaceibmg3gk2qlbk.apps.googleusercontent.com", "project_id": "quickstart-1553970594242", "auth_uri": "https://accounts.google.com/o/oauth2/auth", "token_uri": "https://oauth2.googleapis.com/token", "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs", "client_secret": "-TSECTqGxl47cPyf1s9330Ti", "redirect_uris": ["urn:ietf:wg:oauth:2.0:oob", "http://localhost"] } }
 
 
 var CLIENT_ID = '1051796365777-fskrjtdchqet6kdhqaceibmg3gk2qlbk.apps.googleusercontent.com',
-    CLIENT_SECRET = '-TSECTqGxl47cPyf1s9330Ti',
-    REDIRECT_URL = 'urn:ietf:wg:oauth:2.0:oob',
-    SCOPE = ['https://www.googleapis.com/auth/drive',
-        'https://www.googleapis.com/auth/plus.me',
-        'https://spreadsheets.google.com/feeds/',
-    ];  
+  CLIENT_SECRET = '-TSECTqGxl47cPyf1s9330Ti',
+  REDIRECT_URL = 'urn:ietf:wg:oauth:2.0:oob',
+  SCOPE = ['https://www.googleapis.com/auth/drive',
+    'https://www.googleapis.com/auth/plus.me',
+    'https://spreadsheets.google.com/feeds/',
+  ];
 
 //const auth = new googleAuth();
 //var oauth2Client = new auth.OAuth2(myClientSecret.installed.client_id,myClientSecret.installed.client_secret, myClientSecret.installed.redirect_uris[0]);
 var oauth2Client = new OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 //底下輸入sheetsapi.json檔案的內容
-oauth2Client.credentials = {"access_token":"ya29.Il-zB2sIUc3v0mtzxlnsvdKES2nZLmysd5vgNEq1bp72WKhf-q2G05iAcHR3FoVhOdE-P-tLQOypzC__aahvZqcKkpnVp7yMUMNOQAmRjtOSsyM4DYzJ5eD69blGktnR1g","refresh_token":"1//0eZpLLHu1jChRCgYIARAAGA4SNwF-L9IrXL4ZhE7OuPyT5zIpkgx21_-xvs9Bi9AO0UfDgFEvY4tuFiUprNMdXLbTZpFx439YN3c","scope":"https://www.googleapis.com/auth/spreadsheets.readonly","token_type":"Bearer","expiry_date":1575378159564}
+oauth2Client.credentials = { "access_token": "ya29.Il-zB2sIUc3v0mtzxlnsvdKES2nZLmysd5vgNEq1bp72WKhf-q2G05iAcHR3FoVhOdE-P-tLQOypzC__aahvZqcKkpnVp7yMUMNOQAmRjtOSsyM4DYzJ5eD69blGktnR1g", "refresh_token": "1//0eZpLLHu1jChRCgYIARAAGA4SNwF-L9IrXL4ZhE7OuPyT5zIpkgx21_-xvs9Bi9AO0UfDgFEvY4tuFiUprNMdXLbTZpFx439YN3c", "scope": "https://www.googleapis.com/auth/spreadsheets.readonly", "token_type": "Bearer", "expiry_date": 1575378159564 }
 
 
 
 //試算表的ID，引號不能刪掉
 var mySheetId = '1f4BtCOli7vyxHdeAQtDn6Zx6KqFYkVA1G9ghf-s0Lcs';
 
-var myQuestions=[];
-var users=[];
-var totalSteps=0;
-var myReplies=[];
+var myQuestions = [];
+var users = [];
+var totalSteps = 0;
+var myReplies = [];
 
 
 var bot = linebot({
@@ -41,8 +41,9 @@ var bot = linebot({
 });
 
 //程式啟動後會去讀取試算表內的問題
-getQuestions();
+//getQuestions();
 
+listMajors(oauth2Client)
 //getTrelloInformation('receiving')
 //這一段的程式是專門處理當有人傳送文字訊息給LineBot時，我們的處理回應
 bot.on('message', function (event) {
@@ -54,8 +55,32 @@ bot.on('message', function (event) {
       case 'help':
         //event.reply('如果有任何電腦硬體相關問題請洽 TSG')
         //event.reply('大南路，機場，南工蒼可分機直播 #595 洽 HelpDesk')
-        event.reply(_buttonReply2actonViewHelp('HELP for SmartView', '如果有任何電腦硬體相關問題請洽 TSG', 'SmartView', 'Development Request'))
-
+        //event.reply(_buttonReply2actonViewHelp('HELP for SmartView', '如果有任何電腦硬體相關問題請洽 TSG', 'SmartView', 'Development Request'))
+        var myId = event.source.userId;
+        if (users[myId] == undefined) {
+          users[myId] = [];
+          users[myId].userId = myId;
+          users[myId].step = -1;
+          users[myId].replies = [];
+        }
+        var myStep = users[myId].step;
+        if (myStep === -1)
+          sendMessage(event, myQuestions[0][0]);
+        else {
+          if (myStep == (totalSteps - 1))
+            sendMessage(event, myQuestions[1][myStep]);
+          else
+            sendMessage(event, myQuestions[1][myStep] + '\n' + myQuestions[0][myStep + 1]);
+          users[myId].replies[myStep + 1] = event.message.text;
+        }
+        myStep++;
+        users[myId].step = myStep;
+        if (myStep >= totalSteps) {
+          myStep = -1;
+          users[myId].step = myStep;
+          users[myId].replies[0] = new Date();
+          appendMyRow(myId);
+        }
         console.log(msg)
         break;
       /*case 'help':
@@ -290,13 +315,13 @@ function getTrelloInformation(team, event) {
 
 
       //console.log('status:'+status);
-      var value = '【Last Active Date】:'+e.dateLastActivity+'\n'+
-        '【Task Default End Date】:'+e.due+'\n'+
-        '【Task Status】:' + status+
+      var value = '【Last Active Date】:' + e.dateLastActivity + '\n' +
+        '【Task Default End Date】:' + e.due + '\n' +
+        '【Task Status】:' + status +
         '【Task Name】:' + e.name + '\n' +
         '【Task Desctrion】:' + e.desc + '\n'
 
-        
+
       returnValue.push(value)
       console.log(value)
       //event.reply(value);
@@ -337,51 +362,79 @@ function getTrelloInformation(team, event) {
 
 
 
-
+function listMajors(auth) {
+  const sheets = google.sheets({ version: 'v4', auth });
+  sheets.spreadsheets.values.get({
+    spreadsheetId: mySheetId,
+    range: '問題!A1:E',
+  }, (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+    const rows = res.data.values;
+    /*if (rows.length) {
+      console.log('Name, Major:');
+      // Print columns A and E, which correspond to indices 0 and 4.
+      rows.map((row) => {
+        console.log(`${row}`);
+      });
+    } else {
+      console.log('No data found.');
+    } */
+    /*const rows = res.data.values;*/
+    console.log(rows.length)
+    if (rows.length == 0) {
+      console.log('No data found.');
+    } else {
+      myQuestions = rows;
+      totalSteps = myQuestions[0].length;
+      console.log('要問的問題已下載完畢！');
+      console.log(myQuestions[0])
+    }
+  });
+}
 //這是讀取問題的函式
 function getQuestions() {
   var sheets = google.sheets('v4');
   sheets.spreadsheets.values.get({
-     auth: oauth2Client,
-     spreadsheetId: mySheetId,
-     range:encodeURI('Question'),
-  }, function(err, response) {
-     if (err) {
-        console.log('讀取問題檔的API產生問題：' + err);
-        return;
-     }
-     var rows = response.values;
-     if (rows.length == 0) {
-        console.log('No data found.');
-     } else {
-       myQuestions=rows;
-       totalSteps=myQuestions[0].length;
-       console.log('要問的問題已下載完畢！');
-     }
+    auth: oauth2Client,
+    spreadsheetId: mySheetId,
+    range: encodeURI('問題'),
+  }, function (err, response) {
+    if (err) {
+      console.log('讀取問題檔的API產生問題：' + err);
+      return;
+    }
+    var rows = response.values;
+    if (rows.length == 0) {
+      console.log('No data found.');
+    } else {
+      myQuestions = rows;
+      totalSteps = myQuestions[0].length;
+      console.log('要問的問題已下載完畢！');
+    }
   });
 }
 
 //這是將取得的資料儲存進試算表的函式
 function appendMyRow(userId) {
-   var request = {
-      auth: oauth2Client,
-      spreadsheetId: mySheetId,
-      range:encodeURI('表單回應 1'),
-      insertDataOption: 'INSERT_ROWS',
-      valueInputOption: 'RAW',
-      resource: {
-        "values": [
-          users[userId].replies
-        ]
-      }
-   };
-   var sheets = google.sheets('v4');
-   sheets.spreadsheets.values.append(request, function(err, response) {
-      if (err) {
-         console.log('The API returned an error: ' + err);
-         return;
-      }
-   });
+  var request = {
+    auth: oauth2Client,
+    spreadsheetId: mySheetId,
+    range: encodeURI('表單回應 1'),
+    insertDataOption: 'INSERT_ROWS',
+    valueInputOption: 'RAW',
+    resource: {
+      "values": [
+        users[userId].replies
+      ]
+    }
+  };
+  var sheets = google.sheets('v4');
+  sheets.spreadsheets.values.append(request, function (err, response) {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+  });
 }
 
 const app = express();
