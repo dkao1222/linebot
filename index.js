@@ -75,7 +75,7 @@ bot.on('message', function (event) {
         console.log('shipping_process')
         getTrelloInformation('shipping', event);
         break;
-      case 'is_porcess':
+      case 'is_process':
         console.log('is')
         getTrelloInformation('is', event);
         break;
