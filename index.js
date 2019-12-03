@@ -171,8 +171,8 @@ function QuestionForGoogle(event) {
         users[myId].replies[0]=new Date();
         appendMyRow(myId);
      }
-  }
 }
+
 
 
 bot.on('follow', function (event) {
