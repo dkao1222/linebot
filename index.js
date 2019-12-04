@@ -96,7 +96,7 @@ bot.on('message', function (event) {
           users[myId].replies = [];
         }
         var myStep = users[myId].step;
-        if (myStep === -1) {
+        if (myStep == -1) {
           sendMessage(event, myQuestions[0][0]);
           console.log('myQuestions[0][0]:' + myQuestions[0][0]);
         }
