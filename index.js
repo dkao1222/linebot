@@ -108,19 +108,19 @@ bot.on('message', function (event) {
           }
           else {
             if (myStep == 0 && event.message.text.indexOf('@') == -1) {
-              sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
+              sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep-1]);
               //users[myId].replies[myStep] = event.message.text;
               console.log('email error')
               console.log(myStep);
-              myStep -2
+              
             } else if (myStep == 1) {
               var accountArray = ['shipping', 'receiving', 'is', 'arpc', 'reportprocess'];
               if (accountArray.indexOf(event.message.text.toLowerCase()) == -1) {
-                sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
+                sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep-1]);
                 //users[myId].replies[myStep] = event.message.text;
                 console.log(myStep);
                 console.log('account error');
-                myStep -2
+                
               }
               
               
@@ -128,15 +128,15 @@ bot.on('message', function (event) {
             } else if (myStep == 2) {
               var typeArray = ['new', 'change', 'remove', 'troubleshooting'];
               if (typeArray.indexOf(event.message.text.toLowerCase()) == -1) {
-                sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
+                sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep-1]);
                 //users[myId].replies[myStep] = event.message.text;
                 console.log(myStep);
                 console.log('account error');
-                myStep -2
+                
               }
 
             } else if (myStep == 3 && event.message.text.length <= 20) {
-              sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
+              sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep-1]);
               //users[myId].replies[myStep] = event.message.text;
               console.log(myStep);
               console.log('description length error');
