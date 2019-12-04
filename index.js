@@ -21,7 +21,7 @@ var CLIENT_ID = '1051796365777-fskrjtdchqet6kdhqaceibmg3gk2qlbk.apps.googleuserc
 //var oauth2Client = new auth.OAuth2(myClientSecret.installed.client_id,myClientSecret.installed.client_secret, myClientSecret.installed.redirect_uris[0]);
 var oauth2Client = new OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 //底下輸入sheetsapi.json檔案的內容
-oauth2Client.credentials = {"access_token":"ya29.Il-zB4BOYpF5hnOakybJzgFj5gboPPJq5XbgV_AriW-214bpSdouTwGkG9I33FdmL4dDQyE_qrVLfktyIEeDbt3zvpBsQPS8m-jxHh5USvVX7ekZbwbHS_B-d-uGdOUZ1w","refresh_token":"1//0eyrv894AlxGACgYIARAAGA4SNwF-L9IrzzBMeVxtYe68UXaXWWefQ-rO668wmeR_olT58kF9mzbRyOG1xHYiJCq26XCMCPXjpPo","scope":"https://www.googleapis.com/auth/spreadsheets","token_type":"Bearer","expiry_date":1575399622502}
+oauth2Client.credentials = { "access_token": "ya29.Il-zB4BOYpF5hnOakybJzgFj5gboPPJq5XbgV_AriW-214bpSdouTwGkG9I33FdmL4dDQyE_qrVLfktyIEeDbt3zvpBsQPS8m-jxHh5USvVX7ekZbwbHS_B-d-uGdOUZ1w", "refresh_token": "1//0eyrv894AlxGACgYIARAAGA4SNwF-L9IrzzBMeVxtYe68UXaXWWefQ-rO668wmeR_olT58kF9mzbRyOG1xHYiJCq26XCMCPXjpPo", "scope": "https://www.googleapis.com/auth/spreadsheets", "token_type": "Bearer", "expiry_date": 1575399622502 }
 
 
 
@@ -87,37 +87,37 @@ bot.on('message', function (event) {
         console.log('reportprocess')
         getTrelloInformation('reportprocess', event);
         break;
-
+      default:
+        var myId = event.source.userId;
+        if (users[myId] == undefined) {
+          users[myId] = [];
+          users[myId].userId = myId;
+          users[myId].step = -1;
+          users[myId].replies = [];
+        }
+        var myStep = users[myId].step;
+        if (myStep === -1)
+          sendMessage(event, myQuestions[0][0]);
+        else {
+          if (myStep == (totalSteps - 1))
+            sendMessage(event, myQuestions[1][myStep]);
+          else
+            sendMessage(event, myQuestions[1][myStep] + '\n' + myQuestions[0][myStep + 1]);
+          users[myId].replies[myStep + 1] = event.message.text;
+        }
+        myStep++;
+        users[myId].step = myStep;
+        if (myStep >= totalSteps) {
+          myStep = -1;
+          users[myId].step = myStep;
+          users[myId].replies[0] = new Date();
+          appendMyRow(myId);
+        }
+        break;
     }
   }
 
-  if (event.message.type === 'text') {
-    var myId=event.source.userId;
-    if (users[myId]==undefined){
-       users[myId]=[];
-       users[myId].userId=myId;
-       users[myId].step=-1;
-       users[myId].replies=[];
-    }
-    var myStep=users[myId].step;
-    if (myStep===-1)
-       sendMessage(event,myQuestions[0][0]);
-    else{
-       if (myStep==(totalSteps-1))
-          sendMessage(event,myQuestions[1][myStep]);
-       else
-          sendMessage(event,myQuestions[1][myStep]+'\n'+myQuestions[0][myStep+1]);
-       users[myId].replies[myStep+1]=event.message.text;
-    }
-    myStep++;
-    users[myId].step=myStep;
-    if (myStep>=totalSteps){
-       myStep=-1;
-       users[myId].step=myStep;
-       users[myId].replies[0]=new Date();
-       appendMyRow(myId);
-    }
- }
+
 
   if (event.message.type = 'text') {
     var msg = event.message.text.toLowerCase();
@@ -155,31 +155,31 @@ bot.on('message', function (event) {
 });
 
 function QuestionForGoogle(event) {
-     var myId=event.source.userId;
-     if (users[myId]==undefined){
-        users[myId]=[];
-        users[myId].userId=myId;
-        users[myId].step=-1;
-        users[myId].replies=[];
-     }
-     var myStep=users[myId].step;
-     if (myStep===-1)
-        sendMessage(event,myQuestions[0][0]);
-     else{
-        if (myStep==(totalSteps-1))
-           sendMessage(event,myQuestions[1][myStep]);
-        else
-           sendMessage(event,myQuestions[1][myStep]+'\n'+myQuestions[0][myStep+1]);
-        users[myId].replies[myStep+1]=event.message.text;
-     }
-     myStep++;
-     users[myId].step=myStep;
-     if (myStep>=totalSteps){
-        myStep=-1;
-        users[myId].step=myStep;
-        users[myId].replies[0]=new Date();
-        appendMyRow(myId);
-     }
+  var myId = event.source.userId;
+  if (users[myId] == undefined) {
+    users[myId] = [];
+    users[myId].userId = myId;
+    users[myId].step = -1;
+    users[myId].replies = [];
+  }
+  var myStep = users[myId].step;
+  if (myStep === -1)
+    sendMessage(event, myQuestions[0][0]);
+  else {
+    if (myStep == (totalSteps - 1))
+      sendMessage(event, myQuestions[1][myStep]);
+    else
+      sendMessage(event, myQuestions[1][myStep] + '\n' + myQuestions[0][myStep + 1]);
+    users[myId].replies[myStep + 1] = event.message.text;
+  }
+  myStep++;
+  users[myId].step = myStep;
+  if (myStep >= totalSteps) {
+    myStep = -1;
+    users[myId].step = myStep;
+    users[myId].replies[0] = new Date();
+    appendMyRow(myId);
+  }
 }
 
 
@@ -321,8 +321,8 @@ function getTrelloInformation(team, event) {
     //console.log(body);
     var returnValue = []
     var result = JSON.parse(body);
-    console.log('body:'+result)
-    if(result.length > 0) {
+    console.log('body:' + result)
+    if (result.length > 0) {
       //console.log(result);
       result.forEach(e => {
         //console.log('Name:'+e.name);
@@ -353,7 +353,7 @@ function getTrelloInformation(team, event) {
       });
       event.reply(returnValue)
     }
-    else{
+    else {
       var value = 'All Task has done or archive to completed.'
       returnValue.push(value)
       event.reply(returnValue)
