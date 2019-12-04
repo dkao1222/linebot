@@ -97,7 +97,10 @@ bot.on('message', function (event) {
         }
         var myStep = users[myId].step;
         if (myStep === -1)
+        {
           sendMessage(event, myQuestions[0][0]);
+          console.log('myQuestions[0][0]:'+myQuestions[0][0]);
+        }
         else {
           if (myStep == (totalSteps - 1))
             sendMessage(event, myQuestions[1][myStep]);
