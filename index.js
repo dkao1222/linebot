@@ -114,7 +114,7 @@ bot.on('message', function (event) {
               console.log(myStep);
             } else if (myStep == 1) {
               var accountArray = ['shipping', 'receiving', 'is', 'arpc', 'reportprocess'];
-              if (accountArray.indexOf(event.message.text.toLowerCase()) > 0) {
+              if (accountArray.indexOf(event.message.text.toLowerCase()) >= 0) {
                 sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
                 //users[myId].replies[myStep] = event.message.text;
                 console.log(myStep);
@@ -126,7 +126,7 @@ bot.on('message', function (event) {
 
             } else if (myStep == 2) {
               var typeArray = ['new', 'change', 'remove', 'troubleshooting'];
-              if (typeArray.indexOf(event.message.text.toLowerCase()) > 0) {
+              if (typeArray.indexOf(event.message.text.toLowerCase()) >= 0) {
                 sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
                 //users[myId].replies[myStep] = event.message.text;
                 console.log(myStep);
