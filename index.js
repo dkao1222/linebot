@@ -108,10 +108,11 @@ bot.on('message', function (event) {
           }
           else {
             if (myStep == 0 && event.message.text.indexOf('@') == -1) {
-              sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep-1]);
+              sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
               //users[myId].replies[myStep] = event.message.text;
               console.log('email error')
               console.log(myStep);
+              myStep -2
               
             } else if (myStep == 1) {
               var accountArray = ['shipping', 'receiving', 'is', 'arpc', 'reportprocess'];
