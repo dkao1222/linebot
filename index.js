@@ -108,8 +108,14 @@ bot.on('message', function (event) {
             console.log('myQuestions[1][myStep]' + myQuestions[1][myStep])
           }
           else{
+            /*if(myStep = 0 && event.message.text.indexOf('@') = -1)
+            {
+              my
+            }*/
+
             sendMessage(event, myQuestions[1][myStep] + '\n' + myQuestions[0][myStep + 1]);
             users[myId].replies[myStep + 1] = event.message.text;
+            console.log('mail:'+event.message.text.indexOf('@'))
             console.log('myStep'+myStep);
             console.log('myQuestions[0][myStep + 1]'+myQuestions[0][myStep + 1]);
           }
