@@ -125,8 +125,8 @@ bot.on('message', function (event) {
               
 
             } else if (myStep == 2) {
-              var accountArray = ['new', 'change', 'remove', 'troubleshooting'];
-              if (accountArray.indexOf(event.message.text.toLowerCase()) > 1) {
+              var typeArray = ['new', 'change', 'remove', 'troubleshooting'];
+              if (typeArray.indexOf(event.message.text.toLowerCase()) > 1) {
                 sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
                 //users[myId].replies[myStep] = event.message.text;
                 console.log(myStep);
