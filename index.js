@@ -112,6 +112,7 @@ bot.on('message', function (event) {
               //users[myId].replies[myStep] = event.message.text;
               console.log('email error')
               console.log(myStep);
+              myStep -1
             } else if (myStep == 1) {
               var accountArray = ['shipping', 'receiving', 'is', 'arpc', 'reportprocess'];
               if (accountArray.indexOf(event.message.text.toLowerCase()) == -1) {
@@ -119,7 +120,7 @@ bot.on('message', function (event) {
                 //users[myId].replies[myStep] = event.message.text;
                 console.log(myStep);
                 console.log('account error');
-                //myStep -1
+                myStep -1
               }
               
               
@@ -131,7 +132,7 @@ bot.on('message', function (event) {
                 //users[myId].replies[myStep] = event.message.text;
                 console.log(myStep);
                 console.log('account error');
-                //myStep -1
+                myStep -1
               }
 
             } else if (myStep == 3 && event.message.text.length <= 20) {
@@ -139,7 +140,7 @@ bot.on('message', function (event) {
               //users[myId].replies[myStep] = event.message.text;
               console.log(myStep);
               console.log('description length error');
-              //myStep -1
+              myStep -1
             }
             else {
               sendMessage(event, myQuestions[1][myStep] + '\n' + myQuestions[0][myStep + 1]);
