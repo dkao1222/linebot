@@ -89,37 +89,35 @@ bot.on('message', function (event) {
         break;
 
     }
-
-
-    if (event.message.type === 'text') {
-      var myId=event.source.userId;
-      if (users[myId]==undefined){
-         users[myId]=[];
-         users[myId].userId=myId;
-         users[myId].step=-1;
-         users[myId].replies=[];
-      }
-      var myStep=users[myId].step;
-      if (myStep===-1)
-         sendMessage(event,myQuestions[0][0]);
-      else{
-         if (myStep==(totalSteps-1))
-            sendMessage(event,myQuestions[1][myStep]);
-         else
-            sendMessage(event,myQuestions[1][myStep]+'\n'+myQuestions[0][myStep+1]);
-         users[myId].replies[myStep+1]=event.message.text;
-      }
-      myStep++;
-      users[myId].step=myStep;
-      if (myStep>=totalSteps){
-         myStep=-1;
-         users[myId].step=myStep;
-         users[myId].replies[0]=new Date();
-         appendMyRow(myId);
-      }
-   }
-
   }
+
+  if (event.message.type === 'text') {
+    var myId=event.source.userId;
+    if (users[myId]==undefined){
+       users[myId]=[];
+       users[myId].userId=myId;
+       users[myId].step=-1;
+       users[myId].replies=[];
+    }
+    var myStep=users[myId].step;
+    if (myStep===-1)
+       sendMessage(event,myQuestions[0][0]);
+    else{
+       if (myStep==(totalSteps-1))
+          sendMessage(event,myQuestions[1][myStep]);
+       else
+          sendMessage(event,myQuestions[1][myStep]+'\n'+myQuestions[0][myStep+1]);
+       users[myId].replies[myStep+1]=event.message.text;
+    }
+    myStep++;
+    users[myId].step=myStep;
+    if (myStep>=totalSteps){
+       myStep=-1;
+       users[myId].step=myStep;
+       users[myId].replies[0]=new Date();
+       appendMyRow(myId);
+    }
+ }
 
   if (event.message.type = 'text') {
     var msg = event.message.text.toLowerCase();
