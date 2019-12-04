@@ -96,7 +96,7 @@ bot.on('message', function (event) {
           users[myId].replies = [];
         }
         var myStep = users[myId].step;
-        if (myStep == -1) {
+        if (myStep === -1) {
           sendMessage(event, myQuestions[0][0]);
           console.log('myQuestions[0][0]:' + myQuestions[0][0]);
         }
@@ -107,7 +107,7 @@ bot.on('message', function (event) {
             console.log('myQuestions[1][myStep]' + myQuestions[1][myStep])
           }
           else {
-            if (myStep == 0 && event.message.text.indexOf('@') == -1) {
+            /*if (myStep == 0 && event.message.text.indexOf('@') == -1) {
               sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
               //users[myId].replies[myStep] = event.message.text;
               console.log('email error')
@@ -148,8 +148,11 @@ bot.on('message', function (event) {
               users[myId].replies[myStep + 1] = event.message.text.toUpperCase();
               console.log('myStep' + myStep);
               console.log('myQuestions[0][myStep + 1]' + myQuestions[0][myStep + 1]);
-            }
-
+            }*/
+            sendMessage(event, myQuestions[1][myStep] + '\n' + myQuestions[0][myStep + 1]);
+            users[myId].replies[myStep + 1] = event.message.text.toUpperCase();
+            console.log('myStep' + myStep);
+            console.log('myQuestions[0][myStep + 1]' + myQuestions[0][myStep + 1]);
 
           }
         }
