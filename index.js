@@ -109,33 +109,30 @@ bot.on('message', function (event) {
           else {
             if (myStep == 0 && event.message.text.indexOf('@') == -1) {
               sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
-              users[myId].replies[myStep] = event.message.text;
+              //users[myId].replies[myStep] = event.message.text;
               console.log('email error')
 
             } else if (myStep == 1) {
               var accountArray = ['shipping', 'receiving', 'is', 'arpc', 'reportprocess'];
-              for (var i = 0; i < accountArray.length; i++) {
-                if (event.message.text.toLowerCase() != accountArray[i]) {
-                  sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
-                  users[myId].replies[myStep] = event.message.text;
-                  console.log('account error');
-                }
+              if (accountArray.indexOf(event.message.text.toLowerCase()) > 1) {
+                sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
+                //users[myId].replies[myStep] = event.message.text;
+                console.log('account error');
               }
+              
               
 
             } else if (myStep == 2) {
               var accountArray = ['new', 'change', 'remove', 'troubleshooting'];
-              for (var i = 0; i < accountArray.length; i++) {
-                if (event.message.text.toLowerCase() != accountArray[i]) {
-                  sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
-                  users[myId].replies[myStep] = event.message.text;
-                  console.log('type error');
-                }
+              if (accountArray.indexOf(event.message.text.toLowerCase()) > 1) {
+                sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
+                //users[myId].replies[myStep] = event.message.text;
+                console.log('account error');
               }
 
             } else if (myStep == 3 && event.message.text.length <= 20) {
               sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
-              users[myId].replies[myStep] = event.message.text;
+              //users[myId].replies[myStep] = event.message.text;
               console.log('description length error');
             }
             else {
