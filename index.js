@@ -150,6 +150,7 @@ bot.on('message', function (event) {
           }
         }
         myStep++;
+        console.log(myStep)
         users[myId].step = myStep;
         if (myStep >= totalSteps) {
           myStep = -1;
