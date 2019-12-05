@@ -87,85 +87,9 @@ bot.on('message', function (event) {
         console.log('reportprocess')
         getTrelloInformation('reportprocess', event);
         break;
-      default:
-        var myId = event.source.userId;
-        if (users[myId] == undefined) {
-          users[myId] = [];
-          users[myId].userId = myId;
-          users[myId].step = -1;
-          users[myId].replies = [];
-        }
-        var myStep = users[myId].step;
-        if (myStep === -1) {
-          sendMessage(event, myQuestions[0][0]);
-          console.log('myQuestions[0][0]:' + myQuestions[0][0]);
-        }
-        else {
-          if (myStep == (totalSteps - 1)) {
-            sendMessage(event, myQuestions[1][myStep]);
-            console.log('myStep' + myStep);
-            console.log('myQuestions[1][myStep]' + myQuestions[1][myStep])
-          }
-          else {
-            /*if (myStep == 0 && event.message.text.indexOf('@') == -1) {
-              sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
-              //users[myId].replies[myStep] = event.message.text;
-              console.log('email error')
-              console.log(myStep);
-              myStep -2
-              
-            } else if (myStep == 1) {
-              var accountArray = ['shipping', 'receiving', 'is', 'arpc', 'reportprocess'];
-              if (accountArray.indexOf(event.message.text.toLowerCase()) == -1) {
-                sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep-1]);
-                //users[myId].replies[myStep] = event.message.text;
-                console.log(myStep);
-                console.log('account error');
-                
-              }
-              
-              
-
-            } else if (myStep == 2) {
-              var typeArray = ['new', 'change', 'remove', 'troubleshooting'];
-              if (typeArray.indexOf(event.message.text.toLowerCase()) == -1) {
-                sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep-1]);
-                //users[myId].replies[myStep] = event.message.text;
-                console.log(myStep);
-                console.log('account error');
-                
-              }
-
-            } else if (myStep == 3 && event.message.text.length <= 20) {
-              sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep-1]);
-              //users[myId].replies[myStep] = event.message.text;
-              console.log(myStep);
-              console.log('description length error');
-              myStep -2
-            }
-            else {
-              sendMessage(event, myQuestions[1][myStep] + '\n' + myQuestions[0][myStep + 1]);
-              users[myId].replies[myStep + 1] = event.message.text.toUpperCase();
-              console.log('myStep' + myStep);
-              console.log('myQuestions[0][myStep + 1]' + myQuestions[0][myStep + 1]);
-            }*/
-            sendMessage(event, myQuestions[1][myStep] + '\n' + myQuestions[0][myStep + 1]);
-            users[myId].replies[myStep + 1] = event.message.text.toUpperCase();
-            console.log('myStep' + myStep);
-            console.log('myQuestions[0][myStep + 1]' + myQuestions[0][myStep + 1]);
-
-          }
-        }
-        myStep++;
-        console.log(myStep)
-        users[myId].step = myStep;
-        if (myStep >= totalSteps) {
-          myStep = -1;
-          users[myId].step = myStep;
-          users[myId].replies[0] = new Date();
-          appendMyRow(myId);
-        }
-        break;
+      /*default:
+          quextionTest(event);
+          break;*/
     }
   }
 
@@ -227,6 +151,8 @@ function QuestionForGoogle(event) {
   myStep++;
   users[myId].step = myStep;
   if (myStep >= totalSteps) {
+    
+
     myStep = -1;
     users[myId].step = myStep;
     users[myId].replies[0] = new Date();
@@ -515,6 +441,87 @@ function appendMyRow(userId) {
       return;
     }
   });
+}
+
+function quextionTest(event){
+  var myId = event.source.userId;
+        if (users[myId] == undefined) {
+          users[myId] = [];
+          users[myId].userId = myId;
+          users[myId].step = -1;
+          users[myId].replies = [];
+        }
+        var myStep = users[myId].step;
+        if (myStep === -1) {
+          sendMessage(event, myQuestions[0][0]);
+          console.log('myQuestions[0][0]:' + myQuestions[0][0]);
+        }
+        else {
+          if (myStep == (totalSteps - 1)) {
+            sendMessage(event, myQuestions[1][myStep]);
+            console.log('myStep' + myStep);
+            console.log('myQuestions[1][myStep]' + myQuestions[1][myStep])
+          }
+          else {
+            /*if (myStep == 0 && event.message.text.indexOf('@') == -1) {
+              sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep]);
+              //users[myId].replies[myStep] = event.message.text;
+              console.log('email error')
+              console.log(myStep);
+              myStep -2
+              
+            } else if (myStep == 1) {
+              var accountArray = ['shipping', 'receiving', 'is', 'arpc', 'reportprocess'];
+              if (accountArray.indexOf(event.message.text.toLowerCase()) == -1) {
+                sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep-1]);
+                //users[myId].replies[myStep] = event.message.text;
+                console.log(myStep);
+                console.log('account error');
+                
+              }
+              
+              
+
+            } else if (myStep == 2) {
+              var typeArray = ['new', 'change', 'remove', 'troubleshooting'];
+              if (typeArray.indexOf(event.message.text.toLowerCase()) == -1) {
+                sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep-1]);
+                //users[myId].replies[myStep] = event.message.text;
+                console.log(myStep);
+                console.log('account error');
+                
+              }
+
+            } else if (myStep == 3 && event.message.text.length <= 20) {
+              sendMessage(event, myQuestions[2][myStep] + '\n' + myQuestions[0][myStep-1]);
+              //users[myId].replies[myStep] = event.message.text;
+              console.log(myStep);
+              console.log('description length error');
+              myStep -2
+            }
+            else {
+              sendMessage(event, myQuestions[1][myStep] + '\n' + myQuestions[0][myStep + 1]);
+              users[myId].replies[myStep + 1] = event.message.text.toUpperCase();
+              console.log('myStep' + myStep);
+              console.log('myQuestions[0][myStep + 1]' + myQuestions[0][myStep + 1]);
+            }*/
+            sendMessage(event, myQuestions[1][myStep] + '\n' + myQuestions[0][myStep + 1]);
+            users[myId].replies[myStep + 1] = event.message.text.toUpperCase();
+            console.log('myStep' + myStep);
+            console.log('myQuestions[0][myStep + 1]' + myQuestions[0][myStep + 1]);
+
+          }
+        }
+        myStep++;
+        console.log(myStep)
+        users[myId].step = myStep;
+        if (myStep >= totalSteps) {
+          myStep = -1;
+          users[myId].step = myStep;
+          users[myId].replies[0] = new Date();
+          appendMyRow(myId);
+        }
+        
 }
 
 const app = express();
