@@ -8,6 +8,7 @@ require('dotenv').config()
 
 console.log(process.env.CHANNEL_ACCESS_TOKEN)
 console.log(process.env.CHANNEL_SECRET)
+console.log(process.env.PORT)
 
 // create LINE SDK config from env variables
 const config = {
@@ -56,7 +57,7 @@ app.listen(port, () => {
 });
 */
 
-var server = app.listen(process.env.PORT || 8080, function () {
+var server = app.listen(process.env.PORT || 8080, function() {
     var port = server.address().port;
-    console.log('目前的port是', port);
-});
+    console.log("App now running on port", port);
+  });
