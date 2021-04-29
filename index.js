@@ -1,6 +1,9 @@
 'use strict';
 require('dotenv').config()
 
+console.log(process.env.CHANNEL_ACCESS_TOKEN)
+console.log(process.env.CHANNEL_SECRET)
+
 const line = require('@line/bot-sdk');
 const express = require('express');
 
