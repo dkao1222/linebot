@@ -1,11 +1,13 @@
 'use strict';
+
+
+const line = require('@line/bot-sdk');
+const express = require('express');
+
 require('dotenv').config()
 
 console.log(process.env.CHANNEL_ACCESS_TOKEN)
 console.log(process.env.CHANNEL_SECRET)
-
-const line = require('@line/bot-sdk');
-const express = require('express');
 
 // create LINE SDK config from env variables
 const config = {
