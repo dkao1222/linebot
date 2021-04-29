@@ -1,4 +1,4 @@
-var linebot = require('linebot');
+var linebot = require('@line/bot-sdk');
 var express = require('express');
 const { google } = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
@@ -27,6 +27,9 @@ oauth2Client.credentials = { "access_token": "ya29.Il-zB4BOYpF5hnOakybJzgFj5gboP
 
 //試算表的ID，引號不能刪掉
 var mySheetId = '1f4BtCOli7vyxHdeAQtDn6Zx6KqFYkVA1G9ghf-s0Lcs';
+var SmartViewRequestFormId = '1KOFfFnSkngLPNc7BEEzpa7m3fZOwGFWsrVYiNB8eYtE'
+var SmartViewRequestDevFormId = '1k---jxuysaz8Kv9PfDLpXcuO96n6x7EeUJW5wyep6Mk'
+
 
 var myQuestions = [];
 var users = [];
