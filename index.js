@@ -12,6 +12,7 @@ console.log(process.env.PORT)
 
 // create LINE SDK config from env variables
 const config = {
+  channelId: '1557825870',
   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
   channelSecret: process.env.CHANNEL_SECRET,
 };
