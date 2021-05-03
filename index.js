@@ -43,11 +43,14 @@ function handleEvent(event) {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
-var messagebody = ''
+  var messagebody = ''
+  var userId = event.source.userId
+  var userName = event.source.profile.displayName
+
   switch(event.message.text.toLowerCase()) 
   {
 	  case 'help':
-		messagebody  = 'how can i help you!'
+		messagebody  = 'how can i help you!, id:' + userId ', Name:' + userName
 		break;
 	  case 'submit':
 		messagebody  = 'what do you want submit case'
