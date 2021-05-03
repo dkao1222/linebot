@@ -51,21 +51,21 @@ function handleEvent(event) {
   
 	console.log(`使用者 ID: ${event.source.userId}`);
   
-  var userInformation = []
-	client.getProfile(event.source.userId)
+  var userInformation = client.getProfile(event.source.userId)
 	  .then((profile) => {
+
+      var userInformation = [];
       userInformation.push(profile.userId);
       userInformation.push(profile.displayName);
+      userInformation.push(profile.pictureUrl);
+      userInformation.push(profile.statusMessage);
 
       console.log(profile.userId);
-      console.log(profile.displayName);
-      console.log(profile.userId);
 	    console.log(profile.displayName);
-	    console.log(profile.userId);
 	    console.log(profile.pictureUrl);
 	    console.log(profile.statusMessage);
 
-      
+      return userInformation
 	  })
 	.catch((err) => {
 	// error handling
