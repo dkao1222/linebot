@@ -1,3 +1,4 @@
+  
 'use strict';
 
 
@@ -43,8 +44,21 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
 
+  switch(event.message.text.toLowerCase()) 
+  {
+	  case 'help':
+		messagebody  = 'how can i help you!'
+		break;
+	  case 'submit':
+		messagebody  = 'what do you want submit case'
+		break;
+	  default:
+		messagebody  = event.message.text
+	  
+	  
+  }
   // create a echoing text message
-  const echo = { type: 'text', text: 'only echo ' + event.message.text };
+  const echo = { type: 'text', text: 'only echo ' + messagebody };
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);
