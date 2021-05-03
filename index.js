@@ -18,6 +18,8 @@ const config = {
   channelSecret: process.env.CHANNEL_SECRET,
 };
 
+
+
 // create LINE SDK client
 const client = new line.Client(config);
 
@@ -44,7 +46,17 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
   var messagebody = ''
- 	console.log(`使用者 ID: ${event.source.userId}`);
+	console.log(`使用者 ID: ${event.source.userId}`);
+	client.getProfile(event.source.userId)
+	  .then((profile) => {
+	    console.log(profile.displayName);
+	    console.log(profile.userId);
+	    console.log(profile.pictureUrl);
+	    console.log(profile.statusMessage);
+	  })
+	.catch((err) => {
+	// error handling
+	});
   
   //var userId = event.source.userId
   //var userName = event.source.profile.displayName
