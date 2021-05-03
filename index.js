@@ -72,8 +72,11 @@ function handleEvent(event) {
   switch(event.message.text.toLowerCase()) 
   {
 	  case 'help':
-      
-		messagebody  = 'how can i help you! id:' + client.getProfile(event.source.userId).then((profile)=>{ profile.displayName})
+
+      client.getProfile(event.source.userId).then((profile)=>{
+        messagebody  = 'Hi, '+ profile.displayName + 'how can i help you!'
+      });
+		//messagebody  = 'how can i help you! id:' + client.getProfile(event.source.userId).then((profile)=>{ profile.displayName})
 		break;
 	  case 'submit':
 		messagebody  = 'what do you want submit case'
