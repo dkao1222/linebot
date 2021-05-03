@@ -5,7 +5,7 @@
 const line = require('@line/bot-sdk');
 const express = require('express');
 
-var userdInfor = []
+
 
 require('dotenv').config()
 
@@ -51,10 +51,13 @@ function handleEvent(event) {
   
 	console.log(`使用者 ID: ${event.source.userId}`);
   
+  var userInformation = []
 	client.getProfile(event.source.userId)
 	  .then((profile) => {
-      userdInfor.push(profile.userId)
-      userdInfor.push(profile.displayName)
+      userInformation.push(profile.userId);
+      userInformation.push(profile.displayName);
+
+      console.log(profile.userId);
       console.log(profile.displayName);
       console.log(profile.userId);
 	    console.log(profile.displayName);
@@ -68,7 +71,7 @@ function handleEvent(event) {
 	// error handling
 	});
 
-  var userInforArr = client.getProfile(event.source.userId)
+  
   
   //var userId = event.source.userId
   //var userName = event.source.profile.displayName
@@ -76,8 +79,8 @@ function handleEvent(event) {
   switch(event.message.text.toLowerCase()) 
   {
 	  case 'help':
-      console.log('name' + userdInfor[1])
-		messagebody  = 'how can i help you! id:'
+      
+		messagebody  = 'how can i help you! id:' + userInformation[0]
 		break;
 	  case 'submit':
 		messagebody  = 'what do you want submit case'
