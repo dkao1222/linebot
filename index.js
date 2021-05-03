@@ -68,39 +68,29 @@ function handleEvent(event) {
   
   //var userId = event.source.userId
   //var userName = event.source.profile.displayName
-
-  switch(event.message.text.toLowerCase()) 
-  {
-	  case 'help':
-
-      client.getProfile(event.source.userId)
+  lient.getProfile(event.source.userId)
 	      .then((profile) => {
 
-
+    switch(event.message.text.toLowerCase()) 
+    {
+      case 'help':
         messagebody  = 'Hi, '+ profile.displayName + 'how can i help you!'
-        var echo = { type: 'text', text: 'only echo ' + messagebody };
-        return client.replyMessage(event.replyToken, echo);
-      });
-		//messagebody  = 'how can i help you! id:' + client.getProfile(event.source.userId).then((profile)=>{ profile.displayName})
-		break;
-	  case 'submit':
-		messagebody  = 'what do you want submit case'
-    // create a echoing text message
-    var echo = { type: 'text', text: 'only echo ' + messagebody };
+      //messagebody  = 'how can i help you! id:' + client.getProfile(event.source.userId).then((profile)=>{ profile.displayName})
+        break;
+      case 'submit':
+        messagebody  = 'what do you want submit case'
+      
+        break;
+      default:
+        messagebody  = event.message.text
+      
+      
+    }
 
-    // use reply API
+    const echo = { type: 'text', text: 'only echo ' + messagebody };
     return client.replyMessage(event.replyToken, echo);
-		break;
-	  default:
-		messagebody  = event.message.text
-    // create a echoing text message
-    var echo = { type: 'text', text: 'only echo ' + messagebody };
 
-    // use reply API
-    return client.replyMessage(event.replyToken, echo);
-	  
-	  
-  }
+  });
   
 }
 
