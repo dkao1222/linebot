@@ -43,14 +43,14 @@ function handleEvent(event) {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
-
+var messagebody = ''
   switch(event.message.text.toLowerCase()) 
   {
 	  case 'help':
 		messagebody  = 'how can i help you!'
 		break;
 	  case 'submit':
-		messagebody  = 'what do you want submit case'
+		vamessagebody  = 'what do you want submit case'
 		break;
 	  default:
 		messagebody  = event.message.text
