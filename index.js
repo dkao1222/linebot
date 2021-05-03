@@ -44,7 +44,7 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
   var messagebody = ''
- 
+ 	console.log(`使用者 ID: ${event.source.userId}`);
   
   //var userId = event.source.userId
   //var userName = event.source.profile.displayName
