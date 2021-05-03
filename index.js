@@ -50,7 +50,7 @@ var messagebody = ''
 		messagebody  = 'how can i help you!'
 		break;
 	  case 'submit':
-		vamessagebody  = 'what do you want submit case'
+		messagebody  = 'what do you want submit case'
 		break;
 	  default:
 		messagebody  = event.message.text
