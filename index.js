@@ -49,7 +49,7 @@ function handleEvent(event) {
   
 	console.log(`使用者 ID: ${event.source.userId}`);
   
-	var userInfor = client.getProfile(event.source.userId)
+	client.getProfile(event.source.userId)
 	  .then((profile) => {
       
       console.log(profile.displayName);
@@ -64,6 +64,8 @@ function handleEvent(event) {
 	.catch((err) => {
 	// error handling
 	});
+
+  var userInforArr = client.getProfile(event.source.userId)
   
   //var userId = event.source.userId
   //var userName = event.source.profile.displayName
@@ -71,7 +73,7 @@ function handleEvent(event) {
   switch(event.message.text.toLowerCase()) 
   {
 	  case 'help':
-		messagebody  = 'how can i help you!, id:' + userInfor + ', User Name: ' + client.getProfile(event.source.userId).displayName
+		messagebody  = 'how can i help you!, id:' + userInfor + ', User Name: ' + userInforArr.displayName
 		break;
 	  case 'submit':
 		messagebody  = 'what do you want submit case'
