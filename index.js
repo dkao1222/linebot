@@ -73,7 +73,8 @@ function handleEvent(event) {
   {
 	  case 'help':
 
-      client.getProfile(event.source.userId).then((profile)=>{
+      client.getProfile(event.source.userId)
+	      .then((profile) => {
         messagebody  = 'Hi, '+ profile.displayName + 'how can i help you!'
       });
 		//messagebody  = 'how can i help you! id:' + client.getProfile(event.source.userId).then((profile)=>{ profile.displayName})
