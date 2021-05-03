@@ -46,9 +46,15 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
   var messagebody = ''
+  var userName = ''
+  var userid = ''
 	console.log(`使用者 ID: ${event.source.userId}`);
+  
 	client.getProfile(event.source.userId)
 	  .then((profile) => {
+
+      userName = profile.displayName
+      userid = profile.userId
 	    console.log(profile.displayName);
 	    console.log(profile.userId);
 	    console.log(profile.pictureUrl);
@@ -64,7 +70,7 @@ function handleEvent(event) {
   switch(event.message.text.toLowerCase()) 
   {
 	  case 'help':
-		messagebody  = 'how can i help you!, id:'
+		messagebody  = 'how can i help you!, id:' + userid + ', User Name: ' + userName
 		break;
 	  case 'submit':
 		messagebody  = 'what do you want submit case'
