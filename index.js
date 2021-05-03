@@ -68,7 +68,7 @@ function handleEvent(event) {
   
   //var userId = event.source.userId
   //var userName = event.source.profile.displayName
-  lient.getProfile(event.source.userId)
+  client.getProfile(event.source.userId)
 	      .then((profile) => {
 
     switch(event.message.text.toLowerCase()) 
