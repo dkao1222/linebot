@@ -44,13 +44,13 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
   var messagebody = ''
-  var userId = event.source.userId
-  var userName = event.source.profile.displayName
+  //var userId = event.source.userId
+  //var userName = event.source.profile.displayName
 
   switch(event.message.text.toLowerCase()) 
   {
 	  case 'help':
-		messagebody  = 'how can i help you!, id:' + userId + ', Name:' + userName
+		messagebody  = 'how can i help you!, id:'
 		break;
 	  case 'submit':
 		messagebody  = 'what do you want submit case'
