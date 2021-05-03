@@ -51,7 +51,7 @@ function handleEvent(event) {
   
 	var userInfor = client.getProfile(event.source.userId)
 	  .then((profile) => {
-      profile.displayName
+      
       console.log(profile.displayName);
       console.log(profile.userId);
 	    console.log(profile.displayName);
@@ -71,7 +71,7 @@ function handleEvent(event) {
   switch(event.message.text.toLowerCase()) 
   {
 	  case 'help':
-		messagebody  = 'how can i help you!, id:' + userInfor + ', User Name: ' + userInfor
+		messagebody  = 'how can i help you!, id:' + userInfor + ', User Name: ' + client.getProfile(event.source.userId).displayName
 		break;
 	  case 'submit':
 		messagebody  = 'what do you want submit case'
