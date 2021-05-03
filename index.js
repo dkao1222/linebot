@@ -78,7 +78,7 @@ function handleEvent(event) {
 
 
         messagebody  = 'Hi, '+ profile.displayName + 'how can i help you!'
-        const echo = { type: 'text', text: 'only echo ' + messagebody };
+        var echo = { type: 'text', text: 'only echo ' + messagebody };
         return client.replyMessage(event.replyToken, echo);
       });
 		//messagebody  = 'how can i help you! id:' + client.getProfile(event.source.userId).then((profile)=>{ profile.displayName})
@@ -86,7 +86,7 @@ function handleEvent(event) {
 	  case 'submit':
 		messagebody  = 'what do you want submit case'
     // create a echoing text message
-    const echo = { type: 'text', text: 'only echo ' + messagebody };
+    var echo = { type: 'text', text: 'only echo ' + messagebody };
 
     // use reply API
     return client.replyMessage(event.replyToken, echo);
@@ -94,7 +94,7 @@ function handleEvent(event) {
 	  default:
 		messagebody  = event.message.text
     // create a echoing text message
-    const echo = { type: 'text', text: 'only echo ' + messagebody };
+    var echo = { type: 'text', text: 'only echo ' + messagebody };
 
     // use reply API
     return client.replyMessage(event.replyToken, echo);
