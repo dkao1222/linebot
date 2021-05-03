@@ -76,7 +76,8 @@ function handleEvent(event) {
   switch(event.message.text.toLowerCase()) 
   {
 	  case 'help':
-		messagebody  = 'how can i help you! id:' + userdInfor[1]
+      console.log(userdInfor[1])
+		messagebody  = 'how can i help you! id:'
 		break;
 	  case 'submit':
 		messagebody  = 'what do you want submit case'
