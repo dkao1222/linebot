@@ -51,21 +51,14 @@ function handleEvent(event) {
   
 	console.log(`使用者 ID: ${event.source.userId}`);
   
-  var userInformations = client.getProfile(event.source.userId)
+  client.getProfile(event.source.userId)
 	  .then((profile) => {
-
-      var userInformation = [];
-      userInformation.push(profile.userId);
-      userInformation.push(profile.displayName);
-      userInformation.push(profile.pictureUrl);
-      userInformation.push(profile.statusMessage);
-
       console.log(profile.userId);
 	    console.log(profile.displayName);
 	    console.log(profile.pictureUrl);
 	    console.log(profile.statusMessage);
 
-      return userInformation
+      
 	  })
 	.catch((err) => {
 	// error handling
@@ -80,7 +73,7 @@ function handleEvent(event) {
   {
 	  case 'help':
       console.log(userInformations)
-		messagebody  = 'how can i help you! id:' + userInformations[0]
+		messagebody  = 'how can i help you! id:' + client.getProfile(event.source.userId).then((profile)=>{ profile.displayName})
 		break;
 	  case 'submit':
 		messagebody  = 'what do you want submit case'
