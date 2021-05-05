@@ -125,7 +125,7 @@ var server = app.listen(process.env.PORT || 8080, function() {
     console.log("App now running on port", port);
   });
 
-
+/*
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 // The file token.json stores the user's access and refresh tokens, and is
@@ -139,7 +139,7 @@ fs.readFile('client_secret.json', (err, content) => {
   // Authorize a client with credentials, then call the Google Sheets API.
   authorize(JSON.parse(content), listMajors);
 });
-
+*/
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
  * given callback function.
