@@ -23,6 +23,12 @@ const config = {
 };
 
 
+// If modifying these scopes, delete token.json.
+const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+// The file token.json stores the user's access and refresh tokens, and is
+// created automatically when the authorization flow completes for the first
+// time.
+const TOKEN_PATH = 'token.json';
 
 // create LINE SDK client
 const client = new line.Client(config);
@@ -73,6 +79,16 @@ function handleEvent(event) {
   client.getProfile(event.source.userId)
 	      .then((profile) => {
 
+          
+
+          // Load client secrets from a local file.
+          fs.readFile('client_secret.json', (err, content) => {
+            if (err) return console.log('Error loading client secret file:', err);
+            // Authorize a client with credentials, then call the Google Sheets API.
+            authorize(JSON.parse(content), listMajors);
+          });
+
+
     switch(event.message.text.toLowerCase()) 
     {
       case 'help':
@@ -110,7 +126,7 @@ var server = app.listen(process.env.PORT || 8080, function() {
   });
 
 
-  // If modifying these scopes, delete token.json.
+// If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
