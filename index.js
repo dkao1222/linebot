@@ -85,15 +85,14 @@ function handleEvent(event) {
           fs.readFile('client_secret.json', (err, content) => {
             if (err) return console.log('Error loading client secret file:', err);
             // Authorize a client with credentials, then call the Google Sheets API.
-             var rows = authorize(JSON.parse(content), listMajors)
-             console.log(rows)
+            authorize(JSON.parse(content), listMajors)
           });
 
 
     switch(event.message.text.toLowerCase()) 
     {
       case 'help':
-        messagebody  = 'Hi, '+ currectDisplayName + 'how can i help you!'
+        messagebody  = 'Hi, '+ profile.displayName + 'how can i help you!'
       //messagebody  = 'how can i help you! id:' + client.getProfile(event.source.userId).then((profile)=>{ profile.displayName})
         break;
       case 'submit':
@@ -213,6 +212,5 @@ function listMajors(auth) {
     } else {
       console.log('No data found.');
     }
-    return row
   });
 }
