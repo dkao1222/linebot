@@ -85,14 +85,21 @@ function handleEvent(event) {
           fs.readFile('client_secret.json', (err, content) => {
             if (err) return console.log('Error loading client secret file:', err);
             // Authorize a client with credentials, then call the Google Sheets API.
-            authorize(JSON.parse(content), listMajors);
+            authorize(JSON.parse(content), listMajors).map((row)=>{
+              if(row[0] == event.source.userId){
+                currectDisplayName = row[2]
+              }
+              else{
+                currectDisplayName = rofile.displayName
+              }
+            });
           });
 
 
     switch(event.message.text.toLowerCase()) 
     {
       case 'help':
-        messagebody  = 'Hi, '+ profile.displayName + 'how can i help you!'
+        messagebody  = 'Hi, '+ currectDisplayName + 'how can i help you!'
       //messagebody  = 'how can i help you! id:' + client.getProfile(event.source.userId).then((profile)=>{ profile.displayName})
         break;
       case 'submit':
@@ -199,7 +206,7 @@ function listMajors(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     spreadsheetId: '1uk0cCVy6dgGh5dU2kRBmC6no2K2Rdu7ChXCrvPLRdt0',
-    range: 'UserController!A2:E',
+    range: 'UserController!A2:H',
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
