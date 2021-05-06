@@ -89,12 +89,12 @@ function handleEvent(event) {
   //var userName = event.source.profile.displayName
   client.getProfile(event.source.userId)
 	      .then((profile) => {
-
+          var currectUserName = ""
           userControllerArray.map((row) => {
             console.log('check uid' + row[0]);
 
             if(event.source.userId == row[0]){
-              var currectUserName = row[3] + 'Group: ' + row[6]
+              currectUserName = row[3] + 'Group: ' + row[6]
             }
 
           })      
