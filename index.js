@@ -56,7 +56,7 @@ var userControllerArray = []
 fs.readFile('client_secret.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Sheets API.
-  authorize(JSON.parse(content), listMajors);
+  authorize(JSON.parse(content), UserControllerRead);
 });
 
 
@@ -98,6 +98,7 @@ function handleEvent(event) {
             }
             else{
               urrectUserName = profile.displayName
+              authorize(JSON.parse(content),UserControllerWrite);
             }
 
           })      
@@ -211,7 +212,7 @@ function getNewToken(oAuth2Client, callback) {
  * @see https://docs.google.com/spreadsheets/d/1uk0cCVy6dgGh5dU2kRBmC6no2K2Rdu7ChXCrvPLRdt0/edit?usp=sharing
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
-function listMajors(auth) {
+function UserControllerRead(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     spreadsheetId: '1uk0cCVy6dgGh5dU2kRBmC6no2K2Rdu7ChXCrvPLRdt0',
@@ -238,6 +239,33 @@ function listMajors(auth) {
       });
     } else {
       console.log('No data found.');
+    }
+  });
+}
+
+function UserControllerWrite(auth) {
+  const sheets = google.sheets({version: 'v4', auth});
+  let values = [
+    [
+      'test'
+    ],
+    // Additional rows ...
+  ];
+  const resoure = {
+    values
+  }
+
+  this.sheetsService.spreadsheets.values.update({
+    spreadsheetId:'1uk0cCVy6dgGh5dU2kRBmC6no2K2Rdu7ChXCrvPLRdt0',
+    range:'UserController!A4',
+    valueInputOption,
+    resource,
+  }, (err, result) => {
+    if (err) {
+      // Handle error
+      console.log(err);
+    } else {
+      console.log('%d cells updated.', result.updatedCells);
     }
   });
 }
