@@ -103,7 +103,7 @@ function handleEvent(event) {
               
             }
             else{
-              urrectUserName = profile.displayName
+              currectUserName = profile.displayName
               //authorize(JSON.parse(content),UserControllerWrite);
             }
 
