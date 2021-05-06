@@ -49,6 +49,17 @@ app.post('/callback', line.middleware(config), (req, res) => {
     });
 });
 
+
+var userControllerArray = []
+
+// Load client secrets from a local file.
+fs.readFile('client_secret.json', (err, content) => {
+  if (err) return console.log('Error loading client secret file:', err);
+  // Authorize a client with credentials, then call the Google Sheets API.
+  authorize(JSON.parse(content), listMajors);
+});
+
+
 // event handler
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
@@ -79,14 +90,12 @@ function handleEvent(event) {
   client.getProfile(event.source.userId)
 	      .then((profile) => {
 
-          
+          userControllerArray.map((row) => {
+            console.log(row[0]);
+            
+          })      
 
-          // Load client secrets from a local file.
-          fs.readFile('client_secret.json', (err, content) => {
-            if (err) return console.log('Error loading client secret file:', err);
-            // Authorize a client with credentials, then call the Google Sheets API.
-            authorize(JSON.parse(content), listMajors);
-          });
+          
 
 
     switch(event.message.text.toLowerCase()) 
@@ -208,6 +217,17 @@ function listMajors(auth) {
       // Print columns A and E, which correspond to indices 0 and 4.
       rows.map((row) => {
         console.log(`${row[0]}, ${row[4]}`);
+        var tempArray = []
+        tempArray.push(row[0]) // uid
+        tempArray.push(row[1]) // profile display name
+        tempArray.push(row[2]) // cn name
+        tempArray.push(row[3]) // en name
+        tempArray.push(row[4]) // user Team
+        tempArray.push(row[5]) // user job
+        tempArray.push(row[6]) // usser Control account
+        tempArray.push(row[7]) // user SAP id
+
+        userControllerArray.push(tempArray)
       });
     } else {
       console.log('No data found.');
