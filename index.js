@@ -91,8 +91,8 @@ function handleEvent(event) {
 	      .then((profile) => {
 
           userControllerArray.map((row) => {
-            console.log(row[0]);
-            
+            console.log('check uid' + row[0]);
+
           })      
 
           
