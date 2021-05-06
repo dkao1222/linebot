@@ -95,10 +95,16 @@ function handleEvent(event) {
 
             if(event.source.userId == row[0]){
               currectUserName = row[3] + ',Group: ' + row[6]
+              fs.readFile('client_secret.json', (err, content) => {
+                if (err) return console.log('Error loading client secret file:', err);
+                // Authorize a client with credentials, then call the Google Sheets API.
+                authorize(JSON.parse(content),UserControllerWrite);
+              });
+              
             }
             else{
               urrectUserName = profile.displayName
-              authorize(JSON.parse(content),UserControllerWrite);
+              //authorize(JSON.parse(content),UserControllerWrite);
             }
 
           })      
