@@ -93,6 +93,10 @@ function handleEvent(event) {
           userControllerArray.map((row) => {
             console.log('check uid' + row[0]);
 
+            if(event.source.userId == row[0]){
+              var currectUserName = row[3] + 'Group: ' + row[6]
+            }
+
           })      
 
           
@@ -101,7 +105,7 @@ function handleEvent(event) {
     switch(event.message.text.toLowerCase()) 
     {
       case 'help':
-        messagebody  = 'Hi, '+ profile.displayName + 'how can i help you!'
+        messagebody  = 'Hi, '+ currectUserName + 'how can i help you!'
       //messagebody  = 'how can i help you! id:' + client.getProfile(event.source.userId).then((profile)=>{ profile.displayName})
         break;
       case 'submit':
