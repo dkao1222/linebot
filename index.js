@@ -22,7 +22,7 @@ const app = express();
 
 app.post('/callback', line.middleware(config), (req, res) => {
     Promise
-        .all(req.body.events.map(handleEvent))
+        .all(req.body.events.map(handleEvent.handleEvent))
         .then((result) => res.json(result))
         .catch((err) => {
             console.error(err);
