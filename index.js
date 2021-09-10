@@ -5,9 +5,9 @@ const express = require('express');
 
 require('dotenv').config()
 
-console.log(process.env.CHANNEL_ACCESS_TOKEN)
-console.log(process.env.CHANNEL_SECRET)
-console.log(process.env.PORT)
+console.log('CHANNEL_ACCESS_TOKEN:' + process.env.CHANNEL_ACCESS_TOKEN)
+console.log('CHANNEL_SECRET:' + process.env.CHANNEL_SECRET)
+console.log('PORT:' + process.env.PORT)
 
 // create LINE SDK config from env variables
 const config = {
