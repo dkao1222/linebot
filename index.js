@@ -1,6 +1,8 @@
 const line = require('@line/bot-sdk');
 const express = require('express');
 
+const handleEvent = require('./linehandleEvent.js')
+
 require('dotenv').config()
 
 console.log(process.env.CHANNEL_ACCESS_TOKEN)
