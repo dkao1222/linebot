@@ -32,22 +32,22 @@ app.post('/callback', line.middleware(config), (req, res) => {
 
 function handleEvent(event) {
     if (event.type !== 'message' || event.message.type !== 'text') {
-      // ignore non-text-message event
-      return Promise.resolve(null);
+        // ignore non-text-message event
+        return Promise.resolve(null);
     }
-  
+
     // create a echoing text message
     const echo = { type: 'text', text: event.message.text };
-  
+
     // use reply API
     return client.replyMessage(event.replyToken, echo);
-  }
+}
 
 
 
-var server = app.listen(process.env.PORT || 8080, function () {
+var server = app.listen(process.env.PORT || 3000, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
-  });
+});
 
 
