@@ -1,7 +1,7 @@
 const line = require('@line/bot-sdk');
 const express = require('express');
 
-
+const { getData } = require('./googleSheet.js');
 
 require('dotenv').config()
 
@@ -49,7 +49,11 @@ function handleEvent(event) {
         .catch((err) => {
             // error handling
         });
-    
+
+        (async () => {
+            const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0');
+            console.log(resp);
+          })();
     
 
     // create a echoing text message

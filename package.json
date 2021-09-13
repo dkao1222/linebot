@@ -15,6 +15,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "google-auth-library": "^7.0.4",
+    "google-spreadsheet": "^3.1.15",
     "googleapis": "^73.0.0",
     "gs": "0.0.2",
     "gtoken": "^5.2.1",
