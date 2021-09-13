@@ -54,15 +54,16 @@ function handleEvent(event) {
 
     (async () => {
 
-        const resp = await getRowCount('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0');
+        const resp = await getRowCount('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
         client.getProfile(event.source.userId)
         .then((profile) => {
             console.log(profile.userId);
             console.log(profile.displayName);
             console.log(profile.pictureUrl);
             console.log(profile.statusMessage);
+            console.log('add Row')
             (async () => {
-                await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0', profile.userId, profile.displayName, profile.pictureUrl,profile.statusMessage,'','','')
+                await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl,profile.statusMessage,'','','')
             })
              
             
