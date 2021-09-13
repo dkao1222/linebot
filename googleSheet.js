@@ -21,7 +21,7 @@ async function getData(docID, sheetID, credentialsPath = './credentials.json') {
 
 
 async function getRowCount(docID, sheetID, credentialsPath = './credentials.json') {
-  const result ;
+  var result = 0;
   const doc = new GoogleSpreadsheet(docID);
   const creds = require(credentialsPath);
   await doc.useServiceAccountAuth(creds);
