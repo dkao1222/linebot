@@ -3,6 +3,7 @@ const express = require('express');
 
 const { getData } = require('./googleSheet.js');
 const { getRowCount } = require('./googleSheet.js');
+const { AddRow } = require('./googleSheet.js');
 
 require('dotenv').config()
 
@@ -55,7 +56,20 @@ function handleEvent(event) {
         const resp = await getRowCount('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0');
         console.log(resp);
     })();
+    client.getProfile(event.source.userId)
+        .then((profile) => {
+            console.log(profile.userId);
+            console.log(profile.displayName);
+            console.log(profile.pictureUrl);
+            console.log(profile.statusMessage);
 
+            await getRowCount('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0',profile.userId, profile.displayName,profile.pictureUrl,profile.statusMessage);
+        })
+        .catch((err) => {
+            // error handling
+        });
+
+    
 
     // create a echoing text message
     const echo = { type: 'text', text: event.message.text };
