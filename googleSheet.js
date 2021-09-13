@@ -45,8 +45,8 @@ async function AddRow(docID, sheetID, credentialsPath = './credentials.json',use
   const sheet = doc.sheetsById[sheetID];
 
 
-  const larryRow = await sheet.addRow({ userId: userid, displayName: displayName,pictureUrl:pictureUrl, statusMessage:statusMessage, Vendor:Vendor,Name1:Name1,Name2:Name2 });
-
+  const row = await sheet.addRow({ userId: userid, displayName: displayName,pictureUrl:pictureUrl, statusMessage:statusMessage, Vendor:Vendor,Name1:Name1,Name2:Name2 });
+  await row.save()
   //const rows = await sheet.rowCount;
   //for (row of rows) {
   //  result.push(row._rawData);
