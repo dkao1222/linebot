@@ -2,6 +2,7 @@ const line = require('@line/bot-sdk');
 const express = require('express');
 
 const { getData } = require('./googleSheet.js');
+const { getRowCount } = require('./googleSheet.js');
 
 require('dotenv').config()
 
