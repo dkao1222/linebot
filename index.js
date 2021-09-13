@@ -53,7 +53,24 @@ function handleEvent(event) {
         });
 
     (async () => {
+
         const resp = await getRowCount('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0');
+        client.getProfile(event.source.userId)
+        .then((profile) => {
+            console.log(profile.userId);
+            console.log(profile.displayName);
+            console.log(profile.pictureUrl);
+            console.log(profile.statusMessage);
+            (async () => {
+                await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0',resp+1, userId, displayName)
+            })
+             
+            
+        })
+        .catch((err) => {
+            // error handling
+        });
+
         console.log(resp);
     })();
 
@@ -63,10 +80,9 @@ function handleEvent(event) {
             console.log(profile.displayName);
             console.log(profile.pictureUrl);
             console.log(profile.statusMessage);
-            (async () => {
-                const resp = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage);
-                console.log(resp);
-            })();
+            
+
+            
         })
         .catch((err) => {
             // error handling
