@@ -27,7 +27,7 @@ async function getRowCount(docID, sheetID, credentialsPath = './credentials.json
   await doc.useServiceAccountAuth(creds);
   await doc.loadInfo();
   const sheet = doc.sheetsById[sheetID];
-  const rows = await sheet.rowCount;
+  const rows = await sheet.rowCount();
   //for (row of rows) {
   //  result.push(row._rawData);
   //}
