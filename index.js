@@ -35,6 +35,22 @@ function handleEvent(event) {
         // ignore non-text-message event
         return Promise.resolve(null);
     }
+    console.log(`使用者 ID: ${event.source.userId}`);
+
+    client.getProfile(event.source.userId)
+        .then((profile) => {
+            console.log(profile.userId);
+            console.log(profile.displayName);
+            console.log(profile.pictureUrl);
+            console.log(profile.statusMessage);
+
+
+        })
+        .catch((err) => {
+            // error handling
+        });
+    
+    
 
     // create a echoing text message
     const echo = { type: 'text', text: event.message.text };
