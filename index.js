@@ -62,7 +62,7 @@ function handleEvent(event) {
             console.log(profile.pictureUrl);
             console.log(profile.statusMessage);
             (async () => {
-                await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0',resp+1, userId, displayName)
+                await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0', userId, displayName)
             })
              
             
