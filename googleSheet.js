@@ -36,7 +36,7 @@ async function getRowCount(docID, sheetID, credentialsPath = './credentials.json
   return result;
 };
 
-async function AddRow(docID, sheetID, credentialsPath = './credentials.json',userid, displayName) {
+async function AddRow(docID, sheetID, credentialsPath = './credentials.json',userid, displayName,pictureUrl,statusMessage,Vendor,Name1,Name2) {
   const result = [];
   const doc = new GoogleSpreadsheet(docID);
   const creds = require(credentialsPath);
@@ -45,7 +45,7 @@ async function AddRow(docID, sheetID, credentialsPath = './credentials.json',use
   const sheet = doc.sheetsById[sheetID];
 
 
-  const larryRow = await sheet.addRow({ userid: userid, displayName: displayName });
+  const larryRow = await sheet.addRow({ userId: userid, displayName: displayName,pictureUrl:pictureUrl, statusMessage:statusMessage, Vendor:Vendor,Name1:Name1,Name2:Name2 });
 
   //const rows = await sheet.rowCount;
   //for (row of rows) {
