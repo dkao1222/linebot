@@ -56,6 +56,7 @@ function handleEvent(event) {
         const resp = await getRowCount('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0');
         console.log(resp);
     })();
+
     client.getProfile(event.source.userId)
         .then((profile) => {
             console.log(profile.userId);
@@ -63,7 +64,7 @@ function handleEvent(event) {
             console.log(profile.pictureUrl);
             console.log(profile.statusMessage);
 
-            await getRowCount('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0',profile.userId, profile.displayName,profile.pictureUrl,profile.statusMessage);
+            await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0',profile.userId, profile.displayName,profile.pictureUrl,profile.statusMessage);
         })
         .catch((err) => {
             // error handling
