@@ -63,14 +63,16 @@ function handleEvent(event) {
             console.log(profile.displayName);
             console.log(profile.pictureUrl);
             console.log(profile.statusMessage);
-
-            await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0',profile.userId, profile.displayName,profile.pictureUrl,profile.statusMessage);
+            (async () => {
+                const resp = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage);
+                console.log(resp);
+            })();
         })
         .catch((err) => {
             // error handling
         });
 
-    
+
 
     // create a echoing text message
     const echo = { type: 'text', text: event.message.text };
