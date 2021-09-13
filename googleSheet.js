@@ -19,6 +19,24 @@ async function getData(docID, sheetID, credentialsPath = './credentials.json') {
   return result;
 };
 
+
+async function getRowCount(docID, sheetID, credentialsPath = './credentials.json') {
+  const result = [];
+  const doc = new GoogleSpreadsheet(docID);
+  const creds = require(credentialsPath);
+  await doc.useServiceAccountAuth(creds);
+  await doc.loadInfo();
+  const sheet = doc.sheetsById[sheetID];
+  const rows = await sheet.rowCount;
+  //for (row of rows) {
+  //  result.push(row._rawData);
+  //}
+
+  result.push(rows)
+  return result;
+};
+
 module.exports = {
   getData,
+  getRowCount,
 };

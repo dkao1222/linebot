@@ -50,11 +50,11 @@ function handleEvent(event) {
             // error handling
         });
 
-        (async () => {
-            const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0');
-            console.log(resp);
-          })();
-    
+    (async () => {
+        const resp = await getRowCount('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '0');
+        console.log(resp);
+    })();
+
 
     // create a echoing text message
     const echo = { type: 'text', text: event.message.text };
