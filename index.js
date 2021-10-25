@@ -46,39 +46,37 @@ function handleEvent(event) {
             console.log(profile.pictureUrl);
             console.log(profile.statusMessage);
 
-            
-            const rowsData = {
-                userId : profile.userId,
-                userDisplayName : profile.displayName,
-                pictureUrl : profile.pictureUrl,
-                statusMessage:profile.statusMessage,
-                Vendor:'',
-                Name1:'',
-                Name2:''
-            };
-                
-            const addData  = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId,profile.displayName,profile.pictureUrl,profile.statusMessage)
-            console.log(addData);
-            
+            const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+
+            if (resp.get(profile.userId)) {
+                const echo = { type: 'text', text: resp.get(profile.Name1) };
+            } else {
+                const echo = { type: 'text', text: 'Please submit your question' };
+                const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
+                console.log(addData);
+            }
+
+
+
+
         })
         .catch((err) => {
             // error handling
         });
+        /*
+        (async () => {
 
-    (async () => {
-
-        const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
-        //resp.map('Name1')
-        //const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017',)
-        console.log(resp);
-    })();
-
+            const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+            
+            console.log(resp);
+        })();
+        */
 
 
 
 
     // create a echoing text message
-    const echo = { type: 'text', text: event.message.text };
+    //const echo = { type: 'text', text: event.message.text };
 
     // use reply API
     return client.replyMessage(event.replyToken, echo);
