@@ -54,7 +54,7 @@ function handleEvent(event) {
 
     (async () => {
 
-        const resp = await getRows('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+        const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
 
         console.log('count:'+ resp);
