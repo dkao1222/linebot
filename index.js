@@ -50,7 +50,7 @@ function handleEvent(event) {
             const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
             const readuserId = resp.map(function(userId, Name1){
                 if (userId = profile.userId) {
-                    echo = { type: 'text', text: resp.get('您好 '+ profile.Name1) };
+                    echo = { type: 'text', text: resp.get('您好 '+ Name1) };
                 }else{
                     const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
                     console.log(addData);
