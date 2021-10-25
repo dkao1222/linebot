@@ -46,20 +46,20 @@ function handleEvent(event) {
             console.log(profile.pictureUrl);
             console.log(profile.statusMessage);
 
-            (async () => {
-                var rowsData = {
-                    userId : profile.userId,
-                    userDisplayName : profile.displayName,
-                    pictureUrl : profile.pictureUrl,
-                    statusMessage:profile.statusMessage,
-                    Vendor:'',
-                    Name1:'',
-                    Name2:''
-                }
+            
+            var rowsData = {
+                userId : profile.userId,
+                userDisplayName : profile.displayName,
+                pictureUrl : profile.pictureUrl,
+                statusMessage:profile.statusMessage,
+                Vendor:'',
+                Name1:'',
+                Name2:''
+            }
                 
-                const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017',rowsData)
-                console.log(addData);
-            })();
+            const addData  = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017',rowsData)
+            console.log(addData);
+            
         })
         .catch((err) => {
             // error handling
