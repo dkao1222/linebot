@@ -47,19 +47,12 @@ function handleEvent(event) {
             console.log(profile.statusMessage);
 
             (async () => {
+                var userId = profile.userId
+                var userDisplayName = profile.displayName
+                var userPicUrl = profile.pictureUrl
+                var userStuMessage = profile.statusMessage
 
-                //const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
-                //resp.map('Name1')
-                const rowsdata = {
-                    userId : profile.userId,
-                    displayName : profile.displayName,
-                    pictureUrl : profile.pictureUrl,
-                    statusMessage : profile.statusMessage,
-                    Vendor : '',
-                    Name1 : '',
-                    Name2 : ''
-                }
-                const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY','1363045017', rowsdata)
+                const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017',userId,userDisplayName,userPicUrl,userStuMessage,'','','')
                 console.log(addData);
             })();
         })
@@ -75,7 +68,7 @@ function handleEvent(event) {
         console.log(resp);
     })();
 
-    
+
 
 
 
