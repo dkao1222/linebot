@@ -57,7 +57,7 @@ function handleEvent(event) {
                 Name2:''
             };
                 
-            const addData  = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017',profile.userId,profile.displayName,profile.pictureUrl,profile.statusMessage)
+            const addData  = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId,profile.displayName,profile.pictureUrl,profile.statusMessage)
             console.log(addData);
             
         })
