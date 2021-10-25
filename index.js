@@ -46,38 +46,52 @@ function handleEvent(event) {
             console.log(profile.displayName);
             console.log(profile.pictureUrl);
             console.log(profile.statusMessage);
+            (async () => {
+                const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
-            const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
-            const readuserId = resp.map(function(userId, Name1){
-                if (userId = profile.userId) {
-                    echo = { type: 'text', text: resp.get('您好 '+ Name1) };
-                }else{
-                    const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
-                    console.log(addData);
+                console.log(resp)
 
-                    echo = { type: 'text', text: 'Please submit your question' };
-                    
-                }
-
-            })
-
+                const readuserId = resp.map(function (userId, Name1) {
+                    if (userId = profile.userId) {
+                        echo = { type: 'text', text: resp.get('您好 ' + Name1) };
+                    } else {
+                        const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
+                        console.log(addData);
             
+                        echo = { type: 'text', text: 'Please submit your question' };
+            
+                    }
+            
+                })
 
-
-
+            })();
         })
         .catch((err) => {
             // error handling
         });
-        /*
-        (async () => {
+    /*
+    (async () => {
 
-            const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
-            
-            console.log(resp);
-        })();
-        */
+        const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+        
+        console.log(resp);
+    })();
+    */
+   /*
+    const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+    const readuserId = resp.map(function (userId, Name1) {
+        if (userId = profile.userId) {
+            const echo = { type: 'text', text: resp.get('您好 ' + Name1) };
+        } else {
+            const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
+            console.log(addData);
 
+            const echo = { type: 'text', text: 'Please submit your question' };
+
+        }
+
+    })
+    */
 
 
 
