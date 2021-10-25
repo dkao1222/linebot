@@ -50,7 +50,7 @@ async function AddRow(docID, sheetID, userid, displayName, pictureUrl, statusMes
   await doc.loadInfo();
   const sheet = doc.sheetsById[sheetID];
 
-  const createnewRow = await sheet.addRow({userid:userid, displayName:displayName, pictureUrl:pictureUrl, statusMessage:statusMessage, Vendor:'', Name1:'', Name2:''})
+  const createnewRow = await sheet.addRow({userId:userid, displayName:displayName, pictureUrl:pictureUrl, statusMessage:statusMessage, Vendor:'', Name1:'', Name2:''})
   //const larryRow = await sheet.addRow({ name: 'Larry Page', email: 'larry@google.com' });
   const rows = sheet.getRows();
   
