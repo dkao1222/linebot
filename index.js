@@ -52,7 +52,7 @@ function handleEvent(event) {
                 var userPicUrl = profile.pictureUrl
                 var userStuMessage = profile.statusMessage
 
-                const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017',userId,userDisplayName,userPicUrl,userStuMessage,'','','')
+                const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017')
                 console.log(addData);
             })();
         })
