@@ -1,7 +1,7 @@
 const line = require('@line/bot-sdk');
 const express = require('express');
 
-const { getData } = require('./googleSheet.js');
+const { getData, getRows } = require('./googleSheet.js');
 const { getRowCount } = require('./googleSheet.js');
 const { AddRow } = require('./googleSheet.js');
 
@@ -54,7 +54,7 @@ function handleEvent(event) {
 
     (async () => {
 
-        const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+        const resp = await getRows('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
 
         console.log('count:'+ resp);
