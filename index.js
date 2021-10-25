@@ -62,7 +62,7 @@ function handleEvent(event) {
 
         const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
         //resp.map('Name1')
-        const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017',)
+        //const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017',)
         console.log(resp);
     })();
 
