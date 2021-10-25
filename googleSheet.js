@@ -11,8 +11,13 @@ async function getData(docID, sheetID, credentialsPath = './credentials.json') {
   const creds = require(credentialsPath);
   await doc.useServiceAccountAuth(creds);
   await doc.loadInfo();
+  console.log('doc title'+doc.title);
   const sheet = doc.sheetsById[sheetID];
+
+  console.log('sheets title'+sheet.title);
+  console.log('sheet row count'+sheet.rowCount);
   const rows = await sheet.getRows();
+
   for (row of rows) {
     result.push(row._rawData);
   }
@@ -36,7 +41,7 @@ async function getRowCount(docID, sheetID, credentialsPath = './credentials.json
   return result;
 };
 
-async function AddRow(docID, sheetID, credentialsPath = './credentials.json',userid, displayName,pictureUrl,statusMessage,Vendor,Name1,Name2) {
+async function AddRow(docID, sheetID, credentialsPath = './credentials.json', userid, displayName, pictureUrl, statusMessage, Vendor, Name1, Name2) {
   const result = [];
   const doc = new GoogleSpreadsheet(docID);
   const creds = require(credentialsPath);
@@ -44,30 +49,10 @@ async function AddRow(docID, sheetID, credentialsPath = './credentials.json',use
   await doc.loadInfo();
   const sheet = doc.sheetsById[sheetID];
 
-  await sheet.addRow({userid, displayName,pictureUrl,statusMessage,Vendor,Name1,Name2})
+  await sheet.addRow({ userid, displayName, pictureUrl, statusMessage, Vendor, Name1, Name2 })
   const rows = sheet.getRows();
 
   console.log(rows)
-};
-
-async function getRowData(docID, sheetID, credentialsPath = './credentials.json') {
-  const result = [];
-  const doc = new GoogleSpreadsheet(docID);
-  const creds = require(credentialsPath);
-  await doc.useServiceAccountAuth(creds);
-  await doc.loadInfo();
-  const sheet = doc.sheetsById[sheetID];
-
-  //await sheet.
-  const rows = await sheet.getRows();
-  for (row of rows) {
-    console.log('row data :'+ row._rawData)
-    result.push(row._rawData)
-  }
-
-
-  console.log(result.count)
-  return result;
 };
 
 
@@ -75,5 +60,4 @@ module.exports = {
   getData,
   getRowCount,
   AddRow,
-  getRowData,
 };
