@@ -47,7 +47,7 @@ function handleEvent(event) {
             console.log(profile.statusMessage);
 
             
-            var rowsData = {
+            var rowsData = [{
                 userId : profile.userId,
                 userDisplayName : profile.displayName,
                 pictureUrl : profile.pictureUrl,
@@ -55,7 +55,7 @@ function handleEvent(event) {
                 Vendor:'',
                 Name1:'',
                 Name2:''
-            }
+            }]
                 
             const addData  = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017',rowsData)
             console.log(addData);
