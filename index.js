@@ -47,12 +47,17 @@ function handleEvent(event) {
             console.log(profile.statusMessage);
 
             (async () => {
-                var userId = profile.userId
-                var userDisplayName = profile.displayName
-                var userPicUrl = profile.pictureUrl
-                var userStuMessage = profile.statusMessage
-
-                const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017')
+                var rowsData = {
+                    userId : profile.userId,
+                    userDisplayName : profile.displayName,
+                    pictureUrl : profile.pictureUrl,
+                    statusMessage:profile.statusMessage,
+                    Vendor:'',
+                    Name1:'',
+                    Name2:''
+                }
+                
+                const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017',rowsData)
                 console.log(addData);
             })();
         })

@@ -41,7 +41,7 @@ async function getRowCount(docID, sheetID, credentialsPath = './credentials.json
   return result;
 };
 
-async function AddRow(docID, sheetID, credentialsPath = './credentials.json') {
+async function AddRow(docID, sheetID, credentialsPath = './credentials.json',rowsData) {
   //, userid, displayName, pictureUrl, statusMessage, Vendor, Name1, Name2
   const result = [];
   const doc = new GoogleSpreadsheet(docID);
@@ -50,7 +50,7 @@ async function AddRow(docID, sheetID, credentialsPath = './credentials.json') {
   await doc.loadInfo();
   const sheet = doc.sheetsById[sheetID];
 
-  const createnewRow = await sheet.addRow({ userID:'Uee58bfdc3c01d9a2de587d44bb52e701', displayName:'高小高(小滿爸）', pictureUrl:'https://sprofile.line-scdn.net/0ha3qbWU_APhxcGxGfbwlAYyxLPXZ_amcOeHR1LWpIMy5oIy0fI38kKDseYX9jKnxMIClzKWFJZiVQCEl6Qk3CKFsrYChlLXBJdHR3-w', statusMessage:'科技始終來自於惰性', Vendor:'', Name1:'', Name2:'' })
+  const createnewRow = await sheet.addRow( rowsData )
   //const larryRow = await sheet.addRow({ name: 'Larry Page', email: 'larry@google.com' });
   const rows = sheet.getRows();
   
