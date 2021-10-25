@@ -58,19 +58,7 @@ function handleEvent(event) {
         console.log(resp);
     })();
 
-    client.getProfile(event.source.userId)
-        .then((profile) => {
-            console.log(profile.userId);
-            console.log(profile.displayName);
-            console.log(profile.pictureUrl);
-            console.log(profile.statusMessage);
-            
-
-            
-        })
-        .catch((err) => {
-            // error handling
-        });
+    
 
 
 
