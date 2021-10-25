@@ -55,7 +55,7 @@ function handleEvent(event) {
     (async () => {
 
         const resp = await getRowCount('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
-        console.log(resp);
+        console.log('count'+ resp);
     })();
 
     
