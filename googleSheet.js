@@ -50,9 +50,24 @@ async function AddRow(docID, sheetID, credentialsPath = './credentials.json',use
   console.log(rows)
 };
 
+async function getRows(docID, sheetID, credentialsPath = './credentials.json',userid, displayName,pictureUrl,statusMessage,Vendor,Name1,Name2) {
+  const result = [];
+  const doc = new GoogleSpreadsheet(docID);
+  const creds = require(credentialsPath);
+  await doc.useServiceAccountAuth(creds);
+  await doc.loadInfo();
+  const sheet = doc.sheetsById[sheetID];
+
+  //await sheet.
+  const rows = await sheet.getRows();
+
+  console.log(rows)
+};
+
 
 module.exports = {
   getData,
   getRowCount,
   AddRow,
+  getRows,
 };
