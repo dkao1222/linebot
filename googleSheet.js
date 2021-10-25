@@ -73,5 +73,5 @@ module.exports = {
   getData,
   getRowCount,
   AddRow,
-  getRows,
+  getRowData,
 };
