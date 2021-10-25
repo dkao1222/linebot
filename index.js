@@ -39,7 +39,7 @@ function handleEvent(event) {
     }
     console.log(`使用者 ID: ${event.source.userId}`);
 
-    var echo = ''
+    var echo;
     client.getProfile(event.source.userId)
         .then((profile) => {
             console.log(profile.userId);
