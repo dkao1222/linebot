@@ -47,15 +47,18 @@ function handleEvent(event) {
             console.log(profile.statusMessage);
 
             const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+            const readuserId = resp.map(function(userId, Name1){
+                if (userId = profile.userId) {
+                    const echo = { type: 'text', text: resp.get('您好 '+ profile.Name1) };
+                }else{
+                    const echo = { type: 'text', text: 'Please submit your question' };
+                    const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
+                    console.log(addData);
+                }
 
-            if (resp.get(profile.userId)) {
-                const echo = { type: 'text', text: resp.get(profile.Name1) };
-            } else {
-                const echo = { type: 'text', text: 'Please submit your question' };
-                const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
-                console.log(addData);
-            }
+            })
 
+            
 
 
 
