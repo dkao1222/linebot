@@ -60,8 +60,12 @@ async function getRows(docID, sheetID, credentialsPath = './credentials.json',us
 
   //await sheet.
   const rows = await sheet.getRows();
+  for (row of rows) {
+    result.push(row._rawData)
+  }
 
-  console.log(rows)
+
+  console.log(result)
 };
 
 
