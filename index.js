@@ -40,6 +40,8 @@ function handleEvent(event) {
     console.log(`使用者 ID: ${event.source.userId}`);
 
     var userProfile = [];
+
+    var replyText = ''
     client.getProfile(event.source.userId)
         .then((profile) => {
             console.log(profile.userId);
@@ -50,31 +52,30 @@ function handleEvent(event) {
             userProfile.push(profile.displayName)
             userProfile.push(profile.pictureUrl)
             userProfile.push(profile.statusMessage)
+
+
+            const resp = getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+            console.log(resp)
+
+            const readuserId = resp.map(function (userId, Name1) {
+                if (userId = userProfile[0]) {
+                    replyText = '您好 ' + Name1;
+                } else {
+                    const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', userProfile[0], userProfile[1], userProfile[2], userProfile[3])
+                    console.log(addData);
+
+                    replyText = 'Please submit your question';
+
+                }
+
+            })
+
         })
         .catch((err) => {
             // error handling
         });
 
-    const echo = ''
-    (async () => {
-        const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
-
-        console.log(resp)
-
-        const readuserId = resp.map(function (userId, Name1) {
-            if (userId = userProfile[0]) {
-                echo = { type: 'text', text: resp.get('您好 ' + Name1) };
-            } else {
-                const addData = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', userProfile[0], userProfile[1], userProfile[2], userProfile[3])
-                console.log(addData);
-
-                echo = { type: 'text', text: 'Please submit your question' };
-
-            }
-
-        })
-
-    })();
+    
     /*
     (async () => {
 
@@ -102,7 +103,7 @@ function handleEvent(event) {
 
 
     // create a echoing text message
-    //const echo = { type: 'text', text: event.message.text };
+    const echo = { type: 'text', text: replyText };
 
     // use reply API
     return client.replyMessage(event.replyToken, echo);
