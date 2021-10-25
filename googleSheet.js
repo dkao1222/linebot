@@ -61,11 +61,13 @@ async function getRowData(docID, sheetID, credentialsPath = './credentials.json'
   //await sheet.
   const rows = await sheet.getRows();
   for (row of rows) {
+    console.log('row data :'+ row._rawData)
     result.push(row._rawData)
   }
 
 
   console.log(result.count)
+  return result;
 };
 
 
