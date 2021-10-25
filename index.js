@@ -46,7 +46,13 @@ function handleEvent(event) {
             console.log(profile.pictureUrl);
             console.log(profile.statusMessage);
 
+            (async () => {
 
+                //const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+                //resp.map('Name1')
+                const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017',profile.userId,profile.displayName,profile.pictureUrl,profile.statusMessage,'','','')
+                console.log(addData);
+            })();
         })
         .catch((err) => {
             // error handling
@@ -56,7 +62,7 @@ function handleEvent(event) {
 
         const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
         //resp.map('Name1')
-
+        const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017',)
         console.log(resp);
     })();
 
