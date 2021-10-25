@@ -50,7 +50,16 @@ function handleEvent(event) {
 
                 //const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
                 //resp.map('Name1')
-                const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017','test' ,'test2','test3','test4','','','')
+                const rowsdata = {
+                    userId = profile.userId,
+                    displayName = profile.displayName,
+                    pictureUrl = profile.pictureUrl,
+                    statusMessage = profile.statusMessage,
+                    Vendor = '',
+                    Name1 = '',
+                    Name2 = ''
+                }
+                const addData  = await AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', rowsdata)
                 console.log(addData);
             })();
         })
