@@ -57,22 +57,24 @@ function handleEvent(event) {
         .catch((err) => {
             // error handling
         });
-    
-    
+
+
 
     var replyMessage;
-    
+    (async function () {
+        const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
-    const resp = getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+        console.log(resp);
 
-    console.log(resp);
+        resp.map(function (userId, displayName, pictureUrl, statusMessage, vendor, name1, name2) {
+            if (userId = userData[0]) {
+                console.log(name1)
+            }
+        })
+    }());
 
-    resp.map(function (userId,displayName, pictureUrl, statusMessage, vendor,name1, name2) {
-        if (userId = userData[0]) {
-            console.log(name1)
-        }
-    })
-    
+
+
 
     /*
      const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
@@ -91,7 +93,7 @@ function handleEvent(event) {
      */
 
 
-     //const echo = { type: 'text', text: event.message.text };
+    //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
     const echo = { type: 'text', text: event.message.text };
 
