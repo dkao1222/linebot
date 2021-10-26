@@ -58,7 +58,7 @@ function handleEvent(event) {
             // error handling
         });
     
-    console.log('userdata:' + userData)
+    
 
 
     (async () => {
