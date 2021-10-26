@@ -67,7 +67,7 @@ function handleEvent(event) {
 
         resp.map(function (userId, displayName, pictureUrl, statusMessage, vendor, name1, name2) {
             if (userId = userData[0]) {
-                return '您好 ' + Name1
+                return '您好 ' + name1
             }else{
                 return 'Please submit your question'
             }
