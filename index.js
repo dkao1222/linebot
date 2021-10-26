@@ -60,21 +60,21 @@ function handleEvent(event) {
     
     
 
-    var replyMessage = ''
-    (async () => {
+    var replyMessage;
+    
 
-        const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+    const resp = getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
-        console.log(resp);
+    console.log(resp);
 
-        resp.map(function (userId,displayName, pictureUrl, statusMessage, vendor,name1, name2) {
-            if (userId = userData[0]) {
-                replyMessage = '您好 ' + name1
-            } else {
-                replyMessage = 'Please submit your question'
-            }
-        })
-    })();
+    resp.map(function (userId,displayName, pictureUrl, statusMessage, vendor,name1, name2) {
+        if (userId = userData[0]) {
+            replyMessage = '您好 ' + name1
+        } else {
+            replyMessage = 'Please submit your question'
+        }
+    })
+    
 
     /*
      const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
