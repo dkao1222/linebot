@@ -60,20 +60,8 @@ function handleEvent(event) {
 
 
 
-    var userReply = async function() {
-        const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
-        console.log(resp);
-
-        resp.map(function (userId, displayName, pictureUrl, statusMessage, vendor, name1, name2) {
-            if (userId == userData[0]) {
-                console.log('map user')
-            }else{
-                console.log('no match')
-            }
-        })
-    }
-    userReply()
+    userCheck(userData[0])
     //console.log(userReply())
 
 
@@ -97,13 +85,27 @@ function handleEvent(event) {
 
     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
-    const echo = { type: 'text', text: event.message.text };
+    const echo = { type: 'text', text: event.message.text + userCheck(userData[0]) };
 
     // use reply API
     return client.replyMessage(event.replyToken, echo);
 }
 
+var userCheck = async function (values) {
+    const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
+    console.log(resp);
+
+    resp.map(function (userId, displayName, pictureUrl, statusMessage, vendor, name1, name2) {
+        if (userId == values) {
+            console.log('map user')
+            return 'user map'
+        } else {
+            console.log('no match')
+            return 'user nomatch'
+        }
+    })
+}
 
 var server = app.listen(process.env.PORT || 3000, function () {
     var port = server.address().port;
