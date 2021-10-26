@@ -57,7 +57,8 @@ function handleEvent(event) {
         .catch((err) => {
             // error handling
         });
-
+    
+    console.log('userdata:' + userData)
 
 
     (async () => {
