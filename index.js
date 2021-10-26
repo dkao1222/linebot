@@ -39,7 +39,7 @@ function handleEvent(event) {
     }
     console.log(`使用者 ID: ${event.source.userId}`);
 
-    
+
 
     var replyText = ''
     client.getProfile(event.source.userId)
@@ -48,18 +48,18 @@ function handleEvent(event) {
             console.log(profile.displayName);
             console.log(profile.pictureUrl);
             console.log(profile.statusMessage);
-            
+
 
             const resp = getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
             console.log(resp)
 
-            
+
         })
         .catch((err) => {
             // error handling
         });
 
-    
+
     /*
     (async () => {
 
@@ -87,7 +87,7 @@ function handleEvent(event) {
 
 
     // create a echoing text message
-    const echo = { type: 'text', text: replyText };
+    const echo = { type: 'text', text: event.message.text };
 
     // use reply API
     return client.replyMessage(event.replyToken, echo);
