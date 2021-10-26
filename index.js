@@ -66,7 +66,7 @@ function handleEvent(event) {
         console.log(resp);
 
         resp.map(function (userId, displayName, pictureUrl, statusMessage, vendor, name1, name2) {
-            if (userId = userData[0]) {
+            if (userId == userData[0]) {
                 console.log('map user')
             }else{
                 console.log('no match')
