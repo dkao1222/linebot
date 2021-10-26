@@ -67,9 +67,9 @@ function handleEvent(event) {
 
         console.log(resp);
 
-        resp.map(function (userId, Name1) {
+        resp.map(function (userId) {
             if (userId = userData[0]) {
-                replyMessage = '您好 ' + Name1
+                replyMessage = '您好 '
             } else {
                 replyMessage = 'Please submit your question'
             }
