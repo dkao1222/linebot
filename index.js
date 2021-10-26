@@ -41,14 +41,17 @@ function handleEvent(event) {
 
 
 
-    var replyText = ''
+    var userData = []
     client.getProfile(event.source.userId)
         .then((profile) => {
             console.log(profile.userId);
             console.log(profile.displayName);
             console.log(profile.pictureUrl);
             console.log(profile.statusMessage);
-
+            userData.push(profile.userId)
+            userData.push(profile.displayName)
+            userData.push(profile.pictureUrl)
+            userData.push(profile.statusMessage)
 
         })
         .catch((err) => {
@@ -56,14 +59,22 @@ function handleEvent(event) {
         });
 
 
-    
+
     (async () => {
 
         const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
-        
+
         console.log(resp);
+
+        resp.map(function (userId, Name1) {
+            if (userId = userData[0]) {
+                replyMessage = '您好 ' + Name1
+            } else {
+                replyMessage = 'Please submit your question'
+            }
+        })
     })();
-    
+
     /*
      const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
      const readuserId = resp.map(function (userId, Name1) {
@@ -81,9 +92,9 @@ function handleEvent(event) {
      */
 
 
-
+     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
-    const echo = { type: 'text', text: event.message.text };
+    const echo = { type: 'text', text: replyMessage };
 
     // use reply API
     return client.replyMessage(event.replyToken, echo);
