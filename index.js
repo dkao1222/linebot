@@ -95,14 +95,14 @@ var userCheck = async function (values) {
     const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
     console.log(resp);
-
+    
     resp.map(function (userId, displayName, pictureUrl, statusMessage, vendor, name1, name2) {
         if (userId == values) {
             console.log('map user')
-            return 'user map'
+            return Promise.resolve('user map')
         } else {
             console.log('no match')
-            return 'user nomatch'
+            return Promise.resolve('user nomatch')
         }
     })
 }
