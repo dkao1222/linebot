@@ -102,7 +102,7 @@ var userCheck = async function (values) {
     console.log('length :'+resp.length)
     console.log('indexof:' + resp.indexOf(values))
     resp.forEach( items => {
-        console.log('indexof-items:' + items.indexOf(values))
+        console.log('item:' + items.length)
     })
     /*
     Promise
