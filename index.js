@@ -64,7 +64,7 @@ function handleEvent(event) {
 
 
 
-    var userChecktext = userCheck(userData[0])
+    var userChecktext = Promise.resolve(userCheck(userData[0]))
     //console.log(userReply())
 
 
@@ -102,20 +102,20 @@ var userCheck = async function (values) {
     console.log('length :'+resp.length)
     console.log('indexof:' + resp.indexOf(values))
     
-        
+    var msgText = ""
         for (let index = 0; index <= resp.length; index++) {
-            if( resp[index][0] = values ) {
-                return Promise
-                .resolve(resp[index][6])
+            if( resp[index][0] == values ) {
+                console.log(resp[index][6])
+                msgText = resp[index][6]
                 break
             }else {
-                return Promise
-                .resolve('No Match User')
+                console.log('No Match User')
+                msgText = 'No Match User'
             };
             
         }
 
-        
+    return msgText   
     
     
     /*
