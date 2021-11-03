@@ -84,7 +84,7 @@ function handleEvent(event) {
  
      })
      */
-     console.log(', text: event.message.text' + ' ' + userChecktext)
+     
     
     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
@@ -94,8 +94,8 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, echo);
 }
 
-var userCheck = function (values) {
-    const resp = getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+var userCheck = async function (values) {
+    const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
     console.log(resp);
 
@@ -103,9 +103,9 @@ var userCheck = function (values) {
     console.log('indexof:' + resp.indexOf(values))
     for (let index = 0; index <= resp.length; index++) {
         if( resp[index][0] == values ) {
-            return resp[index][6]
+            return resolve(resp[index][6])
         }else {
-            return 'No Match User'
+            return resolve('No Match User')
         };
         
     }
