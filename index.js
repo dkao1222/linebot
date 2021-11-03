@@ -95,6 +95,7 @@ var userCheck = async function (values) {
     const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
     console.log(resp);
+    /*
     Promise
     .resolve(
         resp.map(function (userId, displayName, pictureUrl, statusMessage, vendor, name1, name2) {
@@ -107,6 +108,7 @@ var userCheck = async function (values) {
             }
         })
     )
+    */
 }
 
 var server = app.listen(process.env.PORT || 3000, function () {
