@@ -5,7 +5,6 @@ const { getData } = require('./googleSheet.js');
 const { getRowCount } = require('./googleSheet.js');
 const { AddRow } = require('./googleSheet.js');
 
-const services = require('./services')
 
 
 require('dotenv').config()
