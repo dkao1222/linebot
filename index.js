@@ -99,7 +99,7 @@ var userCheck = async function (values) {
 
     console.log(resp);
 
-    console.log('length :'+resp.length())
+    console.log('length :'+resp.length)
     /*
     Promise
     .resolve(
