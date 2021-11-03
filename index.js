@@ -101,14 +101,18 @@ var userCheck = async function (values) {
 
     console.log('length :'+resp.length)
     console.log('indexof:' + resp.indexOf(values))
+    var msgText = ""
     for (let index = 0; index <= resp.length; index++) {
         if( resp[index][0] == values ) {
-            return resolve(resp[index][6])
+            msgText = resp[index][6]
+            break
         }else {
-            return resolve('No Match User')
+            msgText =  'No Match User'
         };
         
     }
+
+    return msgText
     /*
     Promise
     .resolve(
