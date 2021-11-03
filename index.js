@@ -64,7 +64,7 @@ function handleEvent(event) {
 
 
 
-    userCheck(userData[0])
+    var userChecktext = userCheck(userData[0])
     //console.log(userReply())
 
 
@@ -85,10 +85,10 @@ function handleEvent(event) {
      })
      */
 
-
+    
     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
-    const echo = { type: 'text', text: event.message.text  };
+    const echo = { type: 'text', text: event.message.text + ' ' + userChecktext };
 
     // use reply API
     return client.replyMessage(event.replyToken, echo);
@@ -101,9 +101,14 @@ var userCheck = async function (values) {
 
     console.log('length :'+resp.length)
     console.log('indexof:' + resp.indexOf(values))
-    resp.forEach( items => {
-        console.log('item:' + items.length)
-    })
+    for (let index = 0; index <= resp.length; index++) {
+        if( resp[index][0] == values ) {
+            return resp[index][6]
+        }else {
+            return 'No Match User'
+        };
+        
+    }
     /*
     Promise
     .resolve(
