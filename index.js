@@ -5,6 +5,9 @@ const { getData } = require('./googleSheet.js');
 const { getRowCount } = require('./googleSheet.js');
 const { AddRow } = require('./googleSheet.js');
 
+const services = require('./services')
+
+
 require('dotenv').config()
 
 console.log('CHANNEL_ACCESS_TOKEN:' + process.env.CHANNEL_ACCESS_TOKEN)
@@ -85,7 +88,7 @@ function handleEvent(event) {
 
     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
-    const echo = { type: 'text', text: event.message.text + userCheck(userData[0]) };
+    const echo = { type: 'text', text: event.message.text  };
 
     // use reply API
     return client.replyMessage(event.replyToken, echo);
