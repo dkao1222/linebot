@@ -100,6 +100,9 @@ var userCheck = async function (values) {
     console.log(resp);
 
     console.log('length :'+resp.length)
+    if (resp.indexOf(values) > 0 ){
+        console.log('indexof:' + resp.indexOf(values))
+    }
     /*
     Promise
     .resolve(
