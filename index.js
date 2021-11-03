@@ -34,6 +34,7 @@ app.post('/callback', line.middleware(config), (req, res) => {
         });
 });
 
+
 function handleEvent(event) {
     if (event.type !== 'message' || event.message.type !== 'text') {
         // ignore non-text-message event
@@ -97,6 +98,8 @@ var userCheck = async function (values) {
     const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
     console.log(resp);
+
+    console.log('length :'+resp.length())
     /*
     Promise
     .resolve(
