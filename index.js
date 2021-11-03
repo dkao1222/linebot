@@ -44,10 +44,10 @@ function handleEvent(event) {
     var userData = []
     client.getProfile(event.source.userId)
         .then((profile) => {
-            console.log(profile.userId);
-            console.log(profile.displayName);
-            console.log(profile.pictureUrl);
-            console.log(profile.statusMessage);
+            //console.log(profile.userId);
+            //console.log(profile.displayName);
+            //console.log(profile.pictureUrl);
+            //console.log(profile.statusMessage);
             userData.push(profile.userId)
             userData.push(profile.displayName)
             userData.push(profile.pictureUrl)
