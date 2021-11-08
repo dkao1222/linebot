@@ -104,7 +104,7 @@ var userCheck = async function (values) {
     
     var msgText = ""
         for (let index = 0; index <= resp.length; index++) {
-            if( resp[index][0] == values ) {
+            if( resp[index][0] = values ) {
                 console.log(resp[index][6])
                 msgText = resp[index][6]
                 break

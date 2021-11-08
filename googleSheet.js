@@ -6,22 +6,30 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
  * @param  {String} credentialsPath the credentials path defalt is './credentials.json'
  */
 async function getData(docID, sheetID, credentialsPath = './credentials.json') {
-  const result = [];
-  const doc = new GoogleSpreadsheet(docID);
-  const creds = require(credentialsPath);
-  await doc.useServiceAccountAuth(creds);
-  await doc.loadInfo();
-  console.log('doc title'+doc.title);
-  const sheet = doc.sheetsById[sheetID];
+  return new Promise((resolve, reject) => {
+    try{
+      const result = [];
+      const doc = new GoogleSpreadsheet(docID);
+      const creds = require(credentialsPath);
+      await doc.useServiceAccountAuth(creds);
+      await doc.loadInfo();
+      console.log('doc title'+doc.title);
+      const sheet = doc.sheetsById[sheetID];
 
-  console.log('sheets title'+sheet.title);
-  console.log('sheet row count'+sheet.rowCount);
-  const rows = await sheet.getRows();
+      console.log('sheets title'+sheet.title);
+      console.log('sheet row count'+sheet.rowCount);
+      const rows = await sheet.getRows();
 
-  for (row of rows) {
-    result.push(row._rawData);
-  }
-  return result;
+      for (row of rows) {
+        result.push(row._rawData);
+      }
+      resolve(result)
+    }catch (err) {
+      reject(err)
+    }
+  })
+  
+  //return result;
 };
 
 
