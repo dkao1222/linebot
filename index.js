@@ -64,8 +64,8 @@ function handleEvent(event) {
 
 
     var promise = userCheck(userData[0])
-    if(userData[0] = promise.then(successCallback, failureCallback)) {
-        var userChecktext = successCallback.name2
+    if(userData[0] = promise.then(userId, name2)) {
+        var userChecktext = name2
 
     }else{
         var userChecktext = 'no match user.'
