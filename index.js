@@ -66,7 +66,7 @@ function handleEvent(event) {
     
     userCheck(userData[0]).then(function(result) {
         for (let index = 0; index <= result.length; index++) {
-            if( result[index][0] = userData[0] ) {
+            if( result[index][0] == userData[0] ) {
                 console.log(result[index][6])
                 userChecktext = result[index][6]
                 break
