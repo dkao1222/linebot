@@ -64,7 +64,7 @@ function handleEvent(event) {
 
 
 
-    var userChecktext = Promise.resolve(userCheck(userData[0]))
+    var userChecktext = userCheck(userData[0])
     //console.log(userReply())
 
 
@@ -95,13 +95,23 @@ function handleEvent(event) {
 }
 
 var userCheck = async function (values) {
-    const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+    return new Promise((resolve, reject) => {
 
-    console.log(resp);
+        try{
+            const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
-    console.log('length :'+resp.length)
-    console.log('indexof:' + resp.indexOf(values))
+            console.log(resp);
+
+            console.log('length :'+resp.length)
+            console.log('indexof:' + resp.indexOf(values))
+        }catch(err) {
+            reject(err)
+        }
+        
+    })
     
+    
+    /*
     var msgText = ""
         for (let index = 0; index <= resp.length; index++) {
             if( resp[index][0] = values ) {
@@ -116,6 +126,7 @@ var userCheck = async function (values) {
         }
 
     return msgText   
+    */
     
     
     /*
