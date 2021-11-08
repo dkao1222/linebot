@@ -63,9 +63,9 @@ function handleEvent(event) {
 
 
 
-    var promise = userCheck(userData[0])
-    if(userData[0] = promise.then(userId, name2)) {
-        var userChecktext = name2
+    var promise = userCheck(userData[0]).then(userId, name2)
+    if(userData[0] = promise,userId) {
+        var userChecktext = promise.name2
 
     }else{
         var userChecktext = 'no match user.'
