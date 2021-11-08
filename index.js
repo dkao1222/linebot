@@ -63,15 +63,20 @@ function handleEvent(event) {
 
 
     var userChecktext = ''
+    
     userCheck(userData[0]).then(function(result) {
-        if(userData[0] = result.userId) {
-            userChecktext = result.name2
-    
-        }else{
-            userChecktext = 'no match user.'
-    
-    
+        for (let index = 0; index <= result.length; index++) {
+            if( result[index][0] = values ) {
+                console.log(result[index][6])
+                userChecktext = result[index][6]
+                break
+            }else {
+                console.log('No Match User')
+                userChecktext = 'No Match User'
+            };
+            
         }
+        
     })
     
     console.log('usercheck:'+ userChecktext)
