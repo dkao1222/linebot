@@ -65,7 +65,7 @@ function handleEvent(event) {
 
 
     var userChecktext = userCheck(userData[0])
-    console.log('usercheck:'+userCheck(userData[0])
+    console.log('usercheck:'+userCheck(userData[0]))
 
 
 
