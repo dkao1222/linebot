@@ -103,7 +103,12 @@ var userCheck = async function (values) {
         console.log('indexof:' + resp.indexOf(values))
         return new Promise((resolve, reject) => {
             try{
-                resolve(resp)
+                resolve(resp).then(data => {
+                    if (values == data.userId) {
+                        data.name1
+                    }
+                    
+                })
             }catch(err){
                 reject(resp);
             }
