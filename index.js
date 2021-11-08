@@ -65,7 +65,7 @@ function handleEvent(event) {
 
 
     var userChecktext = userCheck(userData[0])
-    console.log('usercheck:'+userCheck(userData[0]))
+    //console.log('usercheck:'+userCheck(userData[0]))
 
 
 
@@ -104,8 +104,10 @@ var userCheck = async function (values) {
         return new Promise((resolve, reject) => {
             try{
                 resolve(resp).then(data => {
-                    if (values == data.userId) {
-                        data.name1
+                    if (values = data.userId) {
+                        data.displayName
+                    }else{
+                        'no match'
                     }
                     
                 })
