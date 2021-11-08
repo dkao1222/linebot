@@ -62,17 +62,15 @@ function handleEvent(event) {
         });
 
 
-    var userChecktext = ''
-    
-    userCheck(userData[0]).then(function(result) {
+    var userChecktext = userCheck(userData[0]).then(function(result) {
         for (let index = 0; index <= result.length; index++) {
             if( result[index][0] == userData[0] ) {
                 console.log(result[index][6])
-                userChecktext = result[index][6]
+                return result[index][6]
                 break
             }else {
                 console.log('No Match User')
-                userChecktext = 'No Match User'
+                return 'No Match User'
             };
             
         }
