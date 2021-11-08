@@ -94,11 +94,11 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, echo);
 }
 
-var userCheck = async function (values) {
+var userCheck = function (values) {
     return new Promise((resolve, reject) => {
 
         try{
-            const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+            const resp = getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
             console.log(resp);
 
