@@ -95,24 +95,17 @@ function handleEvent(event) {
 }
 
 var userCheck = function (values) {
-    return new Promise((resolve, reject) => {
+    
+    const resp = getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
-        try{
-            const resp = getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+    console.log(resp);
 
-            console.log(resp);
-
-            console.log('length :'+resp.length)
-            console.log('indexof:' + resp.indexOf(values))
-            resolve(resp)
-        }catch(err) {
-            reject(err)
-        }
-        
-    })
+    console.log('length :'+resp.length)
+    console.log('indexof:' + resp.indexOf(values))
+    //resp
     
     
-    /*
+    
     var msgText = ""
         for (let index = 0; index <= resp.length; index++) {
             if( resp[index][0] = values ) {
@@ -127,7 +120,7 @@ var userCheck = function (values) {
         }
 
     return msgText   
-    */
+    
     
     
     /*
