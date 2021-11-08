@@ -104,6 +104,7 @@ var userCheck = async function (values) {
 
             console.log('length :'+resp.length)
             console.log('indexof:' + resp.indexOf(values))
+            resolve(resp)
         }catch(err) {
             reject(err)
         }
