@@ -65,7 +65,7 @@ function handleEvent(event) {
 
 
     var userChecktext = userCheck(userData[0])
-    //console.log(userReply())
+    console.log('usercheck:'+userCheck(userData[0])
 
 
 
@@ -94,17 +94,29 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, echo);
 }
 
-var userCheck = function (values) {
+var userCheck = async function (values) {
+    try{
+        const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+        console.log(resp);
+
+        console.log('length :'+resp.length)
+        console.log('indexof:' + resp.indexOf(values))
+        return new Promise((resolve, reject) => {
+            try{
+                resolve(resp)
+            }catch(err){
+                reject(resp);
+            }
+        })
+    }catch(error){
+        console.log('error:' + error.message)
+    }  
     
-    const resp = getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
 
-    console.log(resp);
-
-    console.log('length :'+resp.length)
-    console.log('indexof:' + resp.indexOf(values))
+    
     //resp
     
-    
+    /*
     
     var msgText = ""
         for (let index = 0; index <= resp.length; index++) {
@@ -120,7 +132,7 @@ var userCheck = function (values) {
         }
 
     return msgText   
-    
+    */
     
     
     /*
