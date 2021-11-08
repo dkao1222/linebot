@@ -63,9 +63,13 @@ function handleEvent(event) {
 
 
 
-
-    var userChecktext = userCheck(userData[0])
-    console.log('usercheck:'+userCheck(userData[0]))
+    var promise = userCheck(userData[0])
+    if(userData[0] = promise().then(successCallback, failureCallback)) {
+        var userChecktext = successCallback.name2
+    }else{
+        var userChecktext = 'no match user'
+    }
+    console.log('usercheck:'+ userChecktext)
 
 
 
@@ -95,30 +99,13 @@ function handleEvent(event) {
 }
 
 var userCheck = async function (values) {
-    try{
+    
         const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
         console.log(resp);
 
         console.log('length :'+resp.length)
         console.log('indexof:' + resp.indexOf(values))
-        return new Promise((resolve, reject) => {
-            try{
-                resolve(resp).then(data => {
-                    if (values = data.userId) {
-                        data.displayName
-                    }else{
-                        'no match'
-                    }
-                    
-                })
-            }catch(err){
-                reject(resp);
-            }
-        })
-    }catch(error){
-        console.log('error:' + error.message)
-    }  
-    
+        return resp
 
     
     //resp
