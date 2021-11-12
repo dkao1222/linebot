@@ -45,17 +45,19 @@ function handleEvent(event) {
 
 
 
-    var userData = []
+    //var userData = []
     client.getProfile(event.source.userId)
         .then((profile) => {
             //console.log(profile.userId);
             //console.log(profile.displayName);
             //console.log(profile.pictureUrl);
             //console.log(profile.statusMessage);
-            userData.push(profile.userId)
-            userData.push(profile.displayName)
-            userData.push(profile.pictureUrl)
-            userData.push(profile.statusMessage)
+            //userData.push(profile.userId)
+            //userData.push(profile.displayName)
+            //userData.push(profile.pictureUrl)
+            //userData.push(profile.statusMessage)
+            userCheck(profile.userId)
+
 
         })
         .catch((err) => {
@@ -63,8 +65,8 @@ function handleEvent(event) {
         });
 
 
-    console.log('User Data :' + userData)
-    userCheck(userData[0])
+    //console.log('User Data :' + userData)
+    
     /*
     var userChecktext = userCheck(userData[0]).then(function(result) {
         
