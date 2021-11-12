@@ -128,8 +128,8 @@ async function userCheck(values) {
         for (let index = 0; index <= resp.length; index++) {
 
             if( resp[index][0] == values ) {
-                console.log(resp[index][6])
-                msgText = resp[index][6]
+                console.log(resp[index][5])
+                msgText = resp[index][5]
                 break
             }else {
                 console.log('No Match User')
