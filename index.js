@@ -137,7 +137,7 @@ async function userCheck(profile) {
 
             if( resp[index][0] == profile.userId ) {
                 console.log(resp[index][5])
-                msgText = '您好 ' + resp[index][5] + ',有什麼我可以為您服務的'
+                msgText = '您好 [' + resp[index][5] + '],有什麼我可以為您服務的'
                 break
             }else {
                 console.log('No Match User')
