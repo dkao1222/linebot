@@ -55,7 +55,7 @@ async function AddRow(docID, sheetID, userid, displayName, pictureUrl, statusMes
 
   const createnewRow = await sheet.addRow({userId:userid, displayName:displayName, pictureUrl:pictureUrl, statusMessage:statusMessage, Vendor:'', Name1:'', Name2:''})
   //const larryRow = await sheet.addRow({ name: 'Larry Page', email: 'larry@google.com' });
-  const rows = sheet.getRows();
+  const rows = await sheet.getRows();
   
   for (row of rows) {
     result.push(row._rawData);

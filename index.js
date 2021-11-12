@@ -139,9 +139,9 @@ async function userCheck(profile) {
 
                 if( resp[index][0] == profile.userId ) {
                     console.log(resp[index][5])
-    
+                    
                     if (resp[index].length < 5 ) {
-                        msgText = '您好 id:' + profile.userId + ',有什麼我可以為您服務的'
+                        msgText = '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'
                     }else{
                         
                         msgText = '您好 [' + resp[index][5] + '],有什麼我可以為您服務的'
@@ -150,7 +150,7 @@ async function userCheck(profile) {
                     break
                 }else {
                     console.log('No Match User')
-                    msgText = '您好 id:' + profile.userId + ',有什麼我可以為您服務的'
+                    msgText = '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'
                     const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
                 
     
