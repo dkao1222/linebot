@@ -63,19 +63,7 @@ function handleEvent(event) {
         });
 
 
-    (async function() {
-        //await someAsyncFunction();
-        const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
-        //console.log(resp);
-        const data = JSON.parse(resp)
-        console.log('length :'+data.length)
-
-        console.log(data)
-        //console.log('indexof:' + resp.indexOf(userData[0]))
-        
-        //return resp
-
-    }());
+    console.log('User Data :' + userData)
     userCheck(userData[0])
     /*
     var userChecktext = userCheck(userData[0]).then(function(result) {
@@ -136,7 +124,7 @@ async function userCheck(values) {
         var msgText = ""
         //console.log(resp)
         for (let index = 0; index <= resp.length; index++) {
-            if( resp[index][1] == values ) {
+            if( resp[index][1] = values ) {
                 console.log(resp[index][6])
                 msgText = resp[index][6]
                 break
