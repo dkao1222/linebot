@@ -76,9 +76,10 @@ function handleEvent(event) {
         //return resp
 
     }());
-
+    userCheck(userData[0])
+    /*
     var userChecktext = userCheck(userData[0]).then(function(result) {
-        /*
+        
         for (let index = 0; index <= result.length; index++) {
             console.log('check')
             if( result[index][0] == userData[0] ) {
@@ -91,10 +92,10 @@ function handleEvent(event) {
             };
             
         }
-        */
+        
         
     })
-    
+    */
     //console.log('usercheck:'+ userChecktext)
 
 
@@ -129,10 +130,23 @@ var userCheck = async function (values) {
         const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
         console.log(resp);
 
-        console.log('length :'+resp.length)
-        console.log('indexof:' + resp.indexOf(values))
-        return resp
+        //console.log('length :'+resp.length)
+        //console.log('indexof:' + resp.indexOf(values))
+        //return resp
+        var msgText = ""
+        for (let index = 0; index <= resp.length; index++) {
+            if( resp[index][0] = values ) {
+                console.log(resp[index][6])
+                msgText = resp[index][6]
+                break
+            }else {
+                console.log('No Match User')
+                msgText = 'No Match User'
+            };
+            
+        }
 
+        console.log('message:'+msgText)
     
     //resp
     
