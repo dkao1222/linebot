@@ -124,7 +124,7 @@ function handleEvent(event) {
 }
 
 async function userCheck(profile) {
-        const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
+        //const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
             
         const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
         console.log(resp);
@@ -138,7 +138,13 @@ async function userCheck(profile) {
 
             if( resp[index][0] == profile.userId ) {
                 console.log(resp[index][5])
-                msgText = '您好 [' + resp[index][5] + '],有什麼我可以為您服務的'
+
+                if (resp[index][5] != '') {
+                    msgText = '您好 [' + resp[index][5] + '],有什麼我可以為您服務的'
+                }else{
+                    msgText = '您好 id:' + values + ',有什麼我可以為您服務的'
+                }
+                
                 break
             }else {
                 console.log('No Match User')
