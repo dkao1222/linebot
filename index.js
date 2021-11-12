@@ -60,9 +60,20 @@ function handleEvent(event) {
         .catch((err) => {
             // error handling
         });
+    (async function() {
+        //await someAsyncFunction();
+        const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+        console.log(resp);
 
+        console.log('length :'+resp.length)
+        console.log('indexof:' + resp.indexOf(userData[0]))
+        
+        //return resp
+
+    }());
 
     var userChecktext = userCheck(userData[0]).then(function(result) {
+        /*
         for (let index = 0; index <= result.length; index++) {
             console.log('check')
             if( result[index][0] == userData[0] ) {
@@ -75,6 +86,7 @@ function handleEvent(event) {
             };
             
         }
+        */
         
     })
     
