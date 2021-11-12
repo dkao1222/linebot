@@ -133,7 +133,7 @@ async function userCheck(profile) {
         //return resp
         var msgText = ""
         //console.log(resp)
-        for (let index = 0; index <= resp.length; index++) {
+        for (let index = 0; index < resp.length; index++) {
 
             if( resp[index][0] == profile.userId ) {
                 console.log(resp[index][5])
