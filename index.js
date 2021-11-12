@@ -109,7 +109,9 @@ function handleEvent(event) {
     
     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
-    console.log(userChecktext)
+    userChecktext.then(function(result){
+        console.log(result)
+    })
     const echo = { type: 'text', text: event.message.text + ' ' + userChecktext };
 
     // use reply API
