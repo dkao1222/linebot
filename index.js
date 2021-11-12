@@ -136,7 +136,7 @@ async function userCheck(values) {
         var msgText = ""
         //console.log(resp)
         for (let index = 0; index <= resp.length; index++) {
-            if( resp[index] == values ) {
+            if( resp[index][1] == values ) {
                 console.log(resp[index][6])
                 msgText = resp[index][6]
                 break
