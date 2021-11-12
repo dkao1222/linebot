@@ -1,4 +1,5 @@
 const line = require('@line/bot-sdk');
+const { json } = require('express');
 const express = require('express');
 
 const { getData } = require('./googleSheet.js');
@@ -60,13 +61,17 @@ function handleEvent(event) {
         .catch((err) => {
             // error handling
         });
+
+
     (async function() {
         //await someAsyncFunction();
         const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
-        console.log(resp);
+        //console.log(resp);
+        const data = JSON.parse(resp)
+        console.log('length :'+data.length)
 
-        console.log('length :'+resp.length)
-        console.log('indexof:' + resp.indexOf(userData[0]))
+        console.log(data)
+        //console.log('indexof:' + resp.indexOf(userData[0]))
         
         //return resp
 
@@ -90,7 +95,7 @@ function handleEvent(event) {
         
     })
     
-    console.log('usercheck:'+ userChecktext)
+    //console.log('usercheck:'+ userChecktext)
 
 
 
