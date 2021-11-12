@@ -134,8 +134,8 @@ async function userCheck(values) {
         //console.log('indexof:' + resp.indexOf(values))
         //return resp
         var msgText = ""
-        for (let index = 0; index <= resp.length; index++) {
-            if( resp[index][0] = values ) {
+        for (let index = 0; index <= resp[0].length; index++) {
+            if( resp[0][index] = values ) {
                 console.log(resp[index][6])
                 msgText = resp[index][6]
                 break
