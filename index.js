@@ -140,7 +140,7 @@ async function userCheck(profile) {
                 if( resp[index][0] == profile.userId ) {
                     console.log(resp[index][5])
     
-                    if (resp[index][5] == 'undefined') {
+                    if (resp[index].length < 5 ) {
                         msgText = '您好 id:' + profile.userId + ',有什麼我可以為您服務的'
                     }else{
                         
