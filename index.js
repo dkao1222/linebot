@@ -56,7 +56,7 @@ function handleEvent(event) {
             //userData.push(profile.displayName)
             //userData.push(profile.pictureUrl)
             //userData.push(profile.statusMessage)
-            return userCheck(profile.userId)
+            return userCheck(profile)
 
 
         })
@@ -111,8 +111,8 @@ function handleEvent(event) {
     // create a echoing text message
     const result = userChecktext.then(function(result){
         //console.log(result)
-
-        const echo = { type: 'text', text: event.message.text + ' ' + result};
+        //event.message.text + ' ' +
+        const echo = { type: 'text', text:  result};
         //return result
         return client.replyMessage(event.replyToken, echo);
 
@@ -123,7 +123,7 @@ function handleEvent(event) {
     //return client.replyMessage(event.replyToken, echo);
 }
 
-async function userCheck(values) {
+async function userCheck(profile) {
     
         const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
         console.log(resp);
@@ -135,13 +135,16 @@ async function userCheck(values) {
         //console.log(resp)
         for (let index = 0; index <= resp.length; index++) {
 
-            if( resp[index][0] == values ) {
+            if( resp[index][0] == profile.userId ) {
                 console.log(resp[index][5])
-                msgText = resp[index][5]
+                msgText = '您好 ' + resp[index][5] + ',有什麼我可以為您服務的'
                 break
             }else {
                 console.log('No Match User')
-                msgText = 'No Match User'
+                msgText = '您好 id:' + values + ',有什麼我可以為您服務的'
+                const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
+            
+
             };
         }
         
