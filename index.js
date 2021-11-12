@@ -134,10 +134,12 @@ async function userCheck(values) {
         //console.log('indexof:' + resp.indexOf(values))
         //return resp
         var msgText = ""
+        console.log(resp[0])
+        /*
         for (let index = 0; index <= resp[0].length; index++) {
             if( resp[0][index] = values ) {
-                console.log(resp[index][6])
-                msgText = resp[index][6]
+                console.log(resp[0][index][6])
+                msgText = resp[0][index][6]
                 break
             }else {
                 console.log('No Match User')
@@ -145,6 +147,7 @@ async function userCheck(values) {
             };
             
         }
+        */
 
         console.log('message:'+msgText)
     
