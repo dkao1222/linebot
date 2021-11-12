@@ -125,7 +125,7 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, echo);
 }
 
-var userCheck = async function (values) {
+async function userCheck(values) {
     
         const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
         console.log(resp);
