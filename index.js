@@ -46,7 +46,7 @@ function handleEvent(event) {
 
 
     //var userData = []
-    client.getProfile(event.source.userId)
+    var userChecktext = client.getProfile(event.source.userId)
         .then((profile) => {
             console.log(profile.userId);
             //console.log(profile.displayName);
@@ -56,7 +56,7 @@ function handleEvent(event) {
             //userData.push(profile.displayName)
             //userData.push(profile.pictureUrl)
             //userData.push(profile.statusMessage)
-            userCheck(profile.userId)
+            return userCheck(profile.userId)
 
 
         })
@@ -139,6 +139,7 @@ async function userCheck(values) {
         
 
         console.log('message:'+msgText) 
+        return msgText
     
     //resp
     
