@@ -132,7 +132,7 @@ function handleEvent(event) {
 
     }
     */
-    getShipping()
+    getShipping(event, profile)
     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
     const result = userChecktext.then(function (result) {
@@ -151,7 +151,7 @@ function handleEvent(event) {
     //return client.replyMessage(event.replyToken, echo);
 }
 
-async function getShipping() {
+async function getShipping(event, profile) {
     const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1368605499');
     console.log(resp);
 
