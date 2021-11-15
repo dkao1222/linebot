@@ -66,7 +66,7 @@ function handleEvent(event) {
 
 
     //console.log('User Data :' + userData)
-    
+
     /*
     var userChecktext = userCheck(userData[0]).then(function(result) {
         
@@ -105,14 +105,30 @@ function handleEvent(event) {
  
      })
      */
-     
-    
+
+     /*
+    switch (event.message.text.toLowerCase()) {
+        case 'help':
+            messagebody = 'Hi, ' + currectUserName + ', how can i help you!'
+            //messagebody  = 'how can i help you! id:' + client.getProfile(event.source.userId).then((profile)=>{ profile.displayName})
+            break;
+        case 'submit':
+            messagebody = 'what do you want submit case'
+
+            break;
+        default:
+            messagebody = event.message.text
+
+
+    }
+    */
+
     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
-    const result = userChecktext.then(function(result){
+    const result = userChecktext.then(function (result) {
         //console.log(result)
         //event.message.text + ' ' +
-        const echo = { type: 'text', text:  result};
+        const echo = { type: 'text', text: result };
         //return result
         return client.replyMessage(event.replyToken, echo);
 
@@ -124,49 +140,67 @@ function handleEvent(event) {
 }
 
 async function userCheck(profile) {
-        //const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
-            
-        const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
-        console.log(resp);
+    //const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
 
-        //console.log('length :'+resp.length)
-        //console.log('indexof:' + resp.indexOf(values))
-        //return resp
-        var msgText = ""
-        //console.log(resp)
-        try{
-            for (let index = 0; index < resp.length; index++) {
+    const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
+    console.log(resp);
 
-                if( resp[index][0] == profile.userId ) {
-                    console.log(resp[index][5])
-                    
-                    if (resp[index].length < 5 ) {
-                        msgText = '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'
-                    }else{
-                        
-                        msgText = '您好 [' + resp[index][5] + '],有什麼我可以為您服務的'
-                    }
-                    
-                    break
-                }else {
-                    console.log('No Match User')
+    //console.log('length :'+resp.length)
+    //console.log('indexof:' + resp.indexOf(values))
+    //return resp
+    var msgText = ""
+    //console.log(resp)
+    try {
+        for (let index = 0; index < resp.length; index++) {
+
+            if (resp[index][0] == profile.userId) {
+                console.log(resp[index][5])
+
+                if (resp[index].length < 5) {
                     msgText = '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'
-                    const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
-                
-    
-                };
-            }
-        }catch(err) {
-            console.log(err)
-        }
-        
-        
+                } else {
+                    switch(resp[index][4].toLowerCase()) {
+                        case 'administrator':
+                            msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                            break
+                        case 'shipping':
+                            msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                            break
+                        case 'receiving':
+                            msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                            break
+                        case 'reverse':
+                            msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                            break
+                        case 'is':
+                            msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                            break
+                        default:
+                        msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                    } 
+                    
+                }
 
-        console.log('message:'+msgText) 
-        return msgText
-    
+                break
+            } else {
+                console.log('No Match User')
+                msgText = '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'
+                const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
+
+
+            };
+        }
+    } catch (err) {
+        console.log(err)
+    }
+
+
+
+    console.log('message:' + msgText)
+    return msgText
+
     //resp
-    
+
     /*
     
     var msgText = ""
@@ -184,8 +218,8 @@ async function userCheck(profile) {
 
     return msgText   
     */
-    
-    
+
+
     /*
     Promise
     .resolve(
