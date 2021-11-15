@@ -1,9 +1,7 @@
 const line = require('@line/bot-sdk');
 const { json } = require('express');
 const express = require('express');
-var request = require("request");
-var cheerio = require("cheerio");
-var https = require("https");
+
 
 const { getData } = require('./googleSheet.js');
 const { getRowCount } = require('./googleSheet.js');
@@ -131,7 +129,7 @@ function handleEvent(event) {
 
     }
     */
-    shippingFrom()
+    getShipping()
     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
     const result = userChecktext.then(function (result) {
@@ -252,20 +250,6 @@ async function userCheck(profile) {
     */
 }
 
-var shippingFrom = function() {
-    https.request({
-      url: "https://docs.google.com/forms/d/e/1FAIpQLSe1o6u9a9jhhVebfdi3CBKiWi4KvN1MOyPKJ7Um9jcFNy0iPw/viewform",
-      method: "GET"
-    }, function(error, response, body) {
-      if (error || !body) {
-        return;
-      }else{
-  
-      // 爬完網頁後要做的事情
-          console.log(body);
-      }
-    });
-  };
 
 var server = app.listen(process.env.PORT || 3000, function () {
     var port = server.address().port;
