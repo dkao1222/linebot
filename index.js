@@ -1,7 +1,7 @@
 const line = require('@line/bot-sdk');
 const { json } = require('express');
 const express = require('express');
-
+var request = require("request");
 var cheerio = require("cheerio");
 var https = require("https");
 
