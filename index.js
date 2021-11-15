@@ -35,6 +35,12 @@ app.post('/callback', line.middleware(config), (req, res) => {
         });
 });
 
+// user headcount 
+//1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY , Sheet id: 1363045017
+
+// Shipping Google sheet
+//1CvnH-tfd17tWP71fSBzPxeiQXvTw6M4_pHyY97p_rxc , Sheet id : 486683186
+
 
 function handleEvent(event) {
     if (event.type !== 'message' || event.message.type !== 'text') {
@@ -43,7 +49,7 @@ function handleEvent(event) {
     }
     console.log(`使用者 ID: ${event.source.userId}`);
 
-
+    
 
     //var userData = []
     var userChecktext = client.getProfile(event.source.userId)
@@ -122,7 +128,7 @@ function handleEvent(event) {
 
     }
     */
-
+    console.log(getShipping())
     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
     const result = userChecktext.then(function (result) {
@@ -132,11 +138,18 @@ function handleEvent(event) {
         //return result
         return client.replyMessage(event.replyToken, echo);
 
+        
+
     })
     //const echo = { type: 'text', text: event.message.text + ' ' + Promise.resolve(userChecktext)};
 
     // use reply API
     //return client.replyMessage(event.replyToken, echo);
+}
+
+async function getShipping() {
+    const resp = await getData('1CvnH-tfd17tWP71fSBzPxeiQXvTw6M4_pHyY97p_rxc', '1363045017');
+    console.log(resp);
 }
 
 async function userCheck(profile) {
