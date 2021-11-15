@@ -138,10 +138,10 @@ function handleEvent(event) {
     const result = userChecktext.then(function (result) {
         console.log(result)
         //event.message.text + ' ' +
-        //const echo = result
+        const echo = result
 
         //return result
-        //return client.replyMessage(event.replyToken, echo);
+        return client.replyMessage(event.replyToken, echo);
 
         
 
