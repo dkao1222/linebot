@@ -39,6 +39,9 @@ app.post('/callback', line.middleware(config), (req, res) => {
 // user headcount 
 //1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY , Sheet id: 1363045017
 
+//Shipping QUIZ
+//1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY, Sheet id: 1368605499
+
 // Shipping Google sheet
 //1CvnH-tfd17tWP71fSBzPxeiQXvTw6M4_pHyY97p_rxc , Sheet id : 486683186
 
@@ -149,7 +152,7 @@ function handleEvent(event) {
 }
 
 async function getShipping() {
-    const resp = await getData('1CvnH-tfd17tWP71fSBzPxeiQXvTw6M4_pHyY97p_rxc', '486683186');
+    const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1368605499');
     console.log(resp);
 }
 
