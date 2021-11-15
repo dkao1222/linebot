@@ -157,23 +157,23 @@ async function getShipping(event, profile) {
 
 
 
-    const echo = { type: 'bubble', 
-                   body : {
-                       type: 'box',
-                       layout: "vertical",
-                       contents :[
-                           {
-                            type: "text",
-                            text: "Shipping QUIZ",
-                            color: "#e74c3c",
-                            weight: "bold",
-                            style: "normal",
-                            decoration: "none",
-                            align: "center"
-                           }
-                       ]
-                   }
-                };
+    const echo = {
+        "type": "bubble", // ①
+        "body": { // ②
+          "type": "box", // ③
+          "layout": "horizontal", // ④
+          "contents": [ // ⑤
+            {
+              "type": "text", // ⑥
+              "text": "Hello,"
+            },
+            {
+              "type": "text", // ⑥
+              "text": "World!"
+            }
+          ]
+        }
+      }
 
     return client.replyMessage(event.replyToken, echo);
 }
