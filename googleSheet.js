@@ -15,11 +15,8 @@ async function getData(docID, sheetID, credentialsPath = './credentials.json') {
       await doc.loadInfo();
       console.log('doc title'+doc.title);
       const sheet = doc.sheetsById[sheetID];
-      try{
-        console.log('sheets title'+sheet.title);
-      }catch(err) {
-        console.log(err)
-      }
+      
+      console.log('sheets title'+sheet.title);
       
       console.log('sheet row count'+sheet.rowCount);
       const rows = await sheet.getRows();
