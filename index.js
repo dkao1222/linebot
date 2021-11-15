@@ -136,12 +136,12 @@ function handleEvent(event) {
     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
     const result = userChecktext.then(function (result) {
-        //console.log(result)
+        console.log(result)
         //event.message.text + ' ' +
-        const echo = result
+        //const echo = result
 
         //return result
-        return client.replyMessage(event.replyToken, echo);
+        //return client.replyMessage(event.replyToken, echo);
 
         
 
@@ -175,8 +175,8 @@ async function getShipping(event, profile) {
           ]
         }
       }
-    return echo
-    //return client.replyMessage(event.replyToken, echo);
+    //return echo
+    return client.replyMessage(event.replyToken, echo);
 }
 
 async function userCheck(profile, event) {
@@ -204,8 +204,10 @@ async function userCheck(profile, event) {
                             msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
                             break
                         case 'shipping':
+                            
+                            getShipping(event, profile).then(result)
+
                             msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
-                            //msgText = getShipping(event, profile).then(result)
                             break
                         case 'receiving':
                             msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
