@@ -66,7 +66,7 @@ function handleEvent(event) {
             //userData.push(profile.displayName)
             //userData.push(profile.pictureUrl)
             //userData.push(profile.statusMessage)
-            return userCheck(profile)
+            return userCheck(profile, event)
 
 
         })
@@ -179,7 +179,7 @@ async function getShipping(event, profile) {
     //return client.replyMessage(event.replyToken, echo);
 }
 
-async function userCheck(profile) {
+async function userCheck(profile, event) {
     //const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
 
     const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017');
@@ -205,7 +205,7 @@ async function userCheck(profile) {
                             break
                         case 'shipping':
                             //msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
-                            msgText = getShipping()
+                            msgText = getShipping(event, profile)
                             break
                         case 'receiving':
                             msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
