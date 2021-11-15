@@ -154,6 +154,28 @@ function handleEvent(event) {
 async function getShipping() {
     const resp = await getData('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1368605499');
     console.log(resp);
+
+
+
+    const echo = { type: 'bubble', 
+                   body : {
+                       type: 'box',
+                       layout: "vertical",
+                       contents :[
+                           {
+                            type: "text",
+                            text: "Shipping QUIZ",
+                            color: "#e74c3c",
+                            weight: "bold",
+                            style: "normal",
+                            decoration: "none",
+                            align: "center"
+                           }
+                       ]
+                   }
+                };
+
+    return client.replyMessage(event.replyToken, echo);
 }
 
 async function userCheck(profile) {
@@ -181,7 +203,8 @@ async function userCheck(profile) {
                             msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
                             break
                         case 'shipping':
-                            msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                            //msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                            getShipping()
                             break
                         case 'receiving':
                             msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
