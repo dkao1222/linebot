@@ -132,13 +132,14 @@ function handleEvent(event) {
 
     }
     */
-    getShipping(event, profile)
+    //getShipping(event, profile)
     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
     const result = userChecktext.then(function (result) {
         //console.log(result)
         //event.message.text + ' ' +
-        const echo = { type: 'text', text: result };
+        const echo = result
+
         //return result
         return client.replyMessage(event.replyToken, echo);
 
@@ -174,8 +175,8 @@ async function getShipping(event, profile) {
           ]
         }
       }
-
-    return client.replyMessage(event.replyToken, echo);
+    return echo
+    //return client.replyMessage(event.replyToken, echo);
 }
 
 async function userCheck(profile) {
@@ -196,27 +197,27 @@ async function userCheck(profile) {
                 console.log(resp[index][5])
 
                 if (resp[index].length < 5) {
-                    msgText = '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'
+                    msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
                 } else {
                     switch(resp[index][4].toLowerCase()) {
                         case 'administrator':
-                            msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                            msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
                             break
                         case 'shipping':
                             //msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
-                            getShipping()
+                            msgText = getShipping()
                             break
                         case 'receiving':
-                            msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                            msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
                             break
                         case 'reverse':
-                            msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                            msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
                             break
                         case 'is':
-                            msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                            msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
                             break
                         default:
-                        msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
+                        msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
                     } 
                     
                 }
@@ -224,7 +225,7 @@ async function userCheck(profile) {
                 break
             } else {
                 console.log('No Match User')
-                msgText = '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'
+                msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
                 const addData = AddRow('1lRu68z-02-W8uuVE4nOEMaZpjsi6ghBo6xobHZkQLiY', '1363045017', profile.userId, profile.displayName, profile.pictureUrl, profile.statusMessage)
 
 
