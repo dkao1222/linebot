@@ -128,7 +128,7 @@ function handleEvent(event) {
 
     }
     */
-    console.log(getShipping())
+    getShipping()
     //const echo = { type: 'text', text: event.message.text };
     // create a echoing text message
     const result = userChecktext.then(function (result) {
