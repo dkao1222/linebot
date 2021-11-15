@@ -204,8 +204,8 @@ async function userCheck(profile, event) {
                             msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
                             break
                         case 'shipping':
-                            //msgText = '您好 ['+ resp[index][4] +'],[' + profile.displayName + '],有什麼我可以為您服務的'
-                            msgText = getShipping(event, profile)
+                            msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
+                            //msgText = getShipping(event, profile).then(result)
                             break
                         case 'receiving':
                             msgText = { type: 'text', text: '您好 id:[' + profile.displayName + '],有什麼我可以為您服務的'}
